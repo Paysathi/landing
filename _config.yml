@@ -1,0 +1,31 @@
+# Jekyll configuration for GitHub Pages
+title: Takkada - Future of Fintech
+description: Collect Payments Faster. Without Chasing.
+baseurl: "" # Leave empty for custom domain
+url: "https://www.paysaathi.com" # Your custom domain
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - .git
+  - .gitignore
+  - .claude
+  - agents
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# Include CNAME file
+include:
+  - CNAME
+
+# Permalink structure
+permalink: pretty
+
+# Theme (GitHub Pages default)
+theme: null

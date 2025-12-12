@@ -6,16 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Takkada - Future of Fintech</title>
     <meta name="description" content="Collect Payments Faster. Without Chasing.">
-    <!-- Google Fonts: Manrope & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
-        rel="stylesheet">
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://rsms.me">
+    <!-- Inter Font - Similar to Atlassian Sans -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --font-family-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+            --font-family-heading: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,8 +35,9 @@
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="contact-us.html" class="nav-link">Contact Us</a></li>
+                    <li class="nav-item"><a href="#steps" class="nav-link">How it works</a></li>
+                    <li class="nav-item"><a href="#stories" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="contact-us.html" class="nav-link">Contact</a></li>
                 </ul>
                 <div class="nav-close" id="nav-close">
                     <i class="ph ph-x"></i>
@@ -40,8 +45,11 @@
             </div>
 
             <div class="nav-actions">
-                <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-sm btn-primary">Get
-                    Started</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="ph-bold ph-sun"></i>
+                    <i class="ph-bold ph-moon"></i>
+                </button>
+                <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-primary btn-sm">Get Started</a>
                 <div class="nav-toggle" id="nav-toggle">
                     <i class="ph ph-list"></i>
                 </div>
@@ -54,11 +62,10 @@
         <section class="hero section" id="home">
             <div class="hero-container container grid">
                 <div class="hero-content">
-                    <h1 class="hero-title">Collect Payments Faster. <br> <span class="text-gradient">Without
-                            Chasing.</span></h1>
+                    <span class="section-overline">Payment Collection Platform</span>
+                    <h1 class="hero-title">Collect Payments Faster. <br><span class="text-gradient">Without Chasing.</span></h1>
                     <p class="hero-description">
-                        Takkada automates payment reminders on WhatsApp and reconciles invoices — so you never lose
-                        track of what you’re owed.
+                        Takkada automates payment reminders on WhatsApp and reconciles invoices - so you never lose track of what you're owed.
                     </p>
                     <div class="hero-badges">
                         <span class="badge"><i class="ph-fill ph-check-circle"></i> Instant Reminders</span>
@@ -66,20 +73,18 @@
                         <span class="badge"><i class="ph-fill ph-check-circle"></i> Bank-Grade Security</span>
                     </div>
                     <div class="hero-buttons">
-                        <a href="#contact" class="btn btn-primary">Start Free Trial <i
-                                class="ph-bold ph-arrow-right"></i></a>
-                        <a href="#features" class="btn btn-secondary">Explore Features</a>
+                        <a href="#contact" class="btn btn-primary btn-lg">Start Free Trial <i class="ph-bold ph-arrow-right"></i></a>
+                        <a href="#features" class="btn btn-secondary btn-lg">Explore Features</a>
                     </div>
                 </div>
                 <div class="hero-img-wrapper">
-                    <!-- Placeholder for App Dashboard or Hero Image -->
                     <div class="hero-visual">
                         <div class="glass-card main-card">
                             <div class="card-header">
                                 <div class="icon-box"><i class="ph-duotone ph-currency-inr"></i></div>
                                 <div>
                                     <span>Total Collected</span>
-                                    <h4>₹ 12,45,000</h4>
+                                    <h4>12,45,000</h4>
                                 </div>
                             </div>
                             <div class="card-graph"></div>
@@ -107,9 +112,9 @@
         <section class="benefits section" id="benefits">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Unlock a New Era of <br> Operational Excellence</h2>
-                    <p class="section-subtitle">Unlock operational excellence and innovation with our advanced Payment
-                        tools and streamlined processes.</p>
+                    <span class="section-overline">Why Takkada</span>
+                    <h2 class="section-title">Unlock operational excellence</h2>
+                    <p class="section-subtitle">Advanced payment tools and streamlined processes to transform your business operations.</p>
                 </div>
 
                 <div class="benefits-grid grid">
@@ -127,76 +132,70 @@
                     </div>
                     <div class="benefit-item">
                         <div class="benefit-icon"><i class="ph-duotone ph-gear"></i></div>
-                        <h3>Automated Efficiency</h3>
+                        <h3>Automation</h3>
                     </div>
                     <div class="benefit-item">
                         <div class="benefit-icon"><i class="ph-duotone ph-file-text"></i></div>
-                        <h3>E-Way / E-Invoicing</h3>
+                        <h3>E-Invoicing</h3>
                     </div>
                 </div>
             </div>
         </section>
 
 
-        <!-- Automate Everything Section (Features) -->
+        <!-- Features Section -->
         <section class="automate section" id="features">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Automate Everything</h2>
-                    <p class="section-subtitle">Create invoices in seconds and instantly share them or their links with
-                        customers—right from the app.</p>
+                    <span class="section-overline">Features</span>
+                    <h2 class="section-title">Automate everything</h2>
+                    <p class="section-subtitle">Create invoices in seconds and instantly share them with customers - right from the app.</p>
                 </div>
 
                 <div class="bento-grid">
                     <div class="feature-card">
                         <div class="feature-icon"><i class="ph-duotone ph-paper-plane-right"></i></div>
                         <h3 class="feature-title">Automatic Sender</h3>
-                        <p class="feature-desc">Invoices are sent to your customers as a PDF on WhatsApp the moment
-                            they're created. Receipts are delivered automatically as soon as payment is received.</p>
+                        <p class="feature-desc">Invoices are sent to your customers as a PDF on WhatsApp the moment they're created. Receipts are delivered automatically as soon as payment is received.</p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon"><i class="ph-duotone ph-arrows-left-right"></i></div>
                         <h3 class="feature-title">Seamless Reconciliation</h3>
-                        <p class="feature-desc">All the entries are synced with tally, and there is no manual
-                            intervention needed, be it invoice, payment, new party creation, new item addition.</p>
+                        <p class="feature-desc">All entries are synced with Tally, with no manual intervention needed - be it invoice, payment, new party creation, or new item addition.</p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon"><i class="ph-duotone ph-truck"></i></div>
                         <h3 class="feature-title">E-way Bill Generation</h3>
-                        <p class="feature-desc">Generate and print e-way bills from your phone in just one tap. No need
-                            for desktops or laptops.</p>
+                        <p class="feature-desc">Generate and print e-way bills from your phone in just one tap. No need for desktops or laptops.</p>
                     </div>
 
                     <div class="feature-card">
                         <div class="feature-icon"><i class="ph-duotone ph-file-dashed"></i></div>
                         <h3 class="feature-title">E-Invoicing</h3>
-                        <p class="feature-desc">Handle all your e-invoicing directly from your mobile, whenever you need
-                            it.</p>
+                        <p class="feature-desc">Handle all your e-invoicing directly from your mobile, whenever you need it.</p>
                     </div>
 
                     <div class="feature-card span-2">
                         <div class="feature-icon"><i class="ph-duotone ph-package"></i></div>
                         <h3 class="feature-title">Inventory Management</h3>
-                        <p class="feature-desc">Easily manage your entire inventory on the go, with updates reflected
-                            instantly across your system.</p>
+                        <p class="feature-desc">Easily manage your entire inventory on the go, with updates reflected instantly across your system.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- App Interface Screens Section -->
+        <!-- App Screenshots Section -->
         <section class="screenshots section" id="gallery">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Designed for Simplicity</h2>
-                    <p class="section-subtitle">A powerful interface that's easy to use. Manage your business on the go.
-                    </p>
+                    <span class="section-overline">Interface</span>
+                    <h2 class="section-title">Designed for simplicity</h2>
+                    <p class="section-subtitle">A powerful interface that's easy to use. Manage your business on the go.</p>
                 </div>
 
                 <div class="screenshot-scroller">
-                    <!-- Screen 1 -->
                     <div class="screenshot-item">
                         <div class="iphone-mockup">
                             <div class="notch"></div>
@@ -204,7 +203,6 @@
                             <div class="reflection"></div>
                         </div>
                     </div>
-                    <!-- Screen 2 -->
                     <div class="screenshot-item">
                         <div class="iphone-mockup">
                             <div class="notch"></div>
@@ -212,7 +210,6 @@
                             <div class="reflection"></div>
                         </div>
                     </div>
-                    <!-- Screen 3 -->
                     <div class="screenshot-item">
                         <div class="iphone-mockup">
                             <div class="notch"></div>
@@ -220,7 +217,6 @@
                             <div class="reflection"></div>
                         </div>
                     </div>
-                    <!-- Screen 4 -->
                     <div class="screenshot-item">
                         <div class="iphone-mockup">
                             <div class="notch"></div>
@@ -228,7 +224,6 @@
                             <div class="reflection"></div>
                         </div>
                     </div>
-                    <!-- Screen 5 -->
                     <div class="screenshot-item">
                         <div class="iphone-mockup">
                             <div class="notch"></div>
@@ -244,51 +239,48 @@
         <section class="steps section" id="steps">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Simple Steps to Get Started</h2>
-                    <p class="section-subtitle">Four Simple Steps to Transform Your Collections</p>
+                    <span class="section-overline">Getting Started</span>
+                    <h2 class="section-title">Simple steps to get started</h2>
+                    <p class="section-subtitle">Four simple steps to transform your collections</p>
                 </div>
 
                 <div class="steps-grid grid">
                     <div class="step-card">
                         <span class="step-number">Step 1</span>
                         <h3 class="step-title">Quick Setup</h3>
-                        <p class="step-desc">No disruption to your existing accounting or billing processes. Connect
-                            Takkada with your Accounting Software.</p>
+                        <p class="step-desc">No disruption to your existing accounting or billing processes. Connect Takkada with your Accounting Software.</p>
                     </div>
                     <div class="step-card">
                         <span class="step-number">Step 2</span>
                         <h3 class="step-title">Invoices & Payment Links</h3>
-                        <p class="step-desc">Create and send invoices that include secure payment links with upi, net
-                            banking, debit card, credit card.</p>
+                        <p class="step-desc">Create and send invoices that include secure payment links with UPI, net banking, debit card, credit card.</p>
                     </div>
                     <div class="step-card">
                         <span class="step-number">Step 3</span>
-                        <h3 class="step-title">Automated Reminders & Reconciliation</h3>
-                        <p class="step-desc">Smart reminders boost collections, while payments auto-match to invoices.
-                        </p>
+                        <h3 class="step-title">Automated Reminders</h3>
+                        <p class="step-desc">Smart reminders boost collections, while payments auto-match to invoices.</p>
                     </div>
                     <div class="step-card">
                         <span class="step-number">Step 4</span>
                         <h3 class="step-title">Complete Financial View</h3>
-                        <p class="step-desc">See everything about your business- payments, dues, sales, purchase etc on
-                            your app</p>
+                        <p class="step-desc">See everything about your business - payments, dues, sales, purchase etc on your app.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Client Stories Section -->
+        <!-- Testimonials Section -->
         <section class="testimonials section" id="stories">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">See What Our Clients Are Saying</h2>
-                    <p class="section-subtitle">Join 3000+ Businesses That Collect Payments 3x Faster</p>
+                    <span class="section-overline">Testimonials</span>
+                    <h2 class="section-title">What our clients are saying</h2>
+                    <p class="section-subtitle">Join 3000+ businesses that collect payments 3x faster</p>
                 </div>
 
                 <div class="testimonials-grid grid">
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"Takkada recovered ₹15 lakhs in overdue payments within the first
-                            month. Our collection rate went from 60% to 92%. The WhatsApp integration is genius!"</p>
+                        <p class="testimonial-text">"Takkada recovered 15 lakhs in overdue payments within the first month. Our collection rate went from 60% to 92%. The WhatsApp integration is genius!"</p>
                         <div class="testimonial-author">
                             <i class="ph-fill ph-user-circle"></i>
                             <div>
@@ -299,9 +291,7 @@
                     </div>
 
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"We stopped hiring additional collection staff. Takkada handles
-                            everything automatically and our customers love the WhatsApp reminders. ROI in 2 months."
-                        </p>
+                        <p class="testimonial-text">"We stopped hiring additional collection staff. Takkada handles everything automatically and our customers love the WhatsApp reminders. ROI in 2 months."</p>
                         <div class="testimonial-author">
                             <i class="ph-fill ph-user-circle"></i>
                             <div>
@@ -312,8 +302,7 @@
                     </div>
 
                     <div class="testimonial-card">
-                        <p class="testimonial-text">"The dashboard gives us complete visibility. We know exactly who
-                            owes what and when they'll pay. Game-changer for cash flow management."</p>
+                        <p class="testimonial-text">"The dashboard gives us complete visibility. We know exactly who owes what and when they'll pay. Game-changer for cash flow management."</p>
                         <div class="testimonial-author">
                             <i class="ph-fill ph-user-circle"></i>
                             <div>
@@ -326,18 +315,18 @@
             </div>
         </section>
 
-        <!-- Proven Results (Stats) -->
+        <!-- Stats Section -->
         <section class="stats section">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Proven Results</h2>
-                    <p class="section-subtitle">The Best Fit for Your Unique Business Needs</p>
+                    <h2 class="section-title">Proven results</h2>
+                    <p class="section-subtitle">The best fit for your unique business needs</p>
                 </div>
 
                 <div class="stats-grid grid">
                     <div class="stat-item">
                         <h3>25+</h3>
-                        <p>weekly hours saved</p>
+                        <p>Weekly hours saved</p>
                     </div>
                     <div class="stat-item">
                         <h3>92%</h3>
@@ -345,11 +334,11 @@
                     </div>
                     <div class="stat-item">
                         <h3>85%</h3>
-                        <p>average improvement in collection rates</p>
+                        <p>Improvement in collection rates</p>
                     </div>
                     <div class="stat-item">
                         <h3>60%</h3>
-                        <p>faster payment collection</p>
+                        <p>Faster payment collection</p>
                     </div>
                 </div>
             </div>
@@ -359,51 +348,46 @@
         <section class="faq section" id="faq">
             <div class="container">
                 <div class="section-header text-center">
-                    <h2 class="section-title">Common Questions</h2>
-                    <p class="section-subtitle">Frequently Asked Questions</p>
+                    <span class="section-overline">Support</span>
+                    <h2 class="section-title">Frequently asked questions</h2>
+                    <p class="section-subtitle">Find answers to common questions about Takkada</p>
                 </div>
 
                 <div class="faq-container">
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>What is PaySaathi?</h3>
+                            <h3>What is Takkada?</h3>
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>PaySaathi is a B2B payment collection and reconciliation platform that helps businesses
-                                automate WhatsApp payment reminders, track credit and dues, and reconcile invoices — all
-                                from one simple app.</p>
+                            <p>Takkada is a B2B payment collection and reconciliation platform that helps businesses automate WhatsApp payment reminders, track credit and dues, and reconcile invoices - all from one simple app.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>How does PaySaathi work?</h3>
+                            <h3>How does Takkada work?</h3>
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>In three easy steps: Add Invoices manually or import from Tally/Excel automatically.
-                                Automate Reminders via WhatsApp with payment links. Track & Reconcile payments against
-                                each invoice in real time.</p>
+                            <p>In three easy steps: Add Invoices manually or import from Tally/Excel automatically. Automate Reminders via WhatsApp with payment links. Track & Reconcile payments against each invoice in real time.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>Who is PaySaathi for?</h3>
+                            <h3>Who is Takkada for?</h3>
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Distributors, wholesalers, and small-to-medium businesses (SMBs) who regularly offer
-                                credit to retailers and want faster collections with less manual follow-up.</p>
+                            <p>Distributors, wholesalers, and small-to-medium businesses (SMBs) who regularly offer credit to retailers and want faster collections with less manual follow-up.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>Do I need Tally to use PaySaathi?</h3>
+                            <h3>Do I need Tally to use Takkada?</h3>
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>No. While Tally sync is available, you can also upload invoices via Excel or enter them
-                                manually.</p>
+                            <p>No. While Tally sync is available, you can also upload invoices via Excel or enter them manually.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -412,8 +396,7 @@
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>No. PaySaathi sends polite, business-friendly WhatsApp reminders — only a few times, and
-                                only until payment is made.</p>
+                            <p>No. Takkada sends polite, business-friendly WhatsApp reminders - only a few times, and only until payment is made.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -422,18 +405,16 @@
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes. You can edit message tone, language, frequency, and even add your UPI/PG payment
-                                link.</p>
+                            <p>Yes. You can edit message tone, language, frequency, and even add your UPI/PG payment link.</p>
                         </div>
                     </div>
                     <div class="faq-item">
                         <div class="faq-question">
-                            <h3>Does PaySaathi support multiple users per business?</h3>
+                            <h3>Does Takkada support multiple users per business?</h3>
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>Yes. You can add team members with permission control — perfect for sales teams,
-                                accountants, or managers.</p>
+                            <p>Yes. You can add team members with permission control - perfect for sales teams, accountants, or managers.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -442,25 +423,23 @@
                             <i class="ph-bold ph-caret-down"></i>
                         </div>
                         <div class="faq-answer">
-                            <p>When your customer pays via your UPI/PG link, PaySaathi auto-matches the payment to the
-                                correct invoice. If they pay directly, you can reconcile manually in one click.</p>
+                            <p>When your customer pays via your UPI/PG link, Takkada auto-matches the payment to the correct invoice. If they pay directly, you can reconcile manually in one click.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- CTA / Contact Section -->
+        <!-- CTA Section -->
         <section class="contact section" id="contact">
             <div class="container">
                 <div class="cta-box text-center">
-                    <h2 class="section-title">Elevate Your Business</h2>
-                    <p class="section-subtitle">Stop Chasing. Start Collecting.<br>Sign up today and see the difference
-                        Takkada can do for your business.</p>
+                    <h2 class="section-title">Elevate your business</h2>
+                    <p class="section-subtitle">Stop chasing. Start collecting.<br>Sign up today and see the difference Takkada can make for your business.</p>
 
                     <form action="" class="cta-form">
                         <input type="email" placeholder="Enter your business email" class="cta-input">
-                        <button type="submit" class="btn btn-primary">Collect 3x Faster</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Collect 3x Faster</button>
                     </form>
                 </div>
             </div>
@@ -471,7 +450,10 @@
     <footer class="footer">
         <div class="footer-container container grid">
             <div class="footer-brand">
-                <a href="#" class="footer-logo">Takkada</a>
+                <a href="#" class="footer-logo">
+                    <img src="assets/images/appstore.png" alt="Takkada Logo" class="footer-logo-img">
+                    Takkada
+                </a>
                 <p class="footer-desc">
                     By Pay Saathi Innovations LLP.<br>
                     Simplify business payments.
@@ -482,12 +464,12 @@
             </div>
 
             <div class="footer-links">
-                <h3 class="footer-title">Features</h3>
+                <h3 class="footer-title">Product</h3>
                 <ul>
                     <li><a href="#benefits">Benefits</a></li>
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#faq">Why Choose Us</a></li>
-                    <li><a href="#stories">Clients Stories</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#stories">Testimonials</a></li>
                 </ul>
             </div>
 
@@ -497,8 +479,8 @@
                     <li><a href="#">Pricing</a></li>
                     <li><a href="contact-us.html">Contact</a></li>
                     <li><a href="terms-and-conditions.html#terms">Terms & Conditions</a></li>
-                    <li><a href="#">Refund Policy</a></li>
-                    <li><a href="terms-and-conditions.html#privacy">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
                 </ul>
             </div>
 
@@ -512,7 +494,7 @@
             </div>
         </div>
         <div class="footer-bottom container">
-            <p>Copyright PaySaathi. All right reserved.</p>
+            <p>Copyright PaySaathi. All rights reserved.</p>
         </div>
     </footer>
 

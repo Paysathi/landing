@@ -5,133 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Takkada</title>
-    <meta name="description"
-        content="Get in touch with Takkada. We are here to help you streamline your business payments.">
-    <!-- Google Fonts: Manrope & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
-        rel="stylesheet">
+    <meta name="description" content="Get in touch with Takkada. We are here to help you streamline your business payments.">
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://rsms.me">
+    <!-- Inter Font - Similar to Atlassian Sans -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
     <!-- Main CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <style>
-        .contact-page-container {
-            grid-template-columns: 1fr 1.5fr;
-            align-items: start;
-            gap: 4rem;
-        }
-
-        .contact-info-card {
-            background: var(--color-primary);
-            color: white;
-            padding: 3rem 2rem;
-            border-radius: var(--radius-lg);
-            height: 100%;
-        }
-
-        .contact-info-card h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-info-card p {
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2.5rem;
-        }
-
-        .info-item {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .info-item i {
-            font-size: 1.5rem;
-            color: var(--color-secondary);
-            margin-top: 0.2rem;
-        }
-
-        .info-item h4 {
-            color: white;
-            font-size: 1.1rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .info-item span {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
-            line-height: 1.5;
-            display: block;
-        }
-
-        .contact-form-wrapper {
-            background: white;
-            padding: 3rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--color-border);
-        }
-
-        .contact-form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .form-group.full-width {
-            grid-column: span 2;
-        }
-
-        .form-label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--color-heading);
-        }
-
-        .form-input,
-        .form-textarea {
-            padding: 0.75rem 1rem;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            font-family: var(--font-body);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            outline: none;
-            border-color: var(--color-primary);
-            box-shadow: 0 0 0 2px var(--color-primary-light);
-        }
-
-        .form-textarea {
-            min-height: 150px;
-            resize: vertical;
-        }
-
-        @media screen and (max-width: 768px) {
-            .contact-page-container {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-group.full-width {
-                grid-column: span 1;
-            }
+        :root {
+            --font-family-sans: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+            --font-family-heading: "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
         }
     </style>
 </head>
@@ -149,9 +35,9 @@
             <div class="nav-menu" id="nav-menu">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="index.html#features" class="nav-link">Features</a></li>
-                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="contact-us.html" class="nav-link active-link"
-                            style="color: var(--color-primary);">Contact Us</a></li>
+                    <li class="nav-item"><a href="index.html#steps" class="nav-link">How it works</a></li>
+                    <li class="nav-item"><a href="index.html#stories" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="contact-us.html" class="nav-link active-link">Contact</a></li>
                 </ul>
                 <div class="nav-close" id="nav-close">
                     <i class="ph ph-x"></i>
@@ -159,8 +45,11 @@
             </div>
 
             <div class="nav-actions">
-                <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-sm btn-primary">Get
-                    Started</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="ph-bold ph-sun"></i>
+                    <i class="ph-bold ph-moon"></i>
+                </button>
+                <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-primary btn-sm">Get Started</a>
                 <div class="nav-toggle" id="nav-toggle">
                     <i class="ph ph-list"></i>
                 </div>
@@ -171,8 +60,9 @@
     <main class="main section">
         <div class="container">
             <div class="section-header text-center">
-                <h1 class="section-title">Contact Information</h1>
-                <p class="section-subtitle">Contact us. Your feedback matters. Let's build a better future together.</p>
+                <span class="section-overline">Get in touch</span>
+                <h1 class="section-title">Contact us</h1>
+                <p class="section-subtitle">Your feedback matters. Let's build a better future together.</p>
             </div>
 
             <div class="contact-page-container grid">
@@ -181,9 +71,8 @@
                     <h3>Get in touch</h3>
                     <p>We'd love to hear from you. Our team is always here to chat.</p>
 
-                    <div style="margin-bottom: 2rem;">
-                        <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-sm btn-white-outline"
-                            style="border: 1px solid rgba(255,255,255,0.5); color: white; padding: 0.5rem 1rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: all 0.3s;">
+                    <div style="margin-bottom: var(--space-400);">
+                        <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-secondary btn-sm" style="background: rgba(255,255,255,0.15); color: white; border: 1px solid rgba(255,255,255,0.3);">
                             <i class="ph-bold ph-calendar-check"></i> Book a Demo
                         </a>
                     </div>
@@ -240,7 +129,7 @@
                         </div>
 
                         <div class="form-group full-width">
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%;">Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -252,7 +141,10 @@
     <footer class="footer">
         <div class="footer-container container grid">
             <div class="footer-brand">
-                <a href="index.html" class="footer-logo">Takkada</a>
+                <a href="index.html" class="footer-logo">
+                    <img src="assets/images/appstore.png" alt="Takkada Logo" class="footer-logo-img">
+                    Takkada
+                </a>
                 <p class="footer-desc">
                     By Pay Saathi Innovations LLP.<br>
                     Simplify business payments.
@@ -263,12 +155,12 @@
             </div>
 
             <div class="footer-links">
-                <h3 class="footer-title">Features</h3>
+                <h3 class="footer-title">Product</h3>
                 <ul>
                     <li><a href="index.html#benefits">Benefits</a></li>
                     <li><a href="index.html#features">Features</a></li>
-                    <li><a href="index.html#faq">Why Choose Us</a></li>
-                    <li><a href="index.html#stories">Clients Stories</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="index.html#stories">Testimonials</a></li>
                 </ul>
             </div>
 
@@ -278,8 +170,8 @@
                     <li><a href="#">Pricing</a></li>
                     <li><a href="contact-us.html">Contact</a></li>
                     <li><a href="terms-and-conditions.html#terms">Terms & Conditions</a></li>
-                    <li><a href="#">Refund Policy</a></li>
-                    <li><a href="terms-and-conditions.html#privacy">Privacy Policy</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
                 </ul>
             </div>
 
@@ -293,7 +185,7 @@
             </div>
         </div>
         <div class="footer-bottom container">
-            <p>Copyright PaySaathi. All right reserved.</p>
+            <p>Copyright PaySaathi. All rights reserved.</p>
         </div>
     </footer>
 
