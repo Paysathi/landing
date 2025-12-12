@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Takkada</title>
+    <meta name="description"
+        content="Get in touch with Takkada. We are here to help you streamline your business payments.">
+    <!-- Google Fonts: Manrope & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .contact-page-container {
+            grid-template-columns: 1fr 1.5fr;
+            align-items: start;
+            gap: 4rem;
+        }
+
+        .contact-info-card {
+            background: var(--color-primary);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: var(--radius-lg);
+            height: 100%;
+        }
+
+        .contact-info-card h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info-card p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-item i {
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+            margin-top: 0.2rem;
+        }
+
+        .info-item h4 {
+            color: white;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .info-item span {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: block;
+        }
+
+        .contact-form-wrapper {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-border);
+        }
+
+        .contact-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--color-heading);
+        }
+
+        .form-input,
+        .form-textarea {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 2px var(--color-primary-light);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        @media screen and (max-width: 768px) {
+            .contact-page-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/appstore-removebg-preview.png" alt="Takkada Logo" class="logo-img">
+                Takkada
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="contact-us.html" class="nav-link active-link"
+                            style="color: var(--color-primary);">Contact Us</a></li>
+                </ul>
+                <div class="nav-close" id="nav-close">
+                    <i class="ph ph-x"></i>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-sm btn-primary">Get
+                    Started</a>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="ph ph-list"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h1 class="section-title">Contact Information</h1>
+                <p class="section-subtitle">Contact us. Your feedback matters. Let's build a better future together.</p>
+            </div>
+
+            <div class="contact-page-container grid">
+                <!-- Info Column -->
+                <div class="contact-info-card">
+                    <h3>Get in touch</h3>
+                    <p>We'd love to hear from you. Our team is always here to chat.</p>
+
+                    <div style="margin-bottom: 2rem;">
+                        <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-sm btn-white-outline"
+                            style="border: 1px solid rgba(255,255,255,0.5); color: white; padding: 0.5rem 1rem; border-radius: 6px; display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none; transition: all 0.3s;">
+                            <i class="ph-bold ph-calendar-check"></i> Book a Demo
+                        </a>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="ph-bold ph-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <span>+91 70191 52071</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="ph-bold ph-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <span>admin@paysaathi.com</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="ph-bold ph-map-pin"></i>
+                        <div>
+                            <h4>Address</h4>
+                            <span>Bobagh, Ulubari,<br>Guwahati, Assam - 781008</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Column -->
+                <div class="contact-form-wrapper">
+                    <form action="" class="contact-form-grid">
+                        <div class="form-group">
+                            <label class="form-label">First Name</label>
+                            <input type="text" class="form-input" placeholder="First Name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Last Name</label>
+                            <input type="text" class="form-input" placeholder="Last Name">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="+91 00000 00000">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-input" placeholder="you@company.com">
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">Message</label>
+                            <textarea class="form-textarea" placeholder="Leave us a message..."></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container container grid">
+            <div class="footer-brand">
+                <a href="index.html" class="footer-logo">Takkada</a>
+                <p class="footer-desc">
+                    By Pay Saathi Innovations LLP.<br>
+                    Simplify business payments.
+                </p>
+                <div class="footer-contact-info">
+                    <p>admin@paysaathi.com</p>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-title">Features</h3>
+                <ul>
+                    <li><a href="index.html#benefits">Benefits</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#faq">Why Choose Us</a></li>
+                    <li><a href="index.html#stories">Clients Stories</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-title">Company</h3>
+                <ul>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="contact-us.html">Contact</a></li>
+                    <li><a href="terms-and-conditions.html#terms">Terms & Conditions</a></li>
+                    <li><a href="#">Refund Policy</a></li>
+                    <li><a href="terms-and-conditions.html#privacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h3 class="footer-title">Connect</h3>
+                <ul class="social-links">
+                    <li><a href="#"><i class="ph-bold ph-twitter-logo"></i></a></li>
+                    <li><a href="#"><i class="ph-bold ph-linkedin-logo"></i></a></li>
+                    <li><a href="#"><i class="ph-bold ph-instagram-logo"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>Copyright PaySaathi. All right reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
