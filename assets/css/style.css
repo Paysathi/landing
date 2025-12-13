@@ -1376,6 +1376,7 @@
         @media (max-width: 480px) {
             .hero-buttons {
                 flex-direction: column;
+                align-items: center;
             }
 
             .app-buttons {
