@@ -1,2234 +1,1472 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Takkada - Auto-Reconciliation for Every Invoice</title>
-        <meta
-            name="description"
-            content="Auto-Reconciliation for Every Invoice. Zero Manual Work. Automate payment reminders and reconcile invoices automatically."
-        />
-        <link rel="preconnect" href="https://rsms.me" />
-        <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
-        <script src="https://unpkg.com/@phosphor-icons/web"></script>
-        <style>
-            :root {
-                --font-family-sans:
-                    "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont,
-                    "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
-                --primary-purple: #6c5ce7;
-                --primary-purple-dark: #5849c2;
-                --primary-purple-light: #a29bfe;
-                --accent-green: #00b894;
-                --accent-yellow: #ffeaa7;
-                --bg-cream: #fdf6e3;
-                --bg-light-purple: #f8f7ff;
-                --text-dark: #1a1a2e;
-                --text-gray: #636e72;
-                --text-light: #b2bec3;
-                --white: #ffffff;
-                --border-light: #e8e8e8;
-            }
 
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Takkada - Auto-Reconciliation for Every Invoice</title>
+    <meta name="description"
+        content="Auto-Reconciliation for Every Invoice. Zero Manual Work. Automate payment reminders and reconcile invoices automatically." />
+    <link rel="preconnect" href="https://rsms.me" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        :root {
+            --font-family-sans:
+                "Inter", ui-sans-serif, -apple-system, BlinkMacSystemFont,
+                "Segoe UI", Ubuntu, "Helvetica Neue", sans-serif;
+            --primary-purple: #6c5ce7;
+            --primary-purple-dark: #5849c2;
+            --primary-purple-light: #a29bfe;
+            --accent-green: #00b894;
+            --accent-yellow: #ffeaa7;
+            --bg-cream: #fdf6e3;
+            --bg-light-purple: #f8f7ff;
+            --text-dark: #1a1a2e;
+            --text-gray: #636e72;
+            --text-light: #b2bec3;
+            --white: #ffffff;
+            --border-light: #e8e8e8;
+        }
 
-            html {
-                scroll-behavior: smooth;
-            }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-            body {
-                font-family: var(--font-family-sans);
-                color: var(--text-dark);
-                line-height: 1.6;
-                overflow-x: hidden;
-            }
+        html {
+            scroll-behavior: smooth;
+        }
 
-            .container {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 0 24px;
-            }
+        body {
+            font-family: var(--font-family-sans);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-            /* Header */
-            .header {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background: var(--white);
-                z-index: 1000;
-                padding: 16px 0;
-                border-bottom: 1px solid var(--border-light);
-            }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
 
-            .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            z-index: 1000;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
 
-            .logo {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                font-weight: 700;
-                font-size: 1.25rem;
-                color: var(--primary-purple);
-                text-decoration: none;
-            }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-            .logo-img {
-                height: 36px;
-                width: auto;
-            }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--primary-purple);
+            text-decoration: none;
+        }
 
-            .nav-menu {
-                display: flex;
-                align-items: center;
-                gap: 32px;
-            }
+        .logo-img {
+            height: 36px;
+            width: auto;
+        }
 
-            .nav-list {
-                display: flex;
-                gap: 32px;
-                list-style: none;
-            }
+        .nav-menu {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
 
-            .nav-link {
-                color: var(--text-dark);
-                text-decoration: none;
-                font-size: 0.95rem;
-                font-weight: 500;
-                transition: color 0.3s;
-            }
+        .nav-list {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
 
-            .nav-link:hover {
-                color: var(--primary-purple);
-            }
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
 
-            .nav-actions {
-                display: flex;
-                align-items: center;
-                gap: 16px;
-            }
+        .nav-link:hover {
+            color: var(--primary-purple);
+        }
 
-            .btn {
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                gap: 8px;
-                padding: 12px 24px;
-                border-radius: 8px;
-                font-weight: 600;
-                font-size: 0.95rem;
-                text-decoration: none;
-                transition: all 0.3s;
-                border: none;
-                cursor: pointer;
-            }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
 
-            .btn-primary {
-                background: var(--primary-purple);
-                color: var(--white);
-            }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
 
-            .btn-primary:hover {
-                background: var(--primary-purple-dark);
-            }
+        .btn-primary {
+            background: var(--primary-purple);
+            color: var(--white);
+        }
 
-            .btn-secondary {
-                background: var(--bg-light-purple);
-                color: var(--primary-purple);
-            }
+        .btn-primary:hover {
+            background: var(--primary-purple-dark);
+        }
 
-            .btn-secondary:hover {
-                background: #eeedff;
-            }
+        .btn-secondary {
+            background: var(--bg-light-purple);
+            color: var(--primary-purple);
+        }
 
-            .btn-outline {
-                background: transparent;
-                color: var(--text-dark);
-                border: 1px solid var(--border-light);
-            }
+        .btn-secondary:hover {
+            background: #eeedff;
+        }
 
-            .btn-outline:hover {
-                border-color: var(--primary-purple);
-                color: var(--primary-purple);
-            }
+        .btn-outline {
+            background: transparent;
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+        }
 
-            .btn-sm {
-                padding: 8px 16px;
-                font-size: 0.875rem;
-            }
+        .btn-outline:hover {
+            border-color: var(--primary-purple);
+            color: var(--primary-purple);
+        }
 
-            .btn-lg {
-                padding: 16px 32px;
-                font-size: 1rem;
-            }
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.875rem;
+        }
 
-            .nav-toggle {
-                display: none;
-                font-size: 1.5rem;
-                cursor: pointer;
-                color: var(--text-dark);
-            }
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 1rem;
+        }
 
-            /* Hero Section */
-            .hero {
-                padding: 140px 0 80px;
-                background: linear-gradient(
-                    180deg,
+        .nav-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 140px 0 80px;
+            background: linear-gradient(180deg,
                     var(--bg-light-purple) 0%,
-                    var(--white) 100%
-                );
+                    var(--white) 100%);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 560px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            margin-bottom: 24px;
+        }
+
+        .hero-badge i {
+            color: var(--primary-purple);
+        }
+
+        .hero-title {
+            font-size: 3.25rem;
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 24px;
+            color: var(--text-dark);
+        }
+
+        .hero-title .highlight {
+            color: var(--primary-purple);
+        }
+
+        .hero-description {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            margin-bottom: 32px;
+            line-height: 1.7;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .app-store-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #000;
+            color: var(--white);
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .app-store-btn:hover {
+            opacity: 0.9;
+        }
+
+        .app-store-btn i {
+            font-size: 1.75rem;
+        }
+
+        .app-store-btn-text {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .app-store-btn .small-text {
+            font-size: 0.65rem;
+            opacity: 0.8;
+        }
+
+        .app-store-btn .main-text {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+        }
+
+        .hero-feature i {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-phone {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-phone-frame {
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .hero-phone-frame img {
+            border-radius: 28px;
+            width: 260px;
+            display: block;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 12px 16px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: float 4s ease-in-out infinite;
+            z-index: 3;
+        }
+
+        .floating-card-1 {
+            top: 20%;
+            right: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-card-2 {
+            bottom: 25%;
+            left: -30px;
+            animation-delay: 1s;
+        }
+
+        .floating-card-3 {
+            top: 60%;
+            right: -40px;
+            animation-delay: 2s;
+        }
+
+        .floating-card i {
+            font-size: 1.5rem;
+        }
+
+        .floating-card .whatsapp-icon {
+            color: #25d366;
+        }
+
+        .floating-card .check-icon {
+            color: var(--accent-green);
+        }
+
+        .floating-card .rupee-icon {
+            color: var(--primary-purple);
+        }
+
+        .floating-card-content span {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+        }
+
+        .floating-card-content small {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
             }
 
-            .hero-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 60px;
-                align-items: center;
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Section Styles */
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .section-overline {
+            display: inline-block;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary-purple);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .section-title .underline {
+            text-decoration: underline;
+            text-decoration-color: var(--primary-purple);
+            text-underline-offset: 4px;
+        }
+
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Problems Section */
+        .problems {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .problem-card {
+            background: var(--bg-light-purple);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.1);
+        }
+
+        .problem-card.highlight {
+            background: linear-gradient(135deg,
+                    var(--primary-purple) 0%,
+                    var(--primary-purple-dark) 100%);
+            color: var(--white);
+        }
+
+        .problem-card.highlight .problem-title,
+        .problem-card.highlight .problem-desc {
+            color: var(--white);
+        }
+
+        .problem-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--white);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 16px;
+        }
+
+        .problem-card.highlight .problem-icon {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .problem-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .problem-desc {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .problem-stats {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .problem-stat {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Takkada Way Section */
+        .takkada-way {
+            padding: 100px 0;
+            background: var(--bg-cream);
+        }
+
+        .takkada-way-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .takkada-way-visual {
+            position: relative;
+        }
+
+        .takkada-way-phone {
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 12px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .takkada-way-phone img {
+            border-radius: 28px;
+            width: 100%;
+            display: block;
+        }
+
+        .way-floating-card {
+            position: absolute;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            z-index: 3;
+        }
+
+        .way-floating-card-1 {
+            top: 10%;
+            right: 0;
+        }
+
+        .way-floating-card-2 {
+            bottom: 20%;
+            right: -20px;
+        }
+
+        .way-floating-card h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--primary-purple);
+        }
+
+        .way-floating-card p {
+            font-size: 0.75rem;
+            color: var(--text-gray);
+        }
+
+        .takkada-way-content h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .takkada-way-content h2 .underline {
+            text-decoration: underline;
+            text-decoration-color: var(--primary-purple);
+            text-underline-offset: 4px;
+        }
+
+        .takkada-way-content>p {
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            font-size: 1rem;
+        }
+
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .feature-item {
+            display: flex;
+            gap: 16px;
+        }
+
+        .feature-item-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-purple);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .feature-item-icon.green {
+            background: var(--accent-green);
+        }
+
+        .feature-item-icon.orange {
+            background: #ff7675;
+        }
+
+        .feature-item-icon.blue {
+            background: #74b9ff;
+        }
+
+        .feature-item-content h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-dark);
+        }
+
+        .feature-item-content p {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            line-height: 1.5;
+        }
+
+        .feature-badges {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .feature-badge {
+            background: var(--white);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--text-gray);
+            border: 1px solid var(--border-light);
+        }
+
+        /* Everything Section */
+        .everything {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .everything-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .everything-header h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .everything-header h2 .highlight {
+            font-style: italic;
+        }
+
+        .everything-header p {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        .everything-visual {
+            background: linear-gradient(135deg, #2d3436 0%, #1a1a2e 100%);
+            border-radius: 24px;
+            padding: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .everything-visual-content {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            align-items: flex-end;
+        }
+
+        .everything-phone {
+            background: #1a1a1a;
+            border-radius: 32px;
+            padding: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .everything-phone img {
+            border-radius: 24px;
+            width: 200px;
+            display: block;
+        }
+
+        .everything-phone.main {
+            transform: translateY(-20px);
+        }
+
+        .everything-phone.main img {
+            width: 240px;
+        }
+
+        /* Smart Collection Section */
+        .smart-collection {
+            padding: 100px 0;
+            background: var(--bg-light-purple);
+        }
+
+        .smart-collection-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .smart-collection-content h2 {
+            font-size: 2.25rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .smart-collection-content>p {
+            color: var(--text-gray);
+            margin-bottom: 32px;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .check-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .check-item i {
+            color: var(--primary-purple);
+            font-size: 1.25rem;
+        }
+
+        .smart-collection-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+        }
+
+        .smart-collection-phones {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .smart-phone {
+            background: #1a1a1a;
+            border-radius: 32px;
+            padding: 8px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        .smart-phone img {
+            border-radius: 24px;
+            width: 180px;
+            display: block;
+        }
+
+        .smart-phone.main img {
+            width: 220px;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .how-it-works-header {
+            margin-bottom: 60px;
+        }
+
+        .how-it-works-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .how-it-works-header p {
+            color: var(--text-gray);
+        }
+
+        .steps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .step-item {
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--primary-purple);
+            flex-shrink: 0;
+            font-size: 1.125rem;
+        }
+
+        .step-content h4 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .step-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .step-visual {
+            background: var(--bg-light-purple);
+            border-radius: 12px;
+            padding: 16px 24px;
+            margin-top: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .step-visual i {
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+        }
+
+        .step-visual span {
+            font-size: 0.875rem;
+            color: var(--text-dark);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background: var(--bg-cream);
+        }
+
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .testimonials-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .testimonials-header p {
+            color: var(--text-gray);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border-light);
+        }
+
+        .testimonial-stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .testimonial-stars i {
+            color: #f1c40f;
+            font-size: 1rem;
+        }
+
+        .testimonial-text {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--bg-light-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-purple);
+            font-size: 1.25rem;
+        }
+
+        .testimonial-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .testimonial-info span {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .faq-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .faq-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .faq-header p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .faq-item {
+            background: var(--bg-light-purple);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+        }
+
+        .faq-question {
+            padding: 16px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: #eeedff;
+        }
+
+        .faq-question h4 {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .faq-question i {
+            color: var(--text-gray);
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px 16px;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Blog Section */
+        .blog {
+            padding: 100px 0;
+            background: var(--bg-light-purple);
+        }
+
+        .blog-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .blog-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .blog-header p {
+            color: var(--text-gray);
+        }
+
+        .blog-featured {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 40px;
+            border: 1px solid var(--border-light);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .blog-featured-image {
+            background: linear-gradient(135deg,
+                    var(--primary-purple) 0%,
+                    var(--primary-purple-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .blog-featured-image i {
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .blog-featured-content {
+            padding: 40px;
+        }
+
+        .blog-tag {
+            display: inline-block;
+            background: var(--bg-light-purple);
+            color: var(--primary-purple);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .blog-featured h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .blog-featured p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 16px;
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .blog-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.1);
+        }
+
+        .blog-card-image {
+            height: 160px;
+            background: var(--bg-cream);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .blog-card-image i {
+            font-size: 3rem;
+            color: var(--text-light);
+        }
+
+        .blog-card-content {
+            padding: 20px;
+        }
+
+        .blog-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .blog-card p {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            margin-bottom: 12px;
+        }
+
+        .blog-link {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* App Download Section */
+        .app-download {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .app-download-container {
+            text-align: center;
+        }
+
+        .app-download h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .app-download>p {
+            color: var(--text-gray);
+            margin-bottom: 32px;
+        }
+
+        .app-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 48px;
+        }
+
+        .app-features {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+        }
+
+        .app-feature {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .app-feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--bg-light-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+        }
+
+        .app-feature span {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a2e;
+            color: var(--white);
+            padding: 60px 0 24px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            margin-bottom: 16px;
+        }
+
+        .footer-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.125rem;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-purple);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+
+            .hero-container,
+            .takkada-way-container,
+            .smart-collection-container,
+            .faq-container {
+                grid-template-columns: 1fr;
+                gap: 48px;
             }
 
             .hero-content {
-                max-width: 560px;
+                text-align: center;
+                max-width: 100%;
             }
 
-            .hero-badge {
-                display: inline-flex;
-                align-items: center;
-                gap: 8px;
-                background: var(--white);
-                border: 1px solid var(--border-light);
-                padding: 8px 16px;
-                border-radius: 50px;
-                font-size: 0.875rem;
-                color: var(--text-gray);
-                margin-bottom: 24px;
-            }
-
-            .hero-badge i {
-                color: var(--primary-purple);
-            }
-
-            .hero-title {
-                font-size: 3.25rem;
-                font-weight: 700;
-                line-height: 1.15;
-                margin-bottom: 24px;
-                color: var(--text-dark);
-            }
-
-            .hero-title .highlight {
-                color: var(--primary-purple);
-            }
-
-            .hero-description {
-                font-size: 1.125rem;
-                color: var(--text-gray);
-                margin-bottom: 32px;
-                line-height: 1.7;
-            }
-
-            .hero-buttons {
-                display: flex;
-                gap: 16px;
-                margin-bottom: 32px;
-            }
-
-            .app-store-btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 10px;
-                background: #000;
-                color: var(--white);
-                padding: 12px 20px;
-                border-radius: 8px;
-                text-decoration: none;
-                transition: opacity 0.3s;
-            }
-
-            .app-store-btn:hover {
-                opacity: 0.9;
-            }
-
-            .app-store-btn i {
-                font-size: 1.75rem;
-            }
-
-            .app-store-btn-text {
-                display: flex;
-                flex-direction: column;
-                text-align: left;
-            }
-
-            .app-store-btn .small-text {
-                font-size: 0.65rem;
-                opacity: 0.8;
-            }
-
-            .app-store-btn .main-text {
-                font-size: 1rem;
-                font-weight: 600;
-            }
-
+            .hero-buttons,
             .hero-features {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 16px;
-            }
-
-            .hero-feature {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                font-size: 0.875rem;
-                color: var(--text-dark);
-            }
-
-            .hero-feature i {
-                color: var(--accent-green);
-                font-size: 1.1rem;
-            }
-
-            .hero-visual {
-                position: relative;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-
-            .hero-phone {
-                position: relative;
-                z-index: 2;
-            }
-
-            .hero-phone-frame {
-                background: #1a1a1a;
-                border-radius: 40px;
-                padding: 12px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            }
-
-            .hero-phone-frame img {
-                border-radius: 28px;
-                width: 260px;
-                display: block;
-            }
-
-            .floating-card {
-                position: absolute;
-                background: var(--white);
-                border-radius: 12px;
-                padding: 12px 16px;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                animation: float 4s ease-in-out infinite;
-                z-index: 3;
-            }
-
-            .floating-card-1 {
-                top: 20%;
-                right: -20px;
-                animation-delay: 0s;
-            }
-
-            .floating-card-2 {
-                bottom: 25%;
-                left: -30px;
-                animation-delay: 1s;
-            }
-
-            .floating-card-3 {
-                top: 60%;
-                right: -40px;
-                animation-delay: 2s;
-            }
-
-            .floating-card i {
-                font-size: 1.5rem;
-            }
-
-            .floating-card .whatsapp-icon {
-                color: #25d366;
-            }
-
-            .floating-card .check-icon {
-                color: var(--accent-green);
-            }
-
-            .floating-card .rupee-icon {
-                color: var(--primary-purple);
-            }
-
-            .floating-card-content span {
-                display: block;
-                font-weight: 600;
-                font-size: 0.875rem;
-                color: var(--text-dark);
-            }
-
-            .floating-card-content small {
-                font-size: 0.75rem;
-                color: var(--text-gray);
-            }
-
-            @keyframes float {
-                0%,
-                100% {
-                    transform: translateY(0);
-                }
-                50% {
-                    transform: translateY(-10px);
-                }
-            }
-
-            /* Section Styles */
-            .section-header {
-                text-align: center;
-                max-width: 600px;
-                margin: 0 auto 60px;
-            }
-
-            .section-overline {
-                display: inline-block;
-                font-size: 0.875rem;
-                font-weight: 600;
-                color: var(--primary-purple);
-                text-transform: uppercase;
-                letter-spacing: 0.1em;
-                margin-bottom: 12px;
-            }
-
-            .section-title {
-                font-size: 2.5rem;
-                font-weight: 700;
-                margin-bottom: 16px;
-                color: var(--text-dark);
-            }
-
-            .section-title .underline {
-                text-decoration: underline;
-                text-decoration-color: var(--primary-purple);
-                text-underline-offset: 4px;
-            }
-
-            .section-subtitle {
-                font-size: 1.125rem;
-                color: var(--text-gray);
-                line-height: 1.6;
-            }
-
-            /* Problems Section */
-            .problems {
-                padding: 100px 0;
-                background: var(--white);
-            }
-
-            .problems-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
-            }
-
-            .problem-card {
-                background: var(--bg-light-purple);
-                border-radius: 16px;
-                padding: 24px;
-                border: 1px solid var(--border-light);
-                transition: all 0.3s;
-            }
-
-            .problem-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 10px 40px rgba(108, 92, 231, 0.1);
-            }
-
-            .problem-card.highlight {
-                background: linear-gradient(
-                    135deg,
-                    var(--primary-purple) 0%,
-                    var(--primary-purple-dark) 100%
-                );
-                color: var(--white);
-            }
-
-            .problem-card.highlight .problem-title,
-            .problem-card.highlight .problem-desc {
-                color: var(--white);
-            }
-
-            .problem-icon {
-                width: 48px;
-                height: 48px;
-                background: var(--white);
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.5rem;
-                color: var(--primary-purple);
-                margin-bottom: 16px;
-            }
-
-            .problem-card.highlight .problem-icon {
-                background: rgba(255, 255, 255, 0.2);
-                color: var(--white);
-            }
-
-            .problem-title {
-                font-size: 1rem;
-                font-weight: 600;
-                margin-bottom: 8px;
-                color: var(--text-dark);
-            }
-
-            .problem-desc {
-                font-size: 0.875rem;
-                color: var(--text-gray);
-                line-height: 1.5;
-            }
-
-            .problem-stats {
-                display: flex;
-                gap: 8px;
-                margin-top: 16px;
-            }
-
-            .problem-stat {
-                background: rgba(255, 255, 255, 0.2);
-                padding: 4px 12px;
-                border-radius: 20px;
-                font-size: 0.75rem;
-                font-weight: 500;
-            }
-
-            /* Takkada Way Section */
-            .takkada-way {
-                padding: 100px 0;
-                background: var(--bg-cream);
-            }
-
-            .takkada-way-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 80px;
-                align-items: center;
-            }
-
-            .takkada-way-visual {
-                position: relative;
-            }
-
-            .takkada-way-phone {
-                background: #1a1a1a;
-                border-radius: 40px;
-                padding: 12px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-                max-width: 300px;
-                margin: 0 auto;
-            }
-
-            .takkada-way-phone img {
-                border-radius: 28px;
-                width: 100%;
-                display: block;
-            }
-
-            .way-floating-card {
-                position: absolute;
-                background: var(--white);
-                border-radius: 12px;
-                padding: 16px 20px;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-                z-index: 3;
-            }
-
-            .way-floating-card-1 {
-                top: 10%;
-                right: 0;
-            }
-
-            .way-floating-card-2 {
-                bottom: 20%;
-                right: -20px;
-            }
-
-            .way-floating-card h4 {
-                font-size: 0.875rem;
-                font-weight: 600;
-                margin-bottom: 4px;
-                color: var(--primary-purple);
-            }
-
-            .way-floating-card p {
-                font-size: 0.75rem;
-                color: var(--text-gray);
-            }
-
-            .takkada-way-content h2 {
-                font-size: 2.25rem;
-                font-weight: 700;
-                margin-bottom: 16px;
-            }
-
-            .takkada-way-content h2 .underline {
-                text-decoration: underline;
-                text-decoration-color: var(--primary-purple);
-                text-underline-offset: 4px;
-            }
-
-            .takkada-way-content > p {
-                color: var(--text-gray);
-                margin-bottom: 40px;
-                font-size: 1rem;
-            }
-
-            .feature-list {
-                display: flex;
-                flex-direction: column;
-                gap: 24px;
-            }
-
-            .feature-item {
-                display: flex;
-                gap: 16px;
-            }
-
-            .feature-item-icon {
-                width: 48px;
-                height: 48px;
-                background: var(--primary-purple);
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--white);
-                font-size: 1.25rem;
-                flex-shrink: 0;
-            }
-
-            .feature-item-icon.green {
-                background: var(--accent-green);
-            }
-
-            .feature-item-icon.orange {
-                background: #ff7675;
-            }
-
-            .feature-item-icon.blue {
-                background: #74b9ff;
-            }
-
-            .feature-item-content h4 {
-                font-size: 1rem;
-                font-weight: 600;
-                margin-bottom: 4px;
-                color: var(--text-dark);
-            }
-
-            .feature-item-content p {
-                font-size: 0.875rem;
-                color: var(--text-gray);
-                line-height: 1.5;
-            }
-
-            .feature-badges {
-                display: flex;
-                gap: 8px;
-                margin-top: 8px;
-            }
-
-            .feature-badge {
-                background: var(--white);
-                padding: 4px 12px;
-                border-radius: 20px;
-                font-size: 0.75rem;
-                font-weight: 500;
-                color: var(--text-gray);
-                border: 1px solid var(--border-light);
-            }
-
-            /* Everything Section */
-            .everything {
-                padding: 100px 0;
-                background: var(--white);
-            }
-
-            .everything-header {
-                text-align: center;
-                max-width: 700px;
-                margin: 0 auto 60px;
-            }
-
-            .everything-header h2 {
-                font-size: 2.25rem;
-                font-weight: 700;
-                margin-bottom: 16px;
-            }
-
-            .everything-header h2 .highlight {
-                font-style: italic;
-            }
-
-            .everything-header p {
-                color: var(--text-gray);
-                font-size: 1rem;
-            }
-
-            .everything-visual {
-                background: linear-gradient(135deg, #2d3436 0%, #1a1a2e 100%);
-                border-radius: 24px;
-                padding: 60px;
-                position: relative;
-                overflow: hidden;
-            }
-
-            .everything-visual-content {
-                display: flex;
-                justify-content: center;
-                gap: 40px;
-                align-items: flex-end;
-            }
-
-            .everything-phone {
-                background: #1a1a1a;
-                border-radius: 32px;
-                padding: 8px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            }
-
-            .everything-phone img {
-                border-radius: 24px;
-                width: 200px;
-                display: block;
-            }
-
-            .everything-phone.main {
-                transform: translateY(-20px);
-            }
-
-            .everything-phone.main img {
-                width: 240px;
-            }
-
-            /* Smart Collection Section */
-            .smart-collection {
-                padding: 100px 0;
-                background: var(--bg-light-purple);
-            }
-
-            .smart-collection-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 80px;
-                align-items: center;
-            }
-
-            .smart-collection-content h2 {
-                font-size: 2.25rem;
-                font-weight: 700;
-                margin-bottom: 16px;
-            }
-
-            .smart-collection-content > p {
-                color: var(--text-gray);
-                margin-bottom: 32px;
-                font-size: 1rem;
-                line-height: 1.7;
-            }
-
-            .check-list {
-                display: flex;
-                flex-direction: column;
-                gap: 16px;
-            }
-
-            .check-item {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                font-size: 0.95rem;
-                color: var(--text-dark);
-            }
-
-            .check-item i {
-                color: var(--primary-purple);
-                font-size: 1.25rem;
-            }
-
-            .smart-collection-visual {
-                position: relative;
-                display: flex;
                 justify-content: center;
             }
 
-            .smart-collection-phones {
-                display: flex;
-                gap: 20px;
-                align-items: center;
-            }
-
-            .smart-phone {
-                background: #1a1a1a;
-                border-radius: 32px;
-                padding: 8px;
-                box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            }
-
-            .smart-phone img {
-                border-radius: 24px;
-                width: 180px;
-                display: block;
-            }
-
-            .smart-phone.main img {
-                width: 220px;
-            }
-
-            /* How It Works Section */
-            .how-it-works {
-                padding: 100px 0;
-                background: var(--white);
-            }
-
-            .how-it-works-header {
-                margin-bottom: 60px;
-            }
-
-            .how-it-works-header h2 {
-                font-size: 2rem;
-                font-weight: 700;
-                margin-bottom: 8px;
-            }
-
-            .how-it-works-header p {
-                color: var(--text-gray);
-            }
-
-            .steps-container {
-                display: flex;
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .step-item {
-                display: flex;
-                gap: 24px;
-                align-items: flex-start;
-            }
-
-            .step-number {
-                width: 48px;
-                height: 48px;
-                background: var(--bg-light-purple);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: 700;
-                color: var(--primary-purple);
-                flex-shrink: 0;
-                font-size: 1.125rem;
-            }
-
-            .step-content h4 {
-                font-size: 1.125rem;
-                font-weight: 600;
-                margin-bottom: 4px;
-            }
-
-            .step-content p {
-                color: var(--text-gray);
-                font-size: 0.95rem;
-                line-height: 1.6;
-            }
-
-            .step-visual {
-                background: var(--bg-light-purple);
-                border-radius: 12px;
-                padding: 16px 24px;
-                margin-top: 12px;
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .step-visual i {
-                font-size: 1.5rem;
-                color: var(--primary-purple);
-            }
-
-            .step-visual span {
-                font-size: 0.875rem;
-                color: var(--text-dark);
-            }
-
-            /* Testimonials Section */
-            .testimonials {
-                padding: 100px 0;
-                background: var(--bg-cream);
-            }
-
-            .testimonials-header {
-                text-align: center;
-                margin-bottom: 60px;
-            }
-
-            .testimonials-header h2 {
-                font-size: 2rem;
-                font-weight: 700;
-                margin-bottom: 8px;
-            }
-
-            .testimonials-header p {
-                color: var(--text-gray);
-            }
-
-            .testimonials-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
-            }
-
-            .testimonial-card {
-                background: var(--white);
-                border-radius: 16px;
-                padding: 24px;
-                border: 1px solid var(--border-light);
-            }
-
-            .testimonial-stars {
-                display: flex;
-                gap: 4px;
-                margin-bottom: 16px;
-            }
-
-            .testimonial-stars i {
-                color: #f1c40f;
-                font-size: 1rem;
-            }
-
-            .testimonial-text {
-                font-size: 0.95rem;
-                color: var(--text-dark);
-                line-height: 1.6;
-                margin-bottom: 20px;
-            }
-
-            .testimonial-author {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-            }
-
-            .testimonial-avatar {
-                width: 48px;
-                height: 48px;
-                border-radius: 50%;
-                background: var(--bg-light-purple);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: var(--primary-purple);
-                font-size: 1.25rem;
-            }
-
-            .testimonial-info h4 {
-                font-size: 0.95rem;
-                font-weight: 600;
-                margin-bottom: 2px;
-            }
-
-            .testimonial-info span {
-                font-size: 0.8rem;
-                color: var(--text-gray);
-            }
-
-            /* FAQ Section */
-            .faq {
-                padding: 100px 0;
-                background: var(--white);
-            }
-
-            .faq-container {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 60px;
-            }
-
-            .faq-header h2 {
-                font-size: 2rem;
-                font-weight: 700;
-                margin-bottom: 16px;
-            }
-
-            .faq-header p {
-                color: var(--text-gray);
-                font-size: 0.95rem;
-            }
-
-            .faq-list {
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .faq-item {
-                background: var(--bg-light-purple);
-                border-radius: 12px;
-                overflow: hidden;
-                border: 1px solid var(--border-light);
-            }
-
-            .faq-question {
-                padding: 16px 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                cursor: pointer;
-                transition: background 0.3s;
-            }
-
-            .faq-question:hover {
-                background: #eeedff;
-            }
-
-            .faq-question h4 {
-                font-size: 0.95rem;
-                font-weight: 500;
-                color: var(--text-dark);
-            }
-
-            .faq-question i {
-                color: var(--text-gray);
-                transition: transform 0.3s;
-            }
-
-            .faq-answer {
-                padding: 0 20px 16px;
-                font-size: 0.875rem;
-                color: var(--text-gray);
-                line-height: 1.6;
-                display: none;
-            }
-
-            .faq-item.active .faq-question i {
-                transform: rotate(180deg);
-            }
-
-            .faq-item.active .faq-answer {
-                display: block;
-            }
-
-            /* Blog Section */
-            .blog {
-                padding: 100px 0;
-                background: var(--bg-light-purple);
-            }
-
-            .blog-header {
-                text-align: center;
-                margin-bottom: 60px;
-            }
-
-            .blog-header h2 {
-                font-size: 2rem;
-                font-weight: 700;
-                margin-bottom: 8px;
-            }
-
-            .blog-header p {
-                color: var(--text-gray);
+            .problems-grid,
+            .testimonials-grid,
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .blog-featured {
-                background: var(--white);
-                border-radius: 16px;
-                overflow: hidden;
-                margin-bottom: 40px;
-                border: 1px solid var(--border-light);
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .blog-featured-image {
-                background: linear-gradient(
-                    135deg,
-                    var(--primary-purple) 0%,
-                    var(--primary-purple-dark) 100%
-                );
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                padding: 40px;
-            }
-
-            .blog-featured-image i {
-                font-size: 5rem;
-                color: rgba(255, 255, 255, 0.3);
-            }
-
-            .blog-featured-content {
-                padding: 40px;
-            }
-
-            .blog-tag {
-                display: inline-block;
-                background: var(--bg-light-purple);
-                color: var(--primary-purple);
-                padding: 4px 12px;
-                border-radius: 20px;
-                font-size: 0.75rem;
-                font-weight: 600;
-                margin-bottom: 16px;
-            }
-
-            .blog-featured h3 {
-                font-size: 1.5rem;
-                font-weight: 700;
-                margin-bottom: 12px;
-            }
-
-            .blog-featured p {
-                color: var(--text-gray);
-                font-size: 0.95rem;
-                line-height: 1.6;
-                margin-bottom: 16px;
-            }
-
-            .blog-meta {
-                display: flex;
-                gap: 16px;
-                font-size: 0.8rem;
-                color: var(--text-gray);
-            }
-
-            .blog-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 24px;
-            }
-
-            .blog-card {
-                background: var(--white);
-                border-radius: 12px;
-                overflow: hidden;
-                border: 1px solid var(--border-light);
-                transition: all 0.3s;
-            }
-
-            .blog-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 0 10px 40px rgba(108, 92, 231, 0.1);
-            }
-
-            .blog-card-image {
-                height: 160px;
-                background: var(--bg-cream);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-
-            .blog-card-image i {
-                font-size: 3rem;
-                color: var(--text-light);
-            }
-
-            .blog-card-content {
-                padding: 20px;
-            }
-
-            .blog-card h4 {
-                font-size: 1rem;
-                font-weight: 600;
-                margin-bottom: 8px;
-                line-height: 1.4;
-            }
-
-            .blog-card p {
-                font-size: 0.875rem;
-                color: var(--text-gray);
-                margin-bottom: 12px;
-            }
-
-            .blog-link {
-                text-align: center;
-                margin-top: 40px;
-            }
-
-            /* App Download Section */
-            .app-download {
-                padding: 100px 0;
-                background: var(--white);
-            }
-
-            .app-download-container {
-                text-align: center;
-            }
-
-            .app-download h2 {
-                font-size: 2rem;
-                font-weight: 700;
-                margin-bottom: 8px;
-            }
-
-            .app-download > p {
-                color: var(--text-gray);
-                margin-bottom: 32px;
-            }
-
-            .app-buttons {
-                display: flex;
-                justify-content: center;
-                gap: 16px;
-                margin-bottom: 48px;
-            }
-
-            .app-features {
-                display: flex;
-                justify-content: center;
-                gap: 48px;
-                flex-wrap: wrap;
-            }
-
-            .app-feature {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .app-feature-icon {
-                width: 56px;
-                height: 56px;
-                background: var(--bg-light-purple);
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 1.5rem;
-                color: var(--primary-purple);
-            }
-
-            .app-feature span {
-                font-size: 0.875rem;
-                color: var(--text-gray);
-            }
-
-            /* Footer */
-            .footer {
-                background: #1a1a2e;
-                color: var(--white);
-                padding: 60px 0 24px;
+                grid-template-columns: 1fr;
             }
 
             .footer-container {
-                display: grid;
-                grid-template-columns: 2fr 1fr 1fr 1fr;
-                gap: 48px;
-                margin-bottom: 48px;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
             }
 
-            .footer-brand .logo {
-                color: var(--white);
-                margin-bottom: 16px;
+            .nav-toggle {
+                display: block;
             }
 
-            .footer-brand p {
-                color: rgba(255, 255, 255, 0.7);
-                font-size: 0.875rem;
-                line-height: 1.6;
-                margin-bottom: 16px;
+            .hero-title {
+                font-size: 2.25rem;
             }
 
-            .footer-title {
-                font-size: 0.875rem;
-                font-weight: 600;
-                margin-bottom: 20px;
-                color: var(--white);
+            .section-title {
+                font-size: 1.75rem;
             }
 
-            .footer-links {
-                list-style: none;
+            .problems-grid,
+            .testimonials-grid,
+            .blog-grid {
+                grid-template-columns: 1fr;
             }
 
-            .footer-links li {
-                margin-bottom: 12px;
-            }
-
-            .footer-links a {
-                color: rgba(255, 255, 255, 0.7);
-                text-decoration: none;
-                font-size: 0.875rem;
-                transition: color 0.3s;
-            }
-
-            .footer-links a:hover {
-                color: var(--white);
-            }
-
-            .social-links {
-                display: flex;
-                gap: 12px;
-            }
-
-            .social-links a {
-                width: 40px;
-                height: 40px;
-                background: rgba(255, 255, 255, 0.1);
-                border-radius: 50%;
-                display: flex;
+            .everything-visual-content {
+                flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                color: var(--white);
-                font-size: 1.125rem;
-                transition: background 0.3s;
             }
 
-            .social-links a:hover {
-                background: var(--primary-purple);
+            .smart-collection-phones {
+                flex-direction: column;
             }
 
-            .footer-bottom {
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                padding-top: 24px;
-                text-align: center;
-                color: rgba(255, 255, 255, 0.5);
-                font-size: 0.875rem;
+            .app-features {
+                gap: 24px;
             }
 
-            /* Responsive */
-            @media (max-width: 1024px) {
-                .hero-container,
-                .takkada-way-container,
-                .smart-collection-container,
-                .faq-container {
-                    grid-template-columns: 1fr;
-                    gap: 48px;
-                }
-
-                .hero-content {
-                    text-align: center;
-                    max-width: 100%;
-                }
-
-                .hero-buttons,
-                .hero-features {
-                    justify-content: center;
-                }
-
-                .problems-grid,
-                .testimonials-grid,
-                .blog-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-
-                .blog-featured {
-                    grid-template-columns: 1fr;
-                }
-
-                .footer-container {
-                    grid-template-columns: 1fr 1fr;
-                }
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 32px;
             }
 
-            @media (max-width: 768px) {
-                .nav-menu {
-                    display: none;
-                }
-
-                .nav-toggle {
-                    display: block;
-                }
-
-                .hero-title {
-                    font-size: 2.25rem;
-                }
-
-                .section-title {
-                    font-size: 1.75rem;
-                }
-
-                .problems-grid,
-                .testimonials-grid,
-                .blog-grid {
-                    grid-template-columns: 1fr;
-                }
-
-                .everything-visual-content {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .smart-collection-phones {
-                    flex-direction: column;
-                }
-
-                .app-features {
-                    gap: 24px;
-                }
-
-                .footer-container {
-                    grid-template-columns: 1fr;
-                    gap: 32px;
-                }
-
-                .takkada-way-container {
-                    flex-direction: column-reverse;
-                }
-
-                .faq-container {
-                    gap: 32px;
-                }
+            .takkada-way-container {
+                flex-direction: column-reverse;
             }
 
-            @media (max-width: 480px) {
-                .hero-buttons {
-                    flex-direction: column;
-                }
-
-                .app-buttons {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .hero-features {
-                    flex-direction: column;
-                    align-items: center;
-                }
-
-                .floating-card {
-                    display: none;
-                }
-
-                .way-floating-card {
-                    display: none;
-                }
+            .faq-container {
+                gap: 32px;
             }
-        </style>
-    </head>
+        }
 
-    <body>
-        <!-- Header -->
-        <header class="header">
-            <nav class="navbar container">
-                <a href="#" class="logo">
-                    <img
-                        src="assets/images/appstore-removebg-preview.png"
-                        alt="Takkada Logo"
-                        class="logo-img"
-                    />
-                    Takkada
-                </a>
+        @media (max-width: 480px) {
+            .hero-buttons {
+                flex-direction: column;
+            }
 
-                <div class="nav-menu">
-                    <ul class="nav-list">
-                        <li>
-                            <a href="#features" class="nav-link">Features</a>
-                        </li>
-                        <li>
-                            <a href="#how-it-works" class="nav-link"
-                                >How it works</a
-                            >
-                        </li>
-                        <li>
-                            <a href="#testimonials" class="nav-link"
-                                >Testimonials</a
-                            >
-                        </li>
-                        <li>
-                            <a href="contact-us.html" class="nav-link"
-                                >Contact</a
-                            >
-                        </li>
-                    </ul>
+            .app-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-features {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .floating-card {
+                display: none;
+            }
+
+            .way-floating-card {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar container">
+            <a href="#" class="logo">
+                <img src="assets/images/appstore-removebg-preview.png" alt="Takkada Logo" class="logo-img" />
+                Takkada
+            </a>
+
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li>
+                        <a href="#features" class="nav-link">Features</a>
+                    </li>
+                    <li>
+                        <a href="#how-it-works" class="nav-link">How it works</a>
+                    </li>
+                    <li>
+                        <a href="#testimonials" class="nav-link">Testimonials</a>
+                    </li>
+                    <li>
+                        <a href="contact-us.html" class="nav-link">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-primary btn-sm">Book a
+                    Demo</a>
+                <div class="nav-toggle">
+                    <i class="ph ph-list"></i>
                 </div>
+            </div>
+        </nav>
+    </header>
 
-                <div class="nav-actions">
-                    <a
-                        href="https://calendar.notion.so/meet/ronakmalu/takkada"
-                        class="btn btn-primary btn-sm"
-                        >Get Started</a
-                    >
-                    <div class="nav-toggle">
-                        <i class="ph ph-list"></i>
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-container container">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="ph-fill ph-sparkle"></i>
+                        <span>Payment Collection Platform</span>
                     </div>
-                </div>
-            </nav>
-        </header>
-
-        <main>
-            <!-- Hero Section -->
-            <section class="hero" id="home">
-                <div class="hero-container container">
-                    <div class="hero-content">
-                        <div class="hero-badge">
-                            <i class="ph-fill ph-sparkle"></i>
-                            <span>Payment Collection Platform</span>
-                        </div>
-                        <h1 class="hero-title">
-                            Auto-Reconciliation for Every Invoice.
-                            <span class="highlight">Zero Manual Work.</span>
-                        </h1>
-                        <p class="hero-description">
-                            Takkada automates payment reminders on WhatsApp and
-                            reconciles invoices - so you never lose track of
-                            what you're owed.
-                        </p>
-                        <div class="hero-buttons">
-                            <a href="#" class="app-store-btn">
-                                <i class="ph-fill ph-apple-logo"></i>
-                                <span class="app-store-btn-text">
-                                    <span class="small-text"
-                                        >Download on the</span
-                                    >
-                                    <span class="main-text">App Store</span>
-                                </span>
-                            </a>
-                            <a href="#" class="app-store-btn">
-                                <i class="ph-fill ph-google-play-logo"></i>
-                                <span class="app-store-btn-text">
-                                    <span class="small-text">Get it on</span>
-                                    <span class="main-text">Google Play</span>
-                                </span>
-                            </a>
-                        </div>
-                        <div class="hero-features">
-                            <span class="hero-feature"
-                                ><i class="ph-fill ph-check-circle"></i> Instant
-                                Reminders</span
-                            >
-                            <span class="hero-feature"
-                                ><i class="ph-fill ph-check-circle"></i> Smart
-                                Reconciliation</span
-                            >
-                            <span class="hero-feature"
-                                ><i class="ph-fill ph-check-circle"></i>
-                                Bank-Grade Security</span
-                            >
-                        </div>
-                    </div>
-                    <div class="hero-visual">
-                        <div class="hero-phone">
-                            <div class="hero-phone-frame">
-                                <img
-                                    src="assets/images/screenshots/screen_1.png"
-                                    alt="Takkada App"
-                                />
-                            </div>
-                        </div>
-                        <div class="floating-card floating-card-1">
-                            <i
-                                class="ph-fill ph-whatsapp-logo whatsapp-icon"
-                            ></i>
-                            <div class="floating-card-content">
-                                <span>Reminder Sent</span>
-                                <small>Just now</small>
-                            </div>
-                        </div>
-                        <div class="floating-card floating-card-2">
-                            <i class="ph-fill ph-check-circle check-icon"></i>
-                            <div class="floating-card-content">
-                                <span>Invoice Paid</span>
-                                <small>#INV-0024</small>
-                            </div>
-                        </div>
-                        <div class="floating-card floating-card-3">
-                            <i class="ph-fill ph-currency-inr rupee-icon"></i>
-                            <div class="floating-card-content">
-                                <span>₹45,000</span>
-                                <small>Collected today</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Problems Section -->
-            <section class="problems" id="problems">
-                <div class="container">
-                    <div class="section-header">
-                        <span class="section-overline">Common Challenges</span>
-                        <h2 class="section-title">
-                            The Real Problems You
-                            <span class="underline">Face Daily</span>
-                        </h2>
-                        <p class="section-subtitle">
-                            Manual invoicing, delayed payments, and
-                            reconciliation errors slow down your business
-                            operations.
-                        </p>
-                    </div>
-
-                    <div class="problems-grid">
-                        <div class="problem-card highlight">
-                            <div class="problem-icon">
-                                <i class="ph-fill ph-file-x"></i>
-                            </div>
-                            <h3 class="problem-title">
-                                "My distributors take 2-3 days to pay after
-                                delivery + I have only 2-week credit terms."
-                            </h3>
-                            <p class="problem-desc">
-                                Late payments disrupt cash flow and make
-                                planning impossible.
-                            </p>
-                            <div class="problem-stats">
-                                <span class="problem-stat">68% face this</span>
-                                <span class="problem-stat">2-3 days delay</span>
-                            </div>
-                        </div>
-                        <div class="problem-card">
-                            <div class="problem-icon">
-                                <i class="ph-fill ph-clock-countdown"></i>
-                            </div>
-                            <h3 class="problem-title">
-                                Dependence - Sitting at the counter is a must. I
-                                had to even cancel my leaves.
-                            </h3>
-                            <p class="problem-desc">
-                                Manual processes keep you tied to your desk,
-                                limiting flexibility.
-                            </p>
-                        </div>
-                        <div class="problem-card">
-                            <div class="problem-icon">
-                                <i class="ph-fill ph-chats-circle"></i>
-                            </div>
-                            <h3 class="problem-title">
-                                Send Reminders Manually - Have to call & text
-                                customers to follow up payments.
-                            </h3>
-                            <p class="problem-desc">
-                                Time-consuming follow-ups that could be
-                                automated.
-                            </p>
-                        </div>
-                        <div class="problem-card">
-                            <div class="problem-icon">
-                                <i class="ph-fill ph-receipt"></i>
-                            </div>
-                            <h3 class="problem-title">
-                                Create e-invoices/bills manually - Ledger and
-                                invoicing done separately, more effort.
-                            </h3>
-                            <p class="problem-desc">
-                                Duplicate data entry wastes time and increases
-                                errors.
-                            </p>
-                        </div>
-                        <div class="problem-card">
-                            <div class="problem-icon">
-                                <i class="ph-fill ph-chart-line-down"></i>
-                            </div>
-                            <h3 class="problem-title">
-                                Real-time business data difficult - Have to wait
-                                till the end of the day to get updates.
-                            </h3>
-                            <p class="problem-desc">
-                                Delayed insights mean slower decision-making.
-                            </p>
-                        </div>
-                        <div class="problem-card">
-                            <div class="problem-icon">
-                                <i class="ph-fill ph-arrows-split"></i>
-                            </div>
-                            <h3 class="problem-title">
-                                No visibility on credit - Manual tracking of
-                                credit given, never sure how much is
-                                outstanding.
-                            </h3>
-                            <p class="problem-desc">
-                                Missing data leads to missed collections.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Takkada Way Section -->
-            <section class="takkada-way" id="features">
-                <div class="takkada-way-container container">
-                    <div class="takkada-way-visual">
-                        <div class="takkada-way-phone">
-                            <img
-                                src="assets/images/screenshots/screen_2.png"
-                                alt="Takkada Features"
-                            />
-                        </div>
-                        <div class="way-floating-card way-floating-card-1">
-                            <h4>Zero Manual Entry</h4>
-                            <p>Everything syncs automatically</p>
-                        </div>
-                        <div class="way-floating-card way-floating-card-2">
-                            <h4>Auto-Reconciled</h4>
-                            <p>Payments matched instantly</p>
-                        </div>
-                    </div>
-                    <div class="takkada-way-content">
-                        <h2>
-                            We've Got You Covered –
-                            <span class="underline">The Takkada Way</span>
-                        </h2>
-                        <p>
-                            No need to juggle multiple tools - Takkada is built
-                            to handle your finances end-to-end, so you can focus
-                            on what you do best: growing your business.
-                        </p>
-
-                        <div class="feature-list">
-                            <div class="feature-item">
-                                <div class="feature-item-icon">
-                                    <i class="ph-fill ph-credit-card"></i>
-                                </div>
-                                <div class="feature-item-content">
-                                    <h4>Multiple Payment Methods</h4>
-                                    <p>
-                                        Accept payments via UPI, Net Banking,
-                                        Credit Cards, and more. Give customers
-                                        the flexibility to pay as they prefer.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-item-icon green">
-                                    <i class="ph-fill ph-arrows-clockwise"></i>
-                                </div>
-                                <div class="feature-item-content">
-                                    <h4>Auto-Reconcile Invoices</h4>
-                                    <p>
-                                        Payments are automatically matched to
-                                        invoices as they are received - no
-                                        manual reconciliation needed.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-item-icon orange">
-                                    <i class="ph-fill ph-chart-pie-slice"></i>
-                                </div>
-                                <div class="feature-item-content">
-                                    <h4>Track Credit and Dues in One Place!</h4>
-                                    <p>
-                                        Get a complete view of who owes what.
-                                        Stay on top of outstanding payments with
-                                        real-time tracking.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="feature-item">
-                                <div class="feature-item-icon blue">
-                                    <i class="ph-fill ph-file-text"></i>
-                                </div>
-                                <div class="feature-item-content">
-                                    <h4>
-                                        Generate e-Invoices & eWay Bills from
-                                        Your Phone
-                                    </h4>
-                                    <p>
-                                        Create GST-compliant e-invoices and eWay
-                                        bills instantly, right from your mobile
-                                        device.
-                                    </p>
-                                    <div class="feature-badges">
-                                        <span class="feature-badge"
-                                            >e-Invoice</span
-                                        >
-                                        <span class="feature-badge"
-                                            >eWay Bill</span
-                                        >
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Everything Section -->
-            <section class="everything">
-                <div class="container">
-                    <div class="everything-header">
-                        <h2>
-                            Everything You
-                            <span class="highlight">Need,</span> Already Inside
-                            Takkada
-                        </h2>
-                        <p>
-                            Simply add an invoice to the system, and the payment
-                            link goes to customers. Our automated WhatsApp
-                            follow-ups boost payments, auto-reconciliation
-                            tracks income, and you manage everything from your
-                            mobile.
-                        </p>
-                    </div>
-                    <div class="everything-visual">
-                        <div class="everything-visual-content">
-                            <div class="everything-phone">
-                                <img
-                                    src="assets/images/screenshots/screen_3.png"
-                                    alt="Takkada Interface"
-                                />
-                            </div>
-                            <div class="everything-phone main">
-                                <img
-                                    src="assets/images/screenshots/screen_1.png"
-                                    alt="Takkada Dashboard"
-                                />
-                            </div>
-                            <div class="everything-phone">
-                                <img
-                                    src="assets/images/screenshots/screen_4.png"
-                                    alt="Takkada Features"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Smart Collection Section -->
-            <section class="smart-collection">
-                <div class="smart-collection-container container">
-                    <div class="smart-collection-content">
-                        <h2>Smart Collection & Auto Reconciliation</h2>
-                        <p>
-                            Handle your entire collection process via WhatsApp.
-                            Share invoices on WhatsApp. Send payment links,
-                            remind for dues, and receive confirmations - all
-                            from one place.
-                        </p>
-
-                        <div class="check-list">
-                            <div class="check-item">
-                                <i class="ph-fill ph-check-square"></i>
-                                <span
-                                    >Instantly share "Pay Now" link on
-                                    WhatsApp</span
-                                >
-                            </div>
-                            <div class="check-item">
-                                <i class="ph-fill ph-check-square"></i>
-                                <span
-                                    >Auto-send UPI, IMPS, RTGS, credit - you
-                                    choose</span
-                                >
-                            </div>
-                            <div class="check-item">
-                                <i class="ph-fill ph-check-square"></i>
-                                <span
-                                    >Auto-reconcile transactions in your
-                                    Tally</span
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <div class="smart-collection-visual">
-                        <div class="smart-collection-phones">
-                            <div class="smart-phone">
-                                <img
-                                    src="assets/images/screenshots/screen_5.png"
-                                    alt="Collection Screen"
-                                />
-                            </div>
-                            <div class="smart-phone main">
-                                <img
-                                    src="assets/images/screenshots/screen_2.png"
-                                    alt="WhatsApp Integration"
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- How It Works Section -->
-            <section class="how-it-works" id="how-it-works">
-                <div class="container">
-                    <div class="how-it-works-header">
-                        <h2>How Takkada Works</h2>
-                        <p>
-                            Simple steps to transform your payment collection
-                            process
-                        </p>
-                    </div>
-
-                    <div class="steps-container">
-                        <div class="step-item">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h4>
-                                    Sync your data with Tally/Billing/Manual
-                                </h4>
-                                <p>
-                                    Connect Takkada with your existing
-                                    accounting software or add invoices
-                                    manually. Your data stays in sync
-                                    automatically.
-                                </p>
-                                <div class="step-visual">
-                                    <i class="ph-fill ph-database"></i>
-                                    <span
-                                        >Works with Tally, Busy, and Excel</span
-                                    >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h4>Share due links on WhatsApp/Email</h4>
-                                <p>
-                                    Automated payment links are sent to your
-                                    customers via WhatsApp or Email. They can
-                                    pay instantly with one tap.
-                                </p>
-                                <div class="step-visual">
-                                    <i class="ph-fill ph-whatsapp-logo"></i>
-                                    <span>One-tap payment for customers</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h4>Automated reminders for due payments</h4>
-                                <p>
-                                    Smart reminders are sent automatically based
-                                    on due dates. No more manual follow-ups
-                                    needed.
-                                </p>
-                                <div class="step-visual">
-                                    <i class="ph-fill ph-bell-ringing"></i>
-                                    <span>Customizable reminder schedules</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="step-item">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <h4>Auto reconciliation with Tally</h4>
-                                <p>
-                                    Payments are automatically matched and
-                                    reconciled in your accounting software. Zero
-                                    manual data entry.
-                                </p>
-                                <div class="step-visual">
-                                    <i class="ph-fill ph-check-circle"></i>
-                                    <span>100% accurate reconciliation</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Testimonials Section -->
-            <section class="testimonials" id="testimonials">
-                <div class="container">
-                    <div class="testimonials-header">
-                        <h2>See Why People Love Us</h2>
-                        <p>
-                            Thousands of businesses trust Takkada for their
-                            payment collection. Here's what they're saying about
-                            their journey with Takkada.
-                        </p>
-                    </div>
-
-                    <div class="testimonials-grid">
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "The auto reconciliation is magic - payments
-                                land directly into my Tally. My collection rate
-                                went from 60% to 92%. The WhatsApp integration
-                                is genius!"
-                            </p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar">
-                                    <i class="ph-fill ph-user"></i>
-                                </div>
-                                <div class="testimonial-info">
-                                    <h4>Rajesh Sharma</h4>
-                                    <span>Manufacturing Business</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "We collect ₹1 crore monthly from 200+
-                                distributors. Takkada tracks every rupee. Before
-                                Takkada, I couldn't take a single leave. Now
-                                it's stress-free!"
-                            </p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar">
-                                    <i class="ph-fill ph-user"></i>
-                                </div>
-                                <div class="testimonial-info">
-                                    <h4>Priya Agarwal</h4>
-                                    <span>FMCG Distributor</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="testimonial-card">
-                            <div class="testimonial-stars">
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                                <i class="ph-fill ph-star"></i>
-                            </div>
-                            <p class="testimonial-text">
-                                "Outstanding tool! Setting up automatic
-                                collection reminders on WhatsApp - I was
-                                understanding before. Now it's on auto-pilot.
-                                Customers don't mind, collections improved by
-                                60%!"
-                            </p>
-                            <div class="testimonial-author">
-                                <div class="testimonial-avatar">
-                                    <i class="ph-fill ph-user"></i>
-                                </div>
-                                <div class="testimonial-info">
-                                    <h4>Amit Patel</h4>
-                                    <span>Wholesale Trader</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="faq" id="faq">
-                <div class="faq-container container">
-                    <div class="faq-header">
-                        <h2>Frequently Asked Questions</h2>
-                        <p>
-                            Have a different question about Takkada's app or
-                            service? Connect with our team.
-                        </p>
-                    </div>
-
-                    <div class="faq-list">
-                        <div class="faq-item active">
-                            <div class="faq-question" onclick="toggleFaq(this)">
-                                <h4>Is my data safe?</h4>
-                                <i class="ph-bold ph-caret-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>
-                                    Yes, absolutely. We use bank-grade
-                                    encryption and security measures to protect
-                                    your data. Your information is stored
-                                    securely and never shared with third
-                                    parties.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFaq(this)">
-                                <h4>
-                                    Will Takkada slow down my computer or Tally?
-                                </h4>
-                                <i class="ph-bold ph-caret-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>
-                                    Not at all. Takkada runs independently and
-                                    syncs data in the background. It's optimized
-                                    to work seamlessly without affecting your
-                                    system performance.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFaq(this)">
-                                <h4>What is the payment settlement cycle?</h4>
-                                <i class="ph-bold ph-caret-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>
-                                    Payments are settled within T+1 business
-                                    days directly to your bank account. You can
-                                    track all settlements in real-time from your
-                                    dashboard.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFaq(this)">
-                                <h4>
-                                    How many automated WhatsApp messages can I
-                                    send?
-                                </h4>
-                                <i class="ph-bold ph-caret-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>
-                                    You can send unlimited WhatsApp reminders
-                                    based on your subscription plan. Messages
-                                    are sent through official WhatsApp Business
-                                    API ensuring high delivery rates.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="faq-item">
-                            <div class="faq-question" onclick="toggleFaq(this)">
-                                <h4>
-                                    Can I manage multiple businesses in one
-                                    account?
-                                </h4>
-                                <i class="ph-bold ph-caret-down"></i>
-                            </div>
-                            <div class="faq-answer">
-                                <p>
-                                    Yes, you can manage multiple businesses from
-                                    a single Takkada account. Each business gets
-                                    its own dashboard and settings while you
-                                    maintain centralized control.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Blog Section -->
-            <section class="blog" id="blog">
-                <div class="container">
-                    <div class="blog-header">
-                        <h2>Learn more about managing your money</h2>
-                        <p>
-                            Explore articles that share insights into the latest
-                            trends in financial management for businesses.
-                        </p>
-                    </div>
-
-                    <div class="blog-featured">
-                        <div class="blog-featured-image">
-                            <i class="ph-fill ph-article"></i>
-                        </div>
-                        <div class="blog-featured-content">
-                            <span class="blog-tag">GUIDE</span>
-                            <h3>
-                                The Ultimate Guide to Takkada: Setup, Automate,
-                                and Never Do Data Entry Again
-                            </h3>
-                            <p>
-                                Are you tired of manually tracking payments,
-                                sending reminders, and reconciling invoices?
-                                This comprehensive guide walks you through
-                                everything you need to know about setting up
-                                Takkada for your business.
-                            </p>
-                            <div class="blog-meta">
-                                <span>5 min read</span>
-                                <span>•</span>
-                                <span>Finance</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-grid">
-                        <div class="blog-card">
-                            <div class="blog-card-image">
-                                <i class="ph-fill ph-chart-line-up"></i>
-                            </div>
-                            <div class="blog-card-content">
-                                <span class="blog-tag">Business</span>
-                                <h4>
-                                    How Digital Payments Are Transforming B2B
-                                    Collections
-                                </h4>
-                                <p>
-                                    Discover how businesses are leveraging
-                                    digital payments to improve cash flow.
-                                </p>
-                                <div class="blog-meta">
-                                    <span>3 min read</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-card-image">
-                                <i class="ph-fill ph-whatsapp-logo"></i>
-                            </div>
-                            <div class="blog-card-content">
-                                <span class="blog-tag">Tips</span>
-                                <h4>
-                                    5 WhatsApp Reminder Templates That Get
-                                    Payments Faster
-                                </h4>
-                                <p>
-                                    Proven message templates to help you collect
-                                    payments without being pushy.
-                                </p>
-                                <div class="blog-meta">
-                                    <span>4 min read</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="blog-card">
-                            <div class="blog-card-image">
-                                <i class="ph-fill ph-calculator"></i>
-                            </div>
-                            <div class="blog-card-content">
-                                <span class="blog-tag">Guide</span>
-                                <h4>
-                                    Tally Integration: A Step-by-Step Setup
-                                    Guide
-                                </h4>
-                                <p>
-                                    Learn how to connect Takkada with Tally for
-                                    seamless reconciliation.
-                                </p>
-                                <div class="blog-meta">
-                                    <span>6 min read</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="blog-link">
-                        <a href="#" class="btn btn-outline"
-                            >View All Articles</a
-                        >
-                    </div>
-                </div>
-            </section>
-
-            <!-- App Download Section -->
-            <section class="app-download" id="download">
-                <div class="container app-download-container">
-                    <h2>App that powers financial growth</h2>
-                    <p>
-                        Download Takkada and transform how you collect payments
+                    <h1 class="hero-title">
+                        Auto-Reconciliation for Every Invoice.
+                        <span class="highlight">Zero Manual Work.</span>
+                    </h1>
+                    <p class="hero-description">
+                        Takkada automates payment reminders on WhatsApp and
+                        reconciles invoices - so you never lose track of
+                        what you're owed.
                     </p>
-
-                    <div class="app-buttons">
+                    <div class="hero-buttons">
                         <a href="#" class="app-store-btn">
                             <i class="ph-fill ph-apple-logo"></i>
                             <span class="app-store-btn-text">
@@ -2244,163 +1482,856 @@
                             </span>
                         </a>
                     </div>
+                    <div class="hero-features">
+                        <span class="hero-feature"><i class="ph-fill ph-check-circle"></i> Instant
+                            Reminders</span>
+                        <span class="hero-feature"><i class="ph-fill ph-check-circle"></i> Smart
+                            Reconciliation</span>
+                        <span class="hero-feature"><i class="ph-fill ph-check-circle"></i>
+                            Bank-Grade Security</span>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-phone">
+                        <div class="hero-phone-frame">
+                            <img src="assets/images/screenshots/screen_1.png" alt="Takkada App" />
+                        </div>
+                    </div>
+                    <div class="floating-card floating-card-1">
+                        <i class="ph-fill ph-whatsapp-logo whatsapp-icon"></i>
+                        <div class="floating-card-content">
+                            <span>Reminder Sent</span>
+                            <small>Just now</small>
+                        </div>
+                    </div>
+                    <div class="floating-card floating-card-2">
+                        <i class="ph-fill ph-check-circle check-icon"></i>
+                        <div class="floating-card-content">
+                            <span>Invoice Paid</span>
+                            <small>#INV-0024</small>
+                        </div>
+                    </div>
+                    <div class="floating-card floating-card-3">
+                        <i class="ph-fill ph-currency-inr rupee-icon"></i>
+                        <div class="floating-card-content">
+                            <span>₹45,000</span>
+                            <small>Collected today</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="app-features">
-                        <div class="app-feature">
-                            <div class="app-feature-icon">
-                                <i class="ph-fill ph-shield-check"></i>
-                            </div>
-                            <span>Bank-Grade Security</span>
+        <!-- Problems Section -->
+        <section class="problems" id="problems">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-overline">Common Challenges</span>
+                    <h2 class="section-title">
+                        The Real Problems You
+                        <span class="underline">Face Daily</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Manual invoicing, delayed payments, and
+                        reconciliation errors slow down your business
+                        operations.
+                    </p>
+                </div>
+
+                <div class="problems-grid">
+                    <div class="problem-card highlight">
+                        <div class="problem-icon">
+                            <i class="ph-fill ph-file-x"></i>
                         </div>
-                        <div class="app-feature">
-                            <div class="app-feature-icon">
-                                <i class="ph-fill ph-lightning"></i>
-                            </div>
-                            <span>Instant Setup</span>
+                        <h3 class="problem-title">
+                            "My distributors take 2-3 days to pay after
+                            delivery + I have only 2-week credit terms."
+                        </h3>
+                        <p class="problem-desc">
+                            Late payments disrupt cash flow and make
+                            planning impossible.
+                        </p>
+                        <div class="problem-stats">
+                            <span class="problem-stat">68% face this</span>
+                            <span class="problem-stat">2-3 days delay</span>
                         </div>
-                        <div class="app-feature">
-                            <div class="app-feature-icon">
-                                <i class="ph-fill ph-headset"></i>
-                            </div>
-                            <span>24/7 Support</span>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="ph-fill ph-clock-countdown"></i>
                         </div>
-                        <div class="app-feature">
-                            <div class="app-feature-icon">
+                        <h3 class="problem-title">
+                            Dependence - Sitting at the counter is a must. I
+                            had to even cancel my leaves.
+                        </h3>
+                        <p class="problem-desc">
+                            Manual processes keep you tied to your desk,
+                            limiting flexibility.
+                        </p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="ph-fill ph-chats-circle"></i>
+                        </div>
+                        <h3 class="problem-title">
+                            Send Reminders Manually - Have to call & text
+                            customers to follow up payments.
+                        </h3>
+                        <p class="problem-desc">
+                            Time-consuming follow-ups that could be
+                            automated.
+                        </p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="ph-fill ph-receipt"></i>
+                        </div>
+                        <h3 class="problem-title">
+                            Create e-invoices/bills manually - Ledger and
+                            invoicing done separately, more effort.
+                        </h3>
+                        <p class="problem-desc">
+                            Duplicate data entry wastes time and increases
+                            errors.
+                        </p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="ph-fill ph-chart-line-down"></i>
+                        </div>
+                        <h3 class="problem-title">
+                            Real-time business data difficult - Have to wait
+                            till the end of the day to get updates.
+                        </h3>
+                        <p class="problem-desc">
+                            Delayed insights mean slower decision-making.
+                        </p>
+                    </div>
+                    <div class="problem-card">
+                        <div class="problem-icon">
+                            <i class="ph-fill ph-arrows-split"></i>
+                        </div>
+                        <h3 class="problem-title">
+                            No visibility on credit - Manual tracking of
+                            credit given, never sure how much is
+                            outstanding.
+                        </h3>
+                        <p class="problem-desc">
+                            Missing data leads to missed collections.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Takkada Way Section -->
+        <section class="takkada-way" id="features">
+            <div class="takkada-way-container container">
+                <div class="takkada-way-visual">
+                    <div class="takkada-way-phone">
+                        <img src="assets/images/screenshots/screen_2.png" alt="Takkada Features" />
+                    </div>
+                    <div class="way-floating-card way-floating-card-1">
+                        <h4>Zero Manual Entry</h4>
+                        <p>Everything syncs automatically</p>
+                    </div>
+                    <div class="way-floating-card way-floating-card-2">
+                        <h4>Auto-Reconciled</h4>
+                        <p>Payments matched instantly</p>
+                    </div>
+                </div>
+                <div class="takkada-way-content">
+                    <h2>
+                        We've Got You Covered –
+                        <span class="underline">The Takkada Way</span>
+                    </h2>
+                    <p>
+                        No need to juggle multiple tools - Takkada is built
+                        to handle your finances end-to-end, so you can focus
+                        on what you do best: growing your business.
+                    </p>
+
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <div class="feature-item-icon">
+                                <i class="ph-fill ph-credit-card"></i>
+                            </div>
+                            <div class="feature-item-content">
+                                <h4>Multiple Payment Methods</h4>
+                                <p>
+                                    Accept payments via UPI, Net Banking,
+                                    Credit Cards, and more. Give customers
+                                    the flexibility to pay as they prefer.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-item-icon green">
                                 <i class="ph-fill ph-arrows-clockwise"></i>
                             </div>
-                            <span>Auto Sync</span>
-                        </div>
-                        <div class="app-feature">
-                            <div class="app-feature-icon">
-                                <i class="ph-fill ph-chart-pie"></i>
+                            <div class="feature-item-content">
+                                <h4>Auto-Reconcile Invoices</h4>
+                                <p>
+                                    Payments are automatically matched to
+                                    invoices as they are received - no
+                                    manual reconciliation needed.
+                                </p>
                             </div>
-                            <span>Real-time Analytics</span>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-item-icon orange">
+                                <i class="ph-fill ph-chart-pie-slice"></i>
+                            </div>
+                            <div class="feature-item-content">
+                                <h4>Track Credit and Dues in One Place!</h4>
+                                <p>
+                                    Get a complete view of who owes what.
+                                    Stay on top of outstanding payments with
+                                    real-time tracking.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-item-icon blue">
+                                <i class="ph-fill ph-file-text"></i>
+                            </div>
+                            <div class="feature-item-content">
+                                <h4>
+                                    Generate e-Invoices & eWay Bills from
+                                    Your Phone
+                                </h4>
+                                <p>
+                                    Create GST-compliant e-invoices and eWay
+                                    bills instantly, right from your mobile
+                                    device.
+                                </p>
+                                <div class="feature-badges">
+                                    <span class="feature-badge">e-Invoice</span>
+                                    <span class="feature-badge">eWay Bill</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+            </div>
+        </section>
 
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="footer-container container">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <img
-                            src="assets/images/appstore-removebg-preview.png"
-                            alt="Takkada Logo"
-                            class="logo-img"
-                        />
+        <!-- Everything Section -->
+        <section class="everything">
+            <div class="container">
+                <div class="everything-header">
+                    <h2>
+                        Everything You
+                        <span class="highlight">Need,</span> Already Inside
                         Takkada
-                    </a>
+                    </h2>
                     <p>
-                        Your finances, under control. Simplify business payments
-                        with automated collection and reconciliation.
+                        Simply add an invoice to the system, and the payment
+                        link goes to customers. Our automated WhatsApp
+                        follow-ups boost payments, auto-reconciliation
+                        tracks income, and you manage everything from your
+                        mobile.
                     </p>
-                    <p style="margin-top: 8px; font-size: 0.8rem">
-                        admin@paysaathi.com
-                    </p>
                 </div>
-
-                <div>
-                    <h3 class="footer-title">Main Pages</h3>
-                    <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How it Works</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="footer-title">Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#faq">FAQ</a></li>
-                        <li><a href="contact-us.html">Contact Us</a></li>
-                        <li><a href="#">Pricing</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h3 class="footer-title">Company</h3>
-                    <ul class="footer-links">
-                        <li>
-                            <a href="terms-and-conditions.html"
-                                >Terms & Conditions</a
-                            >
-                        </li>
-                        <li>
-                            <a href="privacy-policy.html">Privacy Policy</a>
-                        </li>
-                        <li><a href="refund-policy.html">Refund Policy</a></li>
-                    </ul>
-                    <div class="social-links" style="margin-top: 16px">
-                        <a href="#"><i class="ph-bold ph-twitter-logo"></i></a>
-                        <a href="#"><i class="ph-bold ph-linkedin-logo"></i></a>
-                        <a href="#"
-                            ><i class="ph-bold ph-instagram-logo"></i
-                        ></a>
+                <div class="everything-visual">
+                    <div class="everything-visual-content">
+                        <div class="everything-phone">
+                            <img src="assets/images/screenshots/screen_3.png" alt="Takkada Interface" />
+                        </div>
+                        <div class="everything-phone main">
+                            <img src="assets/images/screenshots/screen_1.png" alt="Takkada Dashboard" />
+                        </div>
+                        <div class="everything-phone">
+                            <img src="assets/images/screenshots/screen_4.png" alt="Takkada Features" />
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>© 2024 Pay Saathi Innovations LLP. All rights reserved.</p>
+        </section>
+
+        <!-- Smart Collection Section -->
+        <section class="smart-collection">
+            <div class="smart-collection-container container">
+                <div class="smart-collection-content">
+                    <h2>Smart Collection & Auto Reconciliation</h2>
+                    <p>
+                        Handle your entire collection process via WhatsApp.
+                        Share invoices on WhatsApp. Send payment links,
+                        remind for dues, and receive confirmations - all
+                        from one place.
+                    </p>
+
+                    <div class="check-list">
+                        <div class="check-item">
+                            <i class="ph-fill ph-check-square"></i>
+                            <span>Instantly share "Pay Now" link on
+                                WhatsApp</span>
+                        </div>
+                        <div class="check-item">
+                            <i class="ph-fill ph-check-square"></i>
+                            <span>Auto-send UPI, IMPS, RTGS, credit - you
+                                choose</span>
+                        </div>
+                        <div class="check-item">
+                            <i class="ph-fill ph-check-square"></i>
+                            <span>Auto-reconcile transactions in your
+                                Tally</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="smart-collection-visual">
+                    <div class="smart-collection-phones">
+                        <div class="smart-phone">
+                            <img src="assets/images/screenshots/screen_5.png" alt="Collection Screen" />
+                        </div>
+                        <div class="smart-phone main">
+                            <img src="assets/images/screenshots/screen_2.png" alt="WhatsApp Integration" />
+                        </div>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </section>
 
-        <script>
-            // FAQ Toggle
-            function toggleFaq(element) {
-                const faqItem = element.parentElement;
-                const isActive = faqItem.classList.contains("active");
+        <!-- How It Works Section -->
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <div class="how-it-works-header">
+                    <h2>How Takkada Works</h2>
+                    <p>
+                        Simple steps to transform your payment collection
+                        process
+                    </p>
+                </div>
 
-                // Close all FAQ items
-                document.querySelectorAll(".faq-item").forEach((item) => {
-                    item.classList.remove("active");
-                });
+                <div class="steps-container">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>
+                                Sync your data with Tally/Billing/Manual
+                            </h4>
+                            <p>
+                                Connect Takkada with your existing
+                                accounting software or add invoices
+                                manually. Your data stays in sync
+                                automatically.
+                            </p>
+                            <div class="step-visual">
+                                <i class="ph-fill ph-database"></i>
+                                <span>Works with Tally, Busy, and Excel</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Share due links on WhatsApp/Email</h4>
+                            <p>
+                                Automated payment links are sent to your
+                                customers via WhatsApp or Email. They can
+                                pay instantly with one tap.
+                            </p>
+                            <div class="step-visual">
+                                <i class="ph-fill ph-whatsapp-logo"></i>
+                                <span>One-tap payment for customers</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Automated reminders for due payments</h4>
+                            <p>
+                                Smart reminders are sent automatically based
+                                on due dates. No more manual follow-ups
+                                needed.
+                            </p>
+                            <div class="step-visual">
+                                <i class="ph-fill ph-bell-ringing"></i>
+                                <span>Customizable reminder schedules</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Auto reconciliation with Tally</h4>
+                            <p>
+                                Payments are automatically matched and
+                                reconciled in your accounting software. Zero
+                                manual data entry.
+                            </p>
+                            <div class="step-visual">
+                                <i class="ph-fill ph-check-circle"></i>
+                                <span>100% accurate reconciliation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                // Open clicked item if it wasn't already open
-                if (!isActive) {
-                    faqItem.classList.add("active");
-                }
-            }
+        <!-- Testimonials Section -->
+        <section class="testimonials" id="testimonials">
+            <div class="container">
+                <div class="testimonials-header">
+                    <h2>See Why People Love Us</h2>
+                    <p>
+                        Thousands of businesses trust Takkada for their
+                        payment collection. Here's what they're saying about
+                        their journey with Takkada.
+                    </p>
+                </div>
 
-            // Smooth scroll for navigation
-            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-                anchor.addEventListener("click", function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(
-                        this.getAttribute("href"),
-                    );
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start",
-                        });
-                    }
-                });
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "The auto reconciliation is magic - payments
+                            land directly into my Tally. My collection rate
+                            went from 60% to 92%. The WhatsApp integration
+                            is genius!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <i class="ph-fill ph-user"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Rajesh Sharma</h4>
+                                <span>Manufacturing Business</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "We collect ₹1 crore monthly from 200+
+                            distributors. Takkada tracks every rupee. Before
+                            Takkada, I couldn't take a single leave. Now
+                            it's stress-free!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <i class="ph-fill ph-user"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Priya Agarwal</h4>
+                                <span>FMCG Distributor</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                            <i class="ph-fill ph-star"></i>
+                        </div>
+                        <p class="testimonial-text">
+                            "Outstanding tool! Setting up automatic
+                            collection reminders on WhatsApp - I was
+                            understanding before. Now it's on auto-pilot.
+                            Customers don't mind, collections improved by
+                            60%!"
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="testimonial-avatar">
+                                <i class="ph-fill ph-user"></i>
+                            </div>
+                            <div class="testimonial-info">
+                                <h4>Amit Patel</h4>
+                                <span>Wholesale Trader</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq" id="faq">
+            <div class="faq-container container">
+                <div class="faq-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>
+                        Have a different question about Takkada's app or
+                        service? Connect with our team.
+                    </p>
+                </div>
+
+                <div class="faq-list">
+                    <div class="faq-item active">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>Is my data safe?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Yes, absolutely. We use bank-grade
+                                encryption and security measures to protect
+                                your data. Your information is stored
+                                securely and never shared with third
+                                parties.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>
+                                Will Takkada slow down my computer or Tally?
+                            </h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Not at all. Takkada runs independently and
+                                syncs data in the background. It's optimized
+                                to work seamlessly without affecting your
+                                system performance.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>What is the payment settlement cycle?</h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Payments are settled within T+1 business
+                                days directly to your bank account. You can
+                                track all settlements in real-time from your
+                                dashboard.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>
+                                How many automated WhatsApp messages can I
+                                send?
+                            </h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                You can send unlimited WhatsApp reminders
+                                based on your subscription plan. Messages
+                                are sent through official WhatsApp Business
+                                API ensuring high delivery rates.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <h4>
+                                Can I manage multiple businesses in one
+                                account?
+                            </h4>
+                            <i class="ph-bold ph-caret-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>
+                                Yes, you can manage multiple businesses from
+                                a single Takkada account. Each business gets
+                                its own dashboard and settings while you
+                                maintain centralized control.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog" id="blog">
+            <div class="container">
+                <div class="blog-header">
+                    <h2>Learn more about managing your money</h2>
+                    <p>
+                        Explore articles that share insights into the latest
+                        trends in financial management for businesses.
+                    </p>
+                </div>
+
+                <div class="blog-featured">
+                    <div class="blog-featured-image">
+                        <i class="ph-fill ph-article"></i>
+                    </div>
+                    <div class="blog-featured-content">
+                        <span class="blog-tag">GUIDE</span>
+                        <h3>
+                            The Ultimate Guide to Takkada: Setup, Automate,
+                            and Never Do Data Entry Again
+                        </h3>
+                        <p>
+                            Are you tired of manually tracking payments,
+                            sending reminders, and reconciling invoices?
+                            This comprehensive guide walks you through
+                            everything you need to know about setting up
+                            Takkada for your business.
+                        </p>
+                        <div class="blog-meta">
+                            <span>5 min read</span>
+                            <span>•</span>
+                            <span>Finance</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <div class="blog-card-image">
+                            <i class="ph-fill ph-chart-line-up"></i>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-tag">Business</span>
+                            <h4>
+                                How Digital Payments Are Transforming B2B
+                                Collections
+                            </h4>
+                            <p>
+                                Discover how businesses are leveraging
+                                digital payments to improve cash flow.
+                            </p>
+                            <div class="blog-meta">
+                                <span>3 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-card-image">
+                            <i class="ph-fill ph-whatsapp-logo"></i>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-tag">Tips</span>
+                            <h4>
+                                5 WhatsApp Reminder Templates That Get
+                                Payments Faster
+                            </h4>
+                            <p>
+                                Proven message templates to help you collect
+                                payments without being pushy.
+                            </p>
+                            <div class="blog-meta">
+                                <span>4 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="blog-card">
+                        <div class="blog-card-image">
+                            <i class="ph-fill ph-calculator"></i>
+                        </div>
+                        <div class="blog-card-content">
+                            <span class="blog-tag">Guide</span>
+                            <h4>
+                                Tally Integration: A Step-by-Step Setup
+                                Guide
+                            </h4>
+                            <p>
+                                Learn how to connect Takkada with Tally for
+                                seamless reconciliation.
+                            </p>
+                            <div class="blog-meta">
+                                <span>6 min read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="blog-link">
+                    <a href="#" class="btn btn-outline">View All Articles</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- App Download Section -->
+        <section class="app-download" id="download">
+            <div class="container app-download-container">
+                <h2>App that powers financial growth</h2>
+                <p>
+                    Download Takkada and transform how you collect payments
+                </p>
+
+                <div class="app-buttons">
+                    <a href="#" class="app-store-btn">
+                        <i class="ph-fill ph-apple-logo"></i>
+                        <span class="app-store-btn-text">
+                            <span class="small-text">Download on the</span>
+                            <span class="main-text">App Store</span>
+                        </span>
+                    </a>
+                    <a href="#" class="app-store-btn">
+                        <i class="ph-fill ph-google-play-logo"></i>
+                        <span class="app-store-btn-text">
+                            <span class="small-text">Get it on</span>
+                            <span class="main-text">Google Play</span>
+                        </span>
+                    </a>
+                </div>
+
+                <div class="app-features">
+                    <div class="app-feature">
+                        <div class="app-feature-icon">
+                            <i class="ph-fill ph-shield-check"></i>
+                        </div>
+                        <span>Bank-Grade Security</span>
+                    </div>
+                    <div class="app-feature">
+                        <div class="app-feature-icon">
+                            <i class="ph-fill ph-lightning"></i>
+                        </div>
+                        <span>Instant Setup</span>
+                    </div>
+                    <div class="app-feature">
+                        <div class="app-feature-icon">
+                            <i class="ph-fill ph-headset"></i>
+                        </div>
+                        <span>24/7 Support</span>
+                    </div>
+                    <div class="app-feature">
+                        <div class="app-feature-icon">
+                            <i class="ph-fill ph-arrows-clockwise"></i>
+                        </div>
+                        <span>Auto Sync</span>
+                    </div>
+                    <div class="app-feature">
+                        <div class="app-feature-icon">
+                            <i class="ph-fill ph-chart-pie"></i>
+                        </div>
+                        <span>Real-time Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container container">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <img src="assets/images/appstore-removebg-preview.png" alt="Takkada Logo" class="logo-img" />
+                    Takkada
+                </a>
+                <p>
+                    Your finances, under control. Simplify business payments
+                    with automated collection and reconciliation.
+                </p>
+                <p style="margin-top: 8px; font-size: 0.8rem">
+                    admin@paysaathi.com
+                </p>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Main Pages</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How it Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li>
+                        <a href="terms-and-conditions.html">Terms & Conditions</a>
+                    </li>
+                    <li>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                    </li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                </ul>
+                <div class="social-links" style="margin-top: 16px">
+                    <a href="#"><i class="ph-bold ph-twitter-logo"></i></a>
+                    <a href="#"><i class="ph-bold ph-linkedin-logo"></i></a>
+                    <a href="#"><i class="ph-bold ph-instagram-logo"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Pay Saathi Innovations LLP. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains("active");
+
+            // Close all FAQ items
+            document.querySelectorAll(".faq-item").forEach((item) => {
+                item.classList.remove("active");
             });
 
-            // Header scroll effect
-            window.addEventListener("scroll", function () {
-                const header = document.querySelector(".header");
-                if (window.scrollY > 50) {
-                    header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
-                } else {
-                    header.style.boxShadow = "none";
+            // Open clicked item if it wasn't already open
+            if (!isActive) {
+                faqItem.classList.add("active");
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(
+                    this.getAttribute("href"),
+                );
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                    });
                 }
             });
+        });
 
-            // Mobile menu toggle
-            const navToggle = document.querySelector(".nav-toggle");
-            const navMenu = document.querySelector(".nav-menu");
-
-            if (navToggle) {
-                navToggle.addEventListener("click", function () {
-                    navMenu.classList.toggle("show");
-                });
+        // Header scroll effect
+        window.addEventListener("scroll", function () {
+            const header = document.querySelector(".header");
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+            } else {
+                header.style.boxShadow = "none";
             }
-        </script>
-    </body>
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+
+        if (navToggle) {
+            navToggle.addEventListener("click", function () {
+                navMenu.classList.toggle("show");
+            });
+        }
+    </script>
+</body>
+
 </html>
