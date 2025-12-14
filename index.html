@@ -323,37 +323,194 @@
         </section>
 
         <!-- Everything Section -->
-        <section class="everything">
-            <div class="container">
-                <div class="everything-header">
-                    <h2>
-                        Everything You
-                        <span class="highlight">Need,</span> Already Inside
-                        Takkada
+        <section id="everything" style="padding:76px 0; background:#ffffff;">
+            <div class="container" style="max-width:1180px; margin:0 auto; padding:0 20px;">
+
+                <!-- Header -->
+                <div style="text-align:center; max-width:900px; margin:0 auto 40px;">
+                    <h2 style="margin:0 0 14px; font-size:44px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                        Everything You Need,<br />
+                        Already Inside
+                        <span style="position:relative; display:inline-block;">
+                            Takkada
+                            <span style="position:absolute; left:6%; right:6%; bottom:-6px; height:10px;
+                       background:rgba(91,73,255,.22); border-radius:999px;"></span>
+                        </span>
                     </h2>
-                    <p>
-                        Simply add an invoice to the system, and the payment
-                        link goes to customers. Our automated WhatsApp
-                        follow-ups boost payments, auto-reconciliation
-                        tracks income, and you manage everything from your
-                        mobile.
+
+                    <p style="margin:0; font-size:18px; line-height:1.65; color:#5b6270;">
+                        Every other platform stops at sending reminders. We actually collect the payment AND reconcile
+                        it in Tally automatically.
+                        Our reconciliation engine matches payments to invoices—even partial payments, combined invoices,
+                        and missing references.
                     </p>
                 </div>
-                <div class="everything-visual">
-                    <div class="everything-visual-content">
-                        <div class="everything-phone">
-                            <img src="assets/images/screenshots/screen_3.png" alt="Takkada Interface" />
+
+                <!-- ===================== CARD 1 ===================== -->
+                <div style="border:1px solid #e9ecf2; border-radius:22px; padding:44px; display:flex; gap:40px;
+                align-items:stretch; background:#fff; box-shadow:0 16px 50px rgba(17,24,39,.06);
+                margin-bottom:18px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:320px; display:flex; flex-direction:column; justify-content:center;">
+                        <h3 style="margin:0 0 14px; font-size:40px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                            Complete workflow<br />automation
+                        </h3>
+
+                        <p style="margin:0 0 26px; font-size:18px; line-height:1.8; color:#5b6270; max-width:560px;">
+                            Tally syncs invoices automatically. System sends WhatsApp reminders on schedule.
+                            Retailers get payment links. You just check your bank balance growing.
+                        </p>
+
+                        <!-- Bullets (match reference: filled circle + white tick) -->
+                        <div style="display:flex; flex-direction:column; gap:16px; margin-top:4px;">
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">Tally sync</span>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">WhatsApp reminders + Payment links</span>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">Money in bank</span>
+                            </div>
                         </div>
-                        <div class="everything-phone main">
-                            <img src="assets/images/screenshots/screen_1.png" alt="Takkada Dashboard" />
-                        </div>
-                        <div class="everything-phone">
-                            <img src="assets/images/screenshots/screen_4.png" alt="Takkada Features" />
+                    </div>
+
+                    <!-- Visual (match reference: bigger lavender panel, phone sits inside, slightly top-aligned) -->
+                    <div
+                        style="flex:1; min-width:320px; display:flex; justify-content:flex-end; align-items:flex-start;">
+                        <div style="width:min(520px,100%); background:linear-gradient(135deg,#f3f0ff,#eee9ff);
+                    border-radius:26px; padding:28px; border:1px solid #ebe7ff;
+                    display:flex; justify-content:center; align-items:flex-start;">
+                            <img src="assets/images/screenshots/screen_3.png" alt="Takkada workflow" style="width:min(300px,100%); height:auto; display:block; border-radius:22px;
+                      box-shadow:0 28px 70px rgba(17,24,39,.20);
+                      margin-top:6px;" />
                         </div>
                     </div>
                 </div>
+
+                <!-- ===================== CARD 2 (image left) ===================== -->
+                <div style="border:1px solid #e9ecf2; border-radius:22px; padding:44px; display:flex; gap:40px;
+                align-items:stretch; background:#fff; box-shadow:0 16px 50px rgba(17,24,39,.06);
+                margin-bottom:18px; flex-wrap:wrap;">
+                    <div
+                        style="flex:1; min-width:320px; display:flex; justify-content:flex-start; align-items:flex-start;">
+                        <div style="width:min(520px,100%); background:linear-gradient(135deg,#f3f0ff,#eee9ff);
+                    border-radius:26px; padding:28px; border:1px solid #ebe7ff;
+                    display:flex; justify-content:center; align-items:flex-start;">
+                            <img src="assets/images/screenshots/screen_1.png" alt="Takkada ledger access" style="width:min(300px,100%); height:auto; display:block; border-radius:22px;
+                      box-shadow:0 28px 70px rgba(17,24,39,.20);
+                      margin-top:6px;" />
+                        </div>
+                    </div>
+
+                    <div style="flex:1; min-width:320px; display:flex; flex-direction:column; justify-content:center;">
+                        <h3 style="margin:0 0 14px; font-size:40px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                            Instant Ledger Access
+                        </h3>
+
+                        <p style="margin:0 0 26px; font-size:18px; line-height:1.8; color:#5b6270; max-width:560px;">
+                            Check any party’s ledger in seconds. Share outstanding statements directly on WhatsApp.
+                            Create vouchers for partial payments from one dashboard.
+                        </p>
+
+                        <div style="display:flex; flex-direction:column; gap:16px; margin-top:4px;">
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">Check all transactions</span>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">Add vouchers instantly</span>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">Share ledger on WhatsApp</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===================== CARD 3 ===================== -->
+                <div style="border:1px solid #e9ecf2; border-radius:22px; padding:44px; display:flex; gap:40px;
+                align-items:stretch; background:#fff; box-shadow:0 16px 50px rgba(17,24,39,.06);
+                flex-wrap:wrap;">
+                    <div style="flex:1; min-width:320px; display:flex; flex-direction:column; justify-content:center;">
+                        <h3 style="margin:0 0 14px; font-size:40px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                            Smart Collection &<br />Auto Reconciliation
+                        </h3>
+
+                        <p style="margin:0 0 26px; font-size:18px; line-height:1.8; color:#5b6270; max-width:560px;">
+                            Retailer clicks “Pay Now” on WhatsApp. Pays via UPI, NEFT, RTGS or cards.
+                            Money hits your bank and auto-matches invoices in Tally.
+                        </p>
+
+                        <div style="display:flex; flex-direction:column; gap:16px; margin-top:4px;">
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">WhatsApp Pay Now</span>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">Any payment mode</span>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:14px;">
+                                <span style="width:34px; height:34px; border-radius:999px; background:#5b49ff;
+                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 34px;">
+                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                                </span>
+                                <span style="font-size:20px; color:#0b0b0f;">Auto reconciliation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="flex:1; min-width:320px; display:flex; justify-content:flex-end; align-items:flex-start;">
+                        <div style="width:min(520px,100%); background:linear-gradient(135deg,#f3f0ff,#eee9ff);
+                    border-radius:26px; padding:28px; border:1px solid #ebe7ff;
+                    display:flex; justify-content:center; align-items:flex-start;">
+                            <img src="assets/images/screenshots/screen_4.png" alt="WhatsApp collections" style="width:min(300px,100%); height:auto; display:block; border-radius:22px;
+                      box-shadow:0 28px 70px rgba(17,24,39,.20);
+                      margin-top:6px;" />
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
+
+
 
         <!-- Smart Collection Section -->
         <section class="smart-collection">
@@ -399,80 +556,82 @@
         </section>
 
         <!-- How It Works Section -->
-        <section class="how-it-works" id="how-it-works">
-            <div class="container">
-                <div class="how-it-works-header">
-                    <h2>How Takkada Works</h2>
-                    <p>
-                        Simple steps to transform your payment collection
-                        process
-                    </p>
-                </div>
+        <section id="how-it-works" style="padding:72px 0; background:#ffffff;">
+            <div class="container" style="max-width:1180px; margin:0 auto; padding:0 20px;">
+                <div
+                    style="display:flex; gap:44px; align-items:stretch; justify-content:space-between; flex-wrap:wrap;">
 
-                <div class="steps-container">
-                    <div class="step-item">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>
-                                Sync your data with Tally/Billing/Manual
-                            </h4>
-                            <p>
-                                Connect Takkada with your existing
-                                accounting software or add invoices
-                                manually. Your data stays in sync
-                                automatically.
-                            </p>
-                            <div class="step-visual">
-                                <i class="ph-fill ph-database"></i>
-                                <span>Works with Tally, Busy, and Excel</span>
+                    <!-- LEFT -->
+                    <div style="flex:1; min-width:320px; max-width:560px;">
+                        <h2 style="margin:0 0 10px; font-size:44px; line-height:1.1; font-weight:800; color:#0b0b0f;">
+                            How Takkada Works
+                        </h2>
+
+                        <p style="margin:0 0 28px; font-size:18px; line-height:1.6; color:#555b66; max-width:520px;">
+                            Getting started is simple—download, connect your Tally, and take control of your money with
+                            just a few taps.
+                        </p>
+
+                        <!-- STEP 1 (PRIMARY) -->
+                        <div
+                            style="border-radius:16px; padding:20px 18px; background:linear-gradient(135deg,#5b49ff,#6b32ff); color:#fff;
+                    box-shadow:0 14px 34px rgba(91,73,255,.22); display:flex; gap:14px; align-items:flex-start; margin-bottom:14px;">
+                            <div
+                                style="width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; flex:0 0 44px;">
+                                <i class="ph-bold ph-download-simple" style="font-size:22px; color:#fff;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:22px; font-weight:800; margin:0 0 6px;">Download the App</div>
+                                <div style="font-size:16px; line-height:1.55; color:rgba(255,255,255,.92); margin:0;">
+                                    Install Takkada from the App Store or Google Play on your phone.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 2 -->
+                        <div
+                            style="border-radius:16px; padding:18px; background:#fff; border:1px solid #e9ecf2; display:flex; gap:14px; align-items:flex-start; margin-bottom:14px;">
+                            <div
+                                style="width:44px; height:44px; border-radius:12px; background:#f4f6fb; display:flex; align-items:center; justify-content:center; flex:0 0 44px;">
+                                <i class="ph-bold ph-scan" style="font-size:22px; color:#111827;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:22px; font-weight:800; margin:0 0 6px; color:#0b0b0f;">Complete
+                                    Business KYC</div>
+                                <div style="font-size:16px; line-height:1.55; color:#5b6270; margin:0;">
+                                    Set up your account using email, phone number, GST certificate, PAN, and Aadhaar.
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- STEP 3 -->
+                        <div
+                            style="border-radius:16px; padding:18px; background:#fff; border:1px solid #e9ecf2; display:flex; gap:14px; align-items:flex-start;">
+                            <div
+                                style="width:44px; height:44px; border-radius:12px; background:#f4f6fb; display:flex; align-items:center; justify-content:center; flex:0 0 44px;">
+                                <i class="ph-bold ph-money" style="font-size:22px; color:#111827;"></i>
+                            </div>
+                            <div>
+                                <div style="font-size:22px; font-weight:800; margin:0 0 6px; color:#0b0b0f;">
+                                    Sync Tally & Start Collecting
+                                </div>
+                                <div style="font-size:16px; line-height:1.55; color:#5b6270; margin:0;">
+                                    Once KYC is approved, your data syncs instantly—stay on top of every due date and
+                                    payment.
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="step-item">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Share due links on WhatsApp/Email</h4>
-                            <p>
-                                Automated payment links are sent to your
-                                customers via WhatsApp or Email. They can
-                                pay instantly with one tap.
-                            </p>
-                            <div class="step-visual">
-                                <i class="ph-fill ph-whatsapp-logo"></i>
-                                <span>One-tap payment for customers</span>
-                            </div>
+
+                    <!-- RIGHT -->
+                    <div style="flex:1; min-width:320px; display:flex; justify-content:flex-end;">
+                        <div style="width:min(520px,100%); background:#f5f3ff; border-radius:26px; padding:24px;
+                    border:1px solid #ebe7ff; display:flex; align-items:center; justify-content:center;">
+                            <img src="assets/images/screenshots/how.png" alt="How Takkada Works App Screenshot"
+                                style="width:min(360px,100%); height:auto; display:block; border-radius:26px; box-shadow:0 24px 60px rgba(0,0,0,.18);" />
                         </div>
                     </div>
-                    <div class="step-item">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Automated reminders for due payments</h4>
-                            <p>
-                                Smart reminders are sent automatically based
-                                on due dates. No more manual follow-ups
-                                needed.
-                            </p>
-                            <div class="step-visual">
-                                <i class="ph-fill ph-bell-ringing"></i>
-                                <span>Customizable reminder schedules</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Auto reconciliation with Tally</h4>
-                            <p>
-                                Payments are automatically matched and
-                                reconciled in your accounting software. Zero
-                                manual data entry.
-                            </p>
-                            <div class="step-visual">
-                                <i class="ph-fill ph-check-circle"></i>
-                                <span>100% accurate reconciliation</span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </section>
