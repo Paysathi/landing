@@ -1,11 +1,11 @@
 /* ==================== MENU SHOW Y HIDDEN ==================== */
 const navMenu = document.getElementById('nav-menu'),
-      navToggle = document.getElementById('nav-toggle'),
-      navClose = document.getElementById('nav-close');
+    navToggle = document.getElementById('nav-toggle'),
+    navClose = document.getElementById('nav-close');
 
 /* ===== MENU SHOW ===== */
 /* Validate if constant exists */
-if(navToggle) {
+if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.add('show-menu');
     });
@@ -13,7 +13,7 @@ if(navToggle) {
 
 /* ===== MENU HIDDEN ===== */
 /* Validate if constant exists */
-if(navClose) {
+if (navClose) {
     navClose.addEventListener('click', () => {
         navMenu.classList.remove('show-menu');
     });
@@ -36,7 +36,7 @@ navLink.forEach(n => n.addEventListener('click', linkAction));
 function scrollHeader() {
     const header = document.getElementById('header');
     // When the scroll is greater than 80 viewport height, add the scroll-header class to the header tag
-    if(this.scrollY >= 80) header.classList.add('scroll-header'); else header.classList.remove('scroll-header');
+    if (this.scrollY >= 80) header.classList.add('scroll-header'); else header.classList.remove('scroll-header');
 }
 window.addEventListener('scroll', scrollHeader);
 
@@ -57,7 +57,7 @@ const observerOptions = {
 
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-        if(entry.isIntersecting) {
+        if (entry.isIntersecting) {
             entry.target.classList.add('active-scroll');
             observer.unobserve(entry.target); // Only animate once
         }
@@ -81,7 +81,7 @@ revealElements.forEach(el => {
 // Add modification to the observer callback to actually trigger the styles
 const activeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if(entry.isIntersecting) {
+        if (entry.isIntersecting) {
             entry.target.style.opacity = '1';
             entry.target.style.transform = 'translateY(0)';
         }
@@ -112,3 +112,5 @@ function toggleTheme() {
 if (themeToggle) {
     themeToggle.addEventListener('click', toggleTheme);
 }
+
+
