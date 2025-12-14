@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main Pages -->
+  <url>
+    <loc>https://www.paysaathi.com/</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/contact-us.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/privacy-policy.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/refund-policy.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/terms-and-conditions.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Blog Posts -->
+  <url>
+    <loc>https://www.paysaathi.com/blog/hidden-cost-of-manual-tally-work.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/blog/auto-reconciliation-without-manual-work.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/blog/why-reconciliation-takes-forever-in-tally.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/blog/tally-on-mobile-manage-invoices-dues-collections.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/blog/automate-payment-follow-ups-whatsapp-reminders.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.paysaathi.com/blog/getting-started-with-takkada-automation-without-data-entry.html</loc>
+    <lastmod>2025-12-15</lastmod>
+    <priority>0.7</priority>
+  </url>
+</urlset>
