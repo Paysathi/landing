@@ -802,134 +802,38 @@
                     </p>
                 </div>
 
-                <a href="blog/getting-started-with-takkada-automation-without-data-entry.html" class="blog-featured"
-                    style="text-decoration: none; color: inherit; display: grid;">
-                    <div class="blog-featured-image">
-                        <img src="assets/images/screenshots/tk-l-2.png" alt="Getting Started" />
-                    </div>
-                    <div class="blog-featured-content">
-                        <span class="blog-tag">GUIDE</span>
-                        <h3>
-                            Getting Started with Takkada: Automation Without Data Entry
-                        </h3>
-                        <p>
-                            Are you tired of manually tracking payments,
-                            sending reminders, and reconciling invoices?
-                            This comprehensive guide walks you through
-                            everything you need to know about setting up
-                            Takkada for your business.
-                        </p>
-                        <div class="blog-meta">
-                            <span>5 min read</span>
-                            <span>•</span>
-                            <span>Finance</span>
-                        </div>
-                    </div>
-                </a>
+                <div id="featured-blog-container">
+                    <!-- Featured blog will be loaded here -->
+                </div>
 
-
-
-                <div class="blog-grid">
-                    <a href="blog/hidden-cost-of-manual-tally-work.html" class="blog-card"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <div class="blog-card-image">
-                            <img src="assets/images/screenshots/blog-2.png" alt="Manual Work Costs" />
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="blog-tag">PROBLEM</span>
-                            <h4>
-                                “Repeat 50 Times Daily”: The Hidden Cost of Manual Tally Work
-                            </h4>
-                            <p>
-                                Manual Tally work wastes hours every day. Learn how repetitive invoicing and data entry
-                                slow your business.
-                            </p>
-                            <div class="blog-meta">
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="blog/auto-reconciliation-without-manual-work.html" class="blog-card"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <div class="blog-card-image">
-                            <img src="assets/images/screenshots/Blog-3.png" alt="Auto Reconciliation" />
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="blog-tag">AUTOMATION</span>
-                            <h4>
-                                Auto Reconciliation Without Manual Work for Distributors
-                            </h4>
-                            <p>
-                                Learn how to eliminate manual payment matching, reduce errors, and save hours every
-                                week.
-                            </p>
-                            <div class="blog-meta">
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="blog/why-reconciliation-takes-forever-in-tally.html" class="blog-card"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <div class="blog-card-image">
-                            <img src="assets/images/screenshots/blog-4.png" alt="Reconciliation Nightmare" />
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="blog-tag">PRODUCTIVITY</span>
-                            <h4>
-                                The “Which Payment Is This?” Nightmare: Why Reconciliation Kills Productivity
-                            </h4>
-                            <p>
-                                Struggling to match payments with invoices in Tally? Learn why partial payments and
-                                missing references kill productivity.
-                            </p>
-                            <div class="blog-meta">
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="blog/tally-on-mobile-manage-invoices-dues-collections.html" class="blog-card"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <div class="blog-card-image">
-                            <img src="assets/images/screenshots/blog-5.png" alt="Tally on Mobile" />
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="blog-tag">MOBILE ACCESS</span>
-                            <h4>
-                                Tally on Mobile: Manage Invoices, Dues & Collections
-                            </h4>
-                            <p>
-                                Access Tally on your mobile. View invoices, outstanding dues, and payment status
-                                anywhere.
-                            </p>
-                            <div class="blog-meta">
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="blog/automate-payment-follow-ups-whatsapp-reminders.html" class="blog-card"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <div class="blog-card-image">
-                            <img src="assets/images/screenshots/blog-6.jpg" alt="WhatsApp Reminders" />
-                        </div>
-                        <div class="blog-card-content">
-                            <span class="blog-tag">AUTOMATION</span>
-                            <h4>
-                                Automate Your Payment Follow-Ups: WhatsApp Reminders Without Manual Effort
-                            </h4>
-                            <p>
-                                Reduce follow-up calls, improve collections, and reconcile payments automatically.
-                            </p>
-                            <div class="blog-meta">
-                                <span>5 min read</span>
-                            </div>
-                        </div>
-                    </a>
+                <div id="blog-grid-container" class="blog-grid">
+                    <!-- Blog grid will be loaded here -->
                 </div>
 
                 <div class="blog-link">
                     <a href="#" class="btn btn-outline">View All Articles</a>
                 </div>
             </div>
+        </section>
+
+        <!-- Load Blog Scripts -->
+        <script src="assets/js/blog-data.js"></script>
+        <script src="assets/js/blog-loader.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                // Render featured blog (first one in data or specific ID)
+                renderFeaturedBlog('featured-blog-container', false);
+
+                // Render grid (remaining posts, excluding featured)
+                // Assuming 'getting-started' is the featured one
+                renderBlogGrid('blog-grid-container', {
+                    count: 5,
+                    excludeId: 'getting-started',
+                    isBlogPage: false
+                });
+            });
+        </script>
+        </div>
         </section>
 
         <!-- App Download Section -->
