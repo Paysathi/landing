@@ -551,7 +551,7 @@
                         </p>
 
                         <!-- STEP 1 (PRIMARY) -->
-                        <div class="how-step primary">
+                        <div class="how-step active" data-step="1">
                             <div class="how-step-icon">
                                 <i class="ph-bold ph-download-simple"></i>
                             </div>
@@ -564,7 +564,7 @@
                         </div>
 
                         <!-- STEP 2 -->
-                        <div class="how-step">
+                        <div class="how-step" data-step="2">
                             <div class="how-step-icon">
                                 <i class="ph-bold ph-scan"></i>
                             </div>
@@ -578,7 +578,7 @@
                         </div>
 
                         <!-- STEP 3 -->
-                        <div class="how-step">
+                        <div class="how-step" data-step="3">
                             <div class="how-step-icon">
                                 <i class="ph-bold ph-money"></i>
                             </div>
@@ -596,9 +596,9 @@
 
                     <!-- RIGHT -->
                     <div class="how-visual-col">
-                        <div class="how-visual-card">
+                        <div class="how-visual-card" id="how-card">
                             <img src="assets/images/screenshots/how.png" alt="How Takkada Works App Screenshot"
-                                class="how-visual-image" />
+                                class="how-visual-image" id="how-image" />
                         </div>
                     </div>
 
@@ -1016,6 +1016,7 @@
             });
         }
     </script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

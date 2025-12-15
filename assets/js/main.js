@@ -1,40 +1,10 @@
-/* ==================== MENU SHOW Y HIDDEN ==================== */
-const navMenu = document.getElementById('nav-menu'),
-    navToggle = document.getElementById('nav-toggle'),
-    navClose = document.getElementById('nav-close');
-
-/* ===== MENU SHOW ===== */
-/* Validate if constant exists */
-if (navToggle) {
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.add('show-menu');
-    });
-}
-
-/* ===== MENU HIDDEN ===== */
-/* Validate if constant exists */
-if (navClose) {
-    navClose.addEventListener('click', () => {
-        navMenu.classList.remove('show-menu');
-    });
-}
-
-/* ==================== REMOVE MENU MOBILE ==================== */
-const navLink = document.querySelectorAll('.nav-link');
-
-function linkAction() {
-    const navMenu = document.getElementById('nav-menu');
-    // When we click on each nav-link, we remove the show-menu class
-    navMenu.classList.remove('show-menu');
-}
-navLink.forEach(n => n.addEventListener('click', linkAction));
-
 /* ==================== SCROLL SECTIONS ACTIVE LINK ==================== */
 // (Optional: Highlight active link on scroll - keeping it simple for now)
 
 /* ==================== CHANGE BACKGROUND HEADER ==================== */
 function scrollHeader() {
     const header = document.getElementById('header');
+    if (!header) return;
     // When the scroll is greater than 80 viewport height, add the scroll-header class to the header tag
     if (this.scrollY >= 80) header.classList.add('scroll-header'); else header.classList.remove('scroll-header');
 }
@@ -114,3 +84,62 @@ if (themeToggle) {
 }
 
 
+
+/* ==================== HOW TAKKADA WORKS INTERACTIVITY ==================== */
+document.addEventListener('DOMContentLoaded', () => {
+    const steps = document.querySelectorAll('.how-step');
+    const imageElement = document.getElementById('how-image');
+    const card = document.getElementById('how-card');
+
+    if (!steps.length || !imageElement) return;
+
+    const images = {
+        1: 'assets/images/screenshots/how.png',
+        2: 'assets/images/screenshots/how-2.avif',
+        3: 'assets/images/screenshots/how-3.avif'
+    };
+
+    const backgrounds = {
+        1: '#f4f6ff',
+        2: '#fff6f0',
+        3: '#f2fff7'
+    };
+
+    function setStep(stepNumber) {
+        // Update active class on steps
+        steps.forEach(s => s.classList.toggle('active', Number(s.dataset.step) === stepNumber));
+
+        // Update card background color if element exists
+        if (card) {
+            card.style.backgroundColor = backgrounds[stepNumber] || '#f4f6ff';
+        }
+
+        const newSrc = images[stepNumber];
+        if (!newSrc) return;
+
+        // Fade out
+        imageElement.classList.add('fade-out');
+
+        // Wait for fade out transition (300ms matches CSS)
+        setTimeout(() => {
+            imageElement.src = newSrc;
+
+            // Handle image load to fade in
+            imageElement.onload = () => {
+                imageElement.classList.remove('fade-out');
+            };
+
+            // Fallback in case onload doesn't fire (cached images)
+            setTimeout(() => {
+                imageElement.classList.remove('fade-out');
+            }, 50);
+        }, 300);
+    }
+
+    steps.forEach(step => {
+        step.addEventListener('click', () => {
+            const stepNum = Number(step.dataset.step);
+            if (stepNum) setStep(stepNum);
+        });
+    });
+});

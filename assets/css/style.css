@@ -806,7 +806,7 @@
             gap: 24px;
         }
 
-        .how-step-card {
+        .how-step {
             display: flex;
             align-items: flex-start;
             gap: 20px;
@@ -815,63 +815,77 @@
             border: 1px solid var(--primary-purple-light);
             background: var(--white);
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .how-step-card:hover {
+        .how-step:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
         }
 
-        .how-step-card.step-primary {
+        .how-step.active {
             background: var(--primary-purple);
             border-color: var(--primary-purple);
             color: var(--white);
         }
 
-        .how-step-card.step-primary h4,
-        .how-step-card.step-primary p {
+        .how-step.active .how-step-title,
+        .how-step.active .how-step-desc {
             color: var(--white);
         }
 
-        .how-step-card.step-primary .step-icon {
+        .how-step.active .how-step-icon,
+        .how-step.active .how-step-icon i {
             color: var(--white);
         }
 
-        .step-icon {
+        .how-step-icon {
             font-size: 24px;
             color: var(--text-dark);
             flex-shrink: 0;
             margin-top: 4px;
-            /* Align slightly with text top */
         }
 
-        .step-info h4 {
+        .how-step-icon i {
+            font-size: 24px;
+            color: var(--primary-purple);
+        }
+
+        .how-step-title {
             font-size: 1.125rem;
             font-weight: 600;
             margin-bottom: 8px;
             color: var(--text-dark);
         }
 
-        .step-info p {
+        .how-step-desc {
             font-size: 1rem;
             color: var(--text-gray);
             line-height: 1.5;
         }
 
-        .how-visual {
-            /* border: 1px solid var(--primary-purple-light); */
+        .how-visual-card {
             border-radius: 20px;
             padding: 0;
             overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
+            transition: background-color 300ms ease;
+            background: #f4f6ff;
+            /* Default bg */
         }
 
-        .how-visual img {
+        .how-visual-image {
             max-width: 100%;
             height: auto;
             display: block;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .how-visual-image.fade-out {
+            opacity: 0;
         }
 
         @media screen and (max-width: 968px) {
