@@ -1659,8 +1659,27 @@
             align-items: stretch;
             background: #fff;
             box-shadow: 0 16px 50px rgba(17, 24, 39, .06);
-            margin-bottom: 18px;
+            margin-bottom: 40px;
+            /* Increased margin for better scroll feel */
             flex-wrap: wrap;
+            position: sticky;
+            top: 120px;
+            z-index: 1;
+        }
+
+        /* Staggered offsets for stacking effect 
+           Note: nth-child count includes the header div which is the 1st child
+        */
+        .everything-card:nth-child(2) {
+            top: 120px;
+        }
+
+        .everything-card:nth-child(3) {
+            top: 140px;
+        }
+
+        .everything-card:nth-child(4) {
+            top: 160px;
         }
 
         .everything-card.large-padding {
