@@ -105,3 +105,44 @@ function renderBlogGrid(containerId, options = {}) {
     // but the CSS usually handles .blog-grid > .blog-card
     container.innerHTML = cardsHtml;
 }
+
+/**
+ * Loads the blog header image for the current page
+ */
+function loadBlogHeaderImage() {
+    // Get current filename
+    const path = window.location.pathname;
+    const pageSlug = path.split('/').pop();
+
+    // Find post
+    const post = blogPosts.find(p => p.slug === pageSlug);
+
+    if (post) {
+        const header = document.querySelector('.blog-post-header');
+        if (header) {
+            // Add background image with overlay
+            // We assume we are in the blog/ directory, so we need ../ to get to assets
+            header.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('../${post.image}')`;
+            header.style.backgroundSize = 'cover';
+            header.style.backgroundPosition = 'center';
+            header.style.color = '#ffffff';
+
+            // Update title color
+            const title = header.querySelector('.blog-post-title');
+            if (title) {
+                title.style.color = '#ffffff';
+            }
+
+            // Update meta color
+            const meta = header.querySelector('.blog-post-meta');
+            if (meta) {
+                meta.style.color = 'rgba(255, 255, 255, 0.9)';
+            }
+        }
+    }
+}
+
+// Auto-run on load if we are on a page that matches a blog post
+document.addEventListener('DOMContentLoaded', () => {
+    loadBlogHeaderImage();
+});
