@@ -226,38 +226,21 @@
 
         .app-store-btn {
             display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: #000;
-            color: var(--white);
-            padding: 12px 20px;
-            border-radius: 8px;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: transform 0.2s, opacity 0.3s;
+            padding: 0;
+            background: transparent;
         }
 
         .app-store-btn:hover {
             opacity: 0.9;
+            transform: translateY(-2px);
         }
 
-        .app-store-btn i {
-            font-size: 1.75rem;
-        }
-
-        .app-store-btn-text {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-        }
-
-        .app-store-btn .small-text {
-            font-size: 0.65rem;
-            opacity: 0.8;
-        }
-
-        .app-store-btn .main-text {
-            font-size: 1rem;
-            font-weight: 600;
+        .app-store-btn img {
+            height: 48px;
+            width: auto;
+            display: block;
         }
 
         .hero-features {
