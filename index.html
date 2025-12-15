@@ -329,22 +329,22 @@
         </section>
 
         <!-- Everything Section -->
-        <section id="everything" style="padding:50px 0; background:#ffffff;">
-            <div class="container" style="max-width:960px; margin:0 auto; padding:0 20px;">
+        <!-- Everything Section -->
+        <section id="everything" class="everything-section">
+            <div class="container everything-container">
 
                 <!-- Header -->
-                <div style="text-align:center; max-width:900px; margin:0 auto 40px;">
-                    <h2 style="margin:0 0 10px; font-size:36px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                <div class="everything-section-header">
+                    <h2 class="everything-title">
                         Everything You Need,<br />
                         Already Inside
-                        <span style="position:relative; display:inline-block;">
+                        <span class="everything-title-highlight">
                             Takkada
-                            <span style="position:absolute; left:6%; right:6%; bottom:-6px; height:10px;
-                       background:rgba(91,73,255,.22); border-radius:999px;"></span>
+                            <span class="everything-title-underline"></span>
                         </span>
                     </h2>
 
-                    <p style="margin:0; font-size:18px; line-height:1.65; color:#5b6270;">
+                    <p class="everything-subtitle">
                         Every other platform stops at sending reminders. We actually collect the payment AND reconcile
                         it in Tally automatically.
                         Our reconciliation engine matches payments to invoices—even partial payments, combined invoices,
@@ -353,165 +353,135 @@
                 </div>
 
                 <!-- ===================== CARD 1 ===================== -->
-                <div style="border:1px solid #e9ecf2; border-radius:18px; padding:30px; display:flex; gap:24px;
-                align-items:stretch; background:#fff; box-shadow:0 16px 50px rgba(17,24,39,.06);
-                margin-bottom:18px; flex-wrap:wrap;">
-                    <div style="flex:1; min-width:320px; display:flex; flex-direction:column; justify-content:center;">
-                        <h3 style="margin:0 0 14px; font-size:28px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                <div class="everything-card">
+                    <div class="everything-card-content">
+                        <h3 class="everything-card-title">
                             Complete workflow<br />automation
                         </h3>
 
-                        <p style="margin:0 0 26px; font-size:16px; line-height:1.8; color:#5b6270; max-width:560px;">
+                        <p class="everything-card-desc">
                             Tally syncs invoices automatically. System sends WhatsApp reminders on schedule.
                             Retailers get payment links. You just check your bank balance growing.
                         </p>
 
-                        <!-- Bullets (match reference: filled circle + white tick) -->
-                        <div style="display:flex; flex-direction:column; gap:16px; margin-top:4px;">
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                        <!-- Bullets -->
+                        <div class="card-bullets">
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">Tally sync</span>
+                                <span class="card-bullet-text">Tally sync</span>
                             </div>
 
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">WhatsApp reminders + Payment links</span>
+                                <span class="card-bullet-text">WhatsApp reminders + Payment links</span>
                             </div>
 
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">Money in bank</span>
+                                <span class="card-bullet-text">Money in bank</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Visual (match reference: bigger lavender panel, phone sits inside, slightly top-aligned) -->
-                    <div
-                        style="flex:1; min-width:320px; display:flex; justify-content:flex-end; align-items:flex-start;">
-                        <div style="width:min(380px,100%); background:linear-gradient(135deg,#f3f0ff,#eee9ff);
-                    border-radius:26px; padding:20px; border:1px solid #ebe7ff;
-                    display:flex; justify-content:center; align-items:flex-start; height:340px; overflow:hidden;">
+                    <!-- Visual -->
+                    <div class="everything-card-visual-wrapper">
+                        <div class="everything-card-visual">
                             <img src="assets/images/screenshots/e-1.png" alt="Takkada workflow"
-                                style="width:min(220px,100%); height:auto; display:block; border-radius:22px;
-                      box-shadow:0 28px 70px rgba(17,24,39,.20);
-                      margin-top:6px; -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%); mask-image: linear-gradient(to bottom, black 40%, transparent 100%);" />
+                                class="everything-card-image" />
                         </div>
                     </div>
                 </div>
 
                 <!-- ===================== CARD 2 (image left) ===================== -->
-                <div style="border:1px solid #e9ecf2; border-radius:22px; padding:44px; display:flex; gap:40px;
-                align-items:stretch; background:#fff; box-shadow:0 16px 50px rgba(17,24,39,.06);
-                margin-bottom:18px; flex-wrap:wrap;">
-                    <div
-                        style="flex:1; min-width:320px; display:flex; justify-content:flex-start; align-items:flex-start;">
-                        <div style="width:min(380px,100%); background:linear-gradient(135deg,#f3f0ff,#eee9ff);
-                    border-radius:26px; padding:20px; border:1px solid #ebe7ff;
-                    display:flex; justify-content:center; align-items:flex-start; height:340px; overflow:hidden;">
+                <div class="everything-card large-padding">
+                    <div class="everything-card-visual-wrapper left-align">
+                        <div class="everything-card-visual">
                             <img src="assets/images/screenshots/e-2.png" alt="Takkada ledger access"
-                                style="width:min(220px,100%); height:auto; display:block; border-radius:22px;
-                      box-shadow:0 28px 70px rgba(17,24,39,.20);
-                      margin-top:6px; -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%); mask-image: linear-gradient(to bottom, black 40%, transparent 100%);" />
+                                class="everything-card-image" />
                         </div>
                     </div>
 
-                    <div style="flex:1; min-width:320px; display:flex; flex-direction:column; justify-content:center;">
-                        <h3 style="margin:0 0 14px; font-size:28px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                    <div class="everything-card-content">
+                        <h3 class="everything-card-title">
                             Instant Ledger Access
                         </h3>
 
-                        <p style="margin:0 0 26px; font-size:16px; line-height:1.8; color:#5b6270; max-width:560px;">
+                        <p class="everything-card-desc">
                             Check any party’s ledger in seconds. Share outstanding statements directly on WhatsApp.
                             Create vouchers for partial payments from one dashboard.
                         </p>
 
-                        <div style="display:flex; flex-direction:column; gap:16px; margin-top:4px;">
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                        <div class="card-bullets">
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">Check all transactions</span>
+                                <span class="card-bullet-text">Check all transactions</span>
                             </div>
 
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">Add vouchers instantly</span>
+                                <span class="card-bullet-text">Add vouchers instantly</span>
                             </div>
 
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">Share ledger on WhatsApp</span>
+                                <span class="card-bullet-text">Share ledger on WhatsApp</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- ===================== CARD 3 ===================== -->
-                <div style="border:1px solid #e9ecf2; border-radius:18px; padding:30px; display:flex; gap:24px;
-                align-items:stretch; background:#fff; box-shadow:0 16px 50px rgba(17,24,39,.06);
-                flex-wrap:wrap;">
-                    <div style="flex:1; min-width:320px; display:flex; flex-direction:column; justify-content:center;">
-                        <h3 style="margin:0 0 14px; font-size:28px; line-height:1.12; font-weight:900; color:#0b0b0f;">
+                <div class="everything-card">
+                    <div class="everything-card-content">
+                        <h3 class="everything-card-title">
                             Smart Collection &<br />Auto Reconciliation
                         </h3>
 
-                        <p style="margin:0 0 26px; font-size:16px; line-height:1.8; color:#5b6270; max-width:560px;">
+                        <p class="everything-card-desc">
                             Retailer clicks “Pay Now” on WhatsApp. Pays via UPI, NEFT, RTGS or cards.
                             Money hits your bank and auto-matches invoices in Tally.
                         </p>
 
-                        <div style="display:flex; flex-direction:column; gap:16px; margin-top:4px;">
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                        <div class="card-bullets">
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">WhatsApp Pay Now</span>
+                                <span class="card-bullet-text">WhatsApp Pay Now</span>
                             </div>
 
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">Any payment mode</span>
+                                <span class="card-bullet-text">Any payment mode</span>
                             </div>
 
-                            <div style="display:flex; align-items:center; gap:14px;">
-                                <span style="width:28px; height:28px; border-radius:999px; background:#5b49ff;
-                         display:inline-flex; align-items:center; justify-content:center; flex:0 0 28px;">
-                                    <span style="color:#fff; font-size:16px; font-weight:900; line-height:0;">✓</span>
+                            <div class="card-bullet-item">
+                                <span class="card-bullet-icon">
+                                    <span class="card-bullet-check">✓</span>
                                 </span>
-                                <span style="font-size:17px; color:#0b0b0f;">Auto reconciliation</span>
+                                <span class="card-bullet-text">Auto reconciliation</span>
                             </div>
                         </div>
                     </div>
 
-                    <div
-                        style="flex:1; min-width:320px; display:flex; justify-content:flex-end; align-items:flex-start;">
-                        <div style="width:min(380px,100%); background:linear-gradient(135deg,#f3f0ff,#eee9ff);
-                    border-radius:26px; padding:20px; border:1px solid #ebe7ff;
-                    display:flex; justify-content:center; align-items:flex-start; height:340px; overflow:hidden;">
+                    <div class="everything-card-visual-wrapper">
+                        <div class="everything-card-visual">
                             <img src="assets/images/screenshots/e-3.png" alt="WhatsApp collections"
-                                style="width:min(220px,100%); height:auto; display:block; border-radius:22px;
-                      box-shadow:0 28px 70px rgba(17,24,39,.20);
-                      margin-top:6px; -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%); mask-image: linear-gradient(to bottom, black 40%, transparent 100%);" />
+                                class="everything-card-image" />
                         </div>
                     </div>
                 </div>
@@ -565,66 +535,58 @@
         </section>
 
         <!-- How It Works Section -->
-        <section id="how-it-works" style="padding:72px 0; background:#ffffff;">
-            <div class="container" style="max-width:1180px; margin:0 auto; padding:0 20px;">
-                <div
-                    style="display:flex; gap:44px; align-items:stretch; justify-content:space-between; flex-wrap:wrap;">
+        <section id="how-it-works" class="how-section">
+            <div class="container how-container">
+                <div class="how-wrapper">
 
                     <!-- LEFT -->
-                    <div style="flex:1; min-width:320px; max-width:560px;">
-                        <h2 style="margin:0 0 10px; font-size:44px; line-height:1.1; font-weight:800; color:#0b0b0f;">
+                    <div class="how-content-col">
+                        <h2 class="how-title">
                             How Takkada Works
                         </h2>
 
-                        <p style="margin:0 0 28px; font-size:18px; line-height:1.6; color:#555b66; max-width:520px;">
+                        <p class="how-subtitle">
                             Getting started is simple—download, connect your Tally, and take control of your money with
                             just a few taps.
                         </p>
 
                         <!-- STEP 1 (PRIMARY) -->
-                        <div
-                            style="border-radius:16px; padding:20px 18px; background:linear-gradient(135deg,#5b49ff,#6b32ff); color:#fff;
-                    box-shadow:0 14px 34px rgba(91,73,255,.22); display:flex; gap:14px; align-items:flex-start; margin-bottom:14px;">
-                            <div
-                                style="width:44px; height:44px; border-radius:12px; background:rgba(255,255,255,.18); display:flex; align-items:center; justify-content:center; flex:0 0 44px;">
-                                <i class="ph-bold ph-download-simple" style="font-size:22px; color:#fff;"></i>
+                        <div class="how-step primary">
+                            <div class="how-step-icon">
+                                <i class="ph-bold ph-download-simple"></i>
                             </div>
                             <div>
-                                <div style="font-size:22px; font-weight:800; margin:0 0 6px;">Download the App</div>
-                                <div style="font-size:16px; line-height:1.55; color:rgba(255,255,255,.92); margin:0;">
+                                <div class="how-step-title">Download the App</div>
+                                <div class="how-step-desc">
                                     Install Takkada from the App Store or Google Play on your phone.
                                 </div>
                             </div>
                         </div>
 
                         <!-- STEP 2 -->
-                        <div
-                            style="border-radius:16px; padding:18px; background:#fff; border:1px solid #e9ecf2; display:flex; gap:14px; align-items:flex-start; margin-bottom:14px;">
-                            <div
-                                style="width:44px; height:44px; border-radius:12px; background:#f4f6fb; display:flex; align-items:center; justify-content:center; flex:0 0 44px;">
-                                <i class="ph-bold ph-scan" style="font-size:22px; color:#111827;"></i>
+                        <div class="how-step">
+                            <div class="how-step-icon">
+                                <i class="ph-bold ph-scan"></i>
                             </div>
                             <div>
-                                <div style="font-size:22px; font-weight:800; margin:0 0 6px; color:#0b0b0f;">Complete
+                                <div class="how-step-title">Complete
                                     Business KYC</div>
-                                <div style="font-size:16px; line-height:1.55; color:#5b6270; margin:0;">
+                                <div class="how-step-desc">
                                     Set up your account using email, phone number, GST certificate, PAN, and Aadhaar.
                                 </div>
                             </div>
                         </div>
 
                         <!-- STEP 3 -->
-                        <div
-                            style="border-radius:16px; padding:18px; background:#fff; border:1px solid #e9ecf2; display:flex; gap:14px; align-items:flex-start;">
-                            <div
-                                style="width:44px; height:44px; border-radius:12px; background:#f4f6fb; display:flex; align-items:center; justify-content:center; flex:0 0 44px;">
-                                <i class="ph-bold ph-money" style="font-size:22px; color:#111827;"></i>
+                        <div class="how-step">
+                            <div class="how-step-icon">
+                                <i class="ph-bold ph-money"></i>
                             </div>
                             <div>
-                                <div style="font-size:22px; font-weight:800; margin:0 0 6px; color:#0b0b0f;">
+                                <div class="how-step-title">
                                     Sync Tally & Start Collecting
                                 </div>
-                                <div style="font-size:16px; line-height:1.55; color:#5b6270; margin:0;">
+                                <div class="how-step-desc">
                                     Once KYC is approved, your data syncs instantly—stay on top of every due date and
                                     payment.
                                 </div>
@@ -633,11 +595,10 @@
                     </div>
 
                     <!-- RIGHT -->
-                    <div style="flex:1; min-width:320px; display:flex; justify-content:flex-end;">
-                        <div style="width:min(520px,100%); background:#f5f3ff; border-radius:26px; padding:24px;
-                    border:1px solid #ebe7ff; display:flex; align-items:center; justify-content:center;">
+                    <div class="how-visual-col">
+                        <div class="how-visual-card">
                             <img src="assets/images/screenshots/how.png" alt="How Takkada Works App Screenshot"
-                                style="width:min(360px,100%); height:auto; display:block; border-radius:26px; box-shadow:0 24px 60px rgba(0,0,0,.18);" />
+                                class="how-visual-image" />
                         </div>
                     </div>
 
