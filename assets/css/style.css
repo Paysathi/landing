@@ -1921,3 +1921,155 @@
             border-radius: 26px;
             box-shadow: 0 24px 60px rgba(0, 0, 0, .18);
         }
+        /* Mobile Responsiveness Updates */
+        @media (max-width: 768px) {
+
+            /* Everything Section Mobile */
+            .everything-section {
+                padding: 40px 0;
+            }
+
+            .everything-section-header {
+                margin-bottom: 30px;
+                padding: 0 16px;
+            }
+
+            .everything-title {
+                font-size: 28px;
+            }
+
+            .everything-subtitle {
+                font-size: 16px;
+            }
+
+            .everything-card {
+                flex-direction: column;
+                padding: 24px 20px;
+                gap: 24px;
+                align-items: center;
+                /* Center content */
+                top: 80px;
+                /* Adjust sticky header offset */
+            }
+
+            .everything-card:nth-child(2) {
+                top: 80px;
+            }
+    
+            .everything-card:nth-child(3) {
+                top: 90px;
+            }
+    
+            .everything-card:nth-child(4) {
+                top: 100px;
+            }
+
+            .everything-card.large-padding {
+                padding: 24px 20px;
+                gap: 24px;
+            }
+
+            .everything-card-content {
+                min-width: 0;
+                order: 1;
+                /* Content first usually reads better */
+            }
+
+            .everything-card-visual-wrapper {
+                min-width: 0;
+                justify-content: center;
+                /* Center image */
+                order: 2;
+                margin-top: 10px;
+            }
+
+            .everything-card-visual-wrapper.left-align {
+                justify-content: center;
+            }
+
+            .everything-card-visual {
+                width: 100%;
+                /* Full width card */
+                height: auto;
+                min-height: 250px;
+                /* reasonable height */
+            }
+
+            .everything-card-image {
+                width: 70%;
+                /* Scale image down slightly */
+                max-width: 220px;
+            }
+
+            .everything-card-title {
+                font-size: 24px;
+                text-align: center;
+            }
+
+            .everything-card-desc {
+                font-size: 15px;
+                text-align: center;
+            }
+
+            .card-bullets {
+                align-items: flex-start;
+                /* Keep aligned left for readability */
+            }
+
+            /* How It Works Mobile */
+            .how-wrapper {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .how-content-col {
+                max-width: 100%;
+                min-width: 0;
+            }
+
+            .how-title {
+                font-size: 32px;
+                text-align: center;
+            }
+
+            .how-subtitle {
+                text-align: center;
+                margin: 0 auto 30px;
+            }
+
+            .how-step {
+                padding: 16px;
+            }
+
+            .how-step-icon {
+                width: 36px;
+                height: 36px;
+                flex: 0 0 36px;
+            }
+
+            .how-step-icon i {
+                font-size: 18px;
+            }
+
+            .how-step-title {
+                font-size: 18px;
+            }
+
+            .how-step-desc {
+                font-size: 14px;
+            }
+
+            .how-visual-col {
+                justify-content: center;
+            }
+
+            .how-visual-card {
+                width: 100%;
+                padding: 20px;
+            }
+
+            .how-visual-image {
+                width: 80%;
+                /* scale down */
+            }
+        }
