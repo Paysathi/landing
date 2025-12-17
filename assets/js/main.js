@@ -61,6 +61,54 @@ const activeObserver = new IntersectionObserver((entries) => {
 // Re-observe with the correct logic
 revealElements.forEach(el => activeObserver.observe(el));
 
+/* ==================== PROBLEMS SECTION ANIMATION ==================== */
+document.addEventListener('DOMContentLoaded', () => {
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.18 });
+    revealEls.forEach(el => io.observe(el));
+
+    // Gentle 3D tilt on hover (desktop only)
+    const cards = document.querySelectorAll('.problem-card');
+    const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+
+    if (isFinePointer) {
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (ev) => {
+                const r = card.getBoundingClientRect();
+                const x = ev.clientX - r.left;
+                const y = ev.clientY - r.top;
+                const rx = ((y / r.height) - 0.5) * -6; // rotateX
+                const ry = ((x / r.width) - 0.5) * 6;  // rotateY
+                card.style.transform = `translateY(-8px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    // Click selection logic
+    const selectCards = document.querySelectorAll('.problem-card.is-selectable');
+
+    selectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            selectCards.forEach(c => c.classList.remove('is-active'));
+            card.classList.add('is-active');
+        });
+    });
+
+    // Default select first card
+    if (selectCards.length) selectCards[0].classList.add('is-active');
+});
+
 /* ==================== DARK MODE TOGGLE ==================== */
 const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
