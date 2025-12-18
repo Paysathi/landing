@@ -95,18 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Click selection logic
-    const selectCards = document.querySelectorAll('.problem-card.is-selectable');
 
-    selectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            selectCards.forEach(c => c.classList.remove('is-active'));
-            card.classList.add('is-active');
-        });
-    });
-
-    // Default select first card
-    if (selectCards.length) selectCards[0].classList.add('is-active');
 });
 
 /* ==================== DARK MODE TOGGLE ==================== */
@@ -185,8 +174,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     steps.forEach(step => {
-        step.addEventListener('click', () => {
+        step.addEventListener('mouseenter', () => {
             const stepNum = Number(step.dataset.step);
+            // Prevent re-triggering if already active
+            if (step.classList.contains('active')) return;
+
             if (stepNum) setStep(stepNum);
         });
     });

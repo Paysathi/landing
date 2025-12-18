@@ -461,11 +461,12 @@
         }
 
         /* Hover: lift + glow */
+        /* Hover: lift + glow + active colors */
         .problem-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(91, 73, 255, .28);
-            box-shadow: 0 26px 80px rgba(91, 73, 255, .16);
-            background: #fff;
+            background: linear-gradient(135deg, #5b49ff 0%, #7a6bff 100%);
+            border-color: rgba(255, 255, 255, .18);
+            box-shadow: 0 26px 90px rgba(91, 73, 255, .30);
         }
 
         /* Image container (replaces icon) */
@@ -568,30 +569,25 @@
         }
 
         /* Highlight card */
-        .problem-card.is-active {
-            background: linear-gradient(135deg, #5b49ff 0%, #7a6bff 100%);
-            border-color: rgba(255, 255, 255, .18);
-            box-shadow: 0 26px 90px rgba(91, 73, 255, .30);
-        }
-
-        .problem-card.is-active::before {
+        /* Reuse active styles for hover state content */
+        .problem-card:hover::before {
             background: radial-gradient(560px 260px at 20% 0%,
                     rgba(255, 255, 255, .24) 0%,
                     rgba(255, 255, 255, 0) 58%);
         }
 
-        .problem-card.is-active .problem-title,
-        .problem-card.is-active .problem-desc {
+        .problem-card:hover .problem-title,
+        .problem-card:hover .problem-desc {
             color: #fff;
         }
 
-        .problem-card.is-active .problem-stat {
+        .problem-card:hover .problem-stat {
             background: rgba(255, 255, 255, .16);
             border-color: rgba(255, 255, 255, .22);
             color: #fff;
         }
 
-        .problem-card.is-active .problem-media {
+        .problem-card:hover .problem-media {
             background: rgba(255, 255, 255, .12);
             border-color: rgba(255, 255, 255, .18);
         }
