@@ -635,151 +635,398 @@
             }
         }
 
-        /* Takkada Way Section */
+        /* =========================
+/* =========================================================
+   TAKKADA WAY — Premium animations + premium look
+   Drop this in assets/css/style.css
+========================================================= */
+
+        /* Section */
         .takkada-way {
-            padding: 100px 0;
-            background: var(--bg-cream);
+            position: relative;
+            padding: 84px 0;
+            overflow: hidden;
+            background: radial-gradient(1200px 700px at 20% 20%, rgba(91, 73, 255, 0.10), rgba(255, 255, 255, 0) 55%),
+                radial-gradient(1000px 600px at 80% 60%, rgba(16, 185, 129, 0.10), rgba(255, 255, 255, 0) 55%),
+                #fbf7ef;
+            /* matches your beige */
         }
 
+        /* Layout */
         .takkada-way-container {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
+            grid-template-columns: 1.05fr 1fr;
+            gap: 64px;
             align-items: center;
         }
 
+        @media (max-width: 980px) {
+            .takkada-way-container {
+                grid-template-columns: 1fr;
+                gap: 34px;
+            }
+
+            .takkada-way {
+                padding: 64px 0;
+            }
+        }
+
+        /* Visual block */
         .takkada-way-visual {
             position: relative;
-        }
-
-        .takkada-way-phone {
-            background: #1a1a1a;
-            border-radius: 40px;
-            padding: 12px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            max-width: 300px;
-            margin: 0 auto;
-        }
-
-        .takkada-way-phone img {
-            border-radius: 28px;
-            width: 100%;
-            display: block;
-        }
-
-        .way-floating-card {
-            position: absolute;
-            background: var(--white);
-            border-radius: 12px;
-            padding: 16px 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            z-index: 3;
-        }
-
-        .way-floating-card-1 {
-            top: 10%;
-            right: 0;
-        }
-
-        .way-floating-card-2 {
-            bottom: 20%;
-            right: -20px;
-        }
-
-        .way-floating-card h4 {
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--primary-purple);
-        }
-
-        .way-floating-card p {
-            font-size: 0.75rem;
-            color: var(--text-gray);
-        }
-
-        .takkada-way-content h2 {
-            font-size: 2.25rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .takkada-way-content h2 .underline {
-            text-decoration: underline;
-            text-decoration-color: var(--primary-purple);
-            text-underline-offset: 4px;
-        }
-
-        .takkada-way-content>p {
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            font-size: 1rem;
-        }
-
-        .feature-list {
-            display: flex;
-            flex-direction: column;
-            gap: 24px;
-        }
-
-        .feature-item {
-            display: flex;
-            gap: 16px;
-        }
-
-        .feature-item-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-purple);
-            border-radius: 12px;
+            min-height: 520px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--white);
-            font-size: 1.25rem;
-            flex-shrink: 0;
+            transform: translateZ(0);
+        }
+
+        @media (max-width: 980px) {
+            .takkada-way-visual {
+                min-height: auto;
+            }
+        }
+
+        /* Glow behind phone */
+        .takkada-way-glow {
+            position: absolute;
+            width: 520px;
+            height: 520px;
+            border-radius: 50%;
+            background:
+                radial-gradient(circle at 30% 30%, rgba(91, 73, 255, 0.28), rgba(91, 73, 255, 0) 55%),
+                radial-gradient(circle at 70% 70%, rgba(16, 185, 129, 0.24), rgba(16, 185, 129, 0) 55%),
+                radial-gradient(circle at 55% 25%, rgba(249, 115, 22, 0.18), rgba(249, 115, 22, 0) 55%);
+            filter: blur(18px);
+            opacity: 0.9;
+            z-index: 0;
+        }
+
+        /* Phone */
+        .takkada-way-phone {
+            position: relative;
+            z-index: 2;
+            width: min(360px, 90%);
+            border-radius: 34px;
+            transform: translateZ(0);
+            will-change: transform;
+        }
+
+        .takkada-way-phone img {
+            width: 100%;
+            display: block;
+            border-radius: 34px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow:
+                0 28px 90px rgba(0, 0, 0, 0.16),
+                0 10px 26px rgba(0, 0, 0, 0.10);
+        }
+
+        /* Floating cards */
+        .way-floating-card {
+            position: absolute;
+            z-index: 3;
+            max-width: 240px;
+            padding: 14px 14px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.84);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            box-shadow: 0 18px 60px rgba(0, 0, 0, 0.12);
+            transform: translateZ(0);
+            will-change: transform, opacity;
+        }
+
+        .way-floating-card p {
+            margin: 8px 0 0;
+            font-size: 13px;
+            line-height: 1.35;
+            color: rgba(15, 18, 35, 0.70);
+        }
+
+        /* pill header inside card */
+        .way-card-pill {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 800;
+            color: rgba(15, 18, 35, 0.92);
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 999px;
+            display: inline-block;
+        }
+
+        .dot-purple {
+            background: rgba(91, 73, 255, 0.95);
+        }
+
+        .dot-green {
+            background: rgba(16, 185, 129, 0.95);
+        }
+
+        /* Positions */
+        .way-floating-card-1 {
+            top: 64px;
+            right: -12px;
+        }
+
+        .way-floating-card-2 {
+            bottom: 88px;
+            right: -4px;
+        }
+
+        @media (max-width: 980px) {
+            .way-floating-card-1 {
+                top: 12px;
+                right: 8px;
+                transform: scale(0.96);
+            }
+
+            .way-floating-card-2 {
+                bottom: 12px;
+                right: 8px;
+                transform: scale(0.96);
+            }
+        }
+
+        /* Content typography */
+        .takkada-way-title {
+            margin: 0 0 12px;
+            font-size: clamp(30px, 3.3vw, 46px);
+            line-height: 1.12;
+            font-weight: 950;
+            letter-spacing: -0.02em;
+            color: rgba(10, 12, 20, 0.96);
+        }
+
+        .takkada-way-subtitle {
+            margin: 0 0 28px;
+            font-size: 16.5px;
+            line-height: 1.65;
+            color: rgba(15, 18, 35, 0.72);
+            max-width: 560px;
+        }
+
+        /* Underline animation */
+        .underline {
+            position: relative;
+            display: inline-block;
+        }
+
+        .underline::after {
+            content: "";
+            position: absolute;
+            left: 2%;
+            right: 2%;
+            bottom: -7px;
+            height: 10px;
+            border-radius: 999px;
+            background: rgba(91, 73, 255, 0.20);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 750ms cubic-bezier(.2, .8, .2, 1);
+        }
+
+        /* Feature list */
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .feature-item {
+            display: grid;
+            grid-template-columns: 48px 1fr;
+            gap: 14px;
+            padding: 14px 14px;
+            border-radius: 18px;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            background: rgba(255, 255, 255, 0.55);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+
+            transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
+            will-change: transform, opacity;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.10);
+            background: rgba(255, 255, 255, 0.72);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+
+        /* icon box */
+        .feature-item-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            background: rgba(91, 73, 255, 0.12);
+            box-shadow: inset 0 0 0 1px rgba(91, 73, 255, 0.10);
+            transition: transform 220ms ease;
+        }
+
+        .feature-item:hover .feature-item-icon {
+            transform: scale(1.04);
         }
 
         .feature-item-icon.green {
-            background: var(--accent-green);
+            background: rgba(16, 185, 129, 0.14);
+            box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.12);
         }
 
         .feature-item-icon.orange {
-            background: #ff7675;
+            background: rgba(249, 115, 22, 0.14);
+            box-shadow: inset 0 0 0 1px rgba(249, 115, 22, 0.12);
         }
 
         .feature-item-icon.blue {
-            background: #74b9ff;
+            background: rgba(59, 130, 246, 0.14);
+            box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.12);
+        }
+
+        .feature-item-icon i {
+            font-size: 22px;
         }
 
         .feature-item-content h4 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-dark);
+            margin: 0 0 6px;
+            font-size: 15.5px;
+            font-weight: 900;
+            color: rgba(10, 12, 20, 0.92);
         }
 
         .feature-item-content p {
-            font-size: 0.875rem;
-            color: var(--text-gray);
-            line-height: 1.5;
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.55;
+            color: rgba(15, 18, 35, 0.70);
         }
 
+        /* badges */
         .feature-badges {
+            margin-top: 10px;
             display: flex;
-            gap: 8px;
-            margin-top: 8px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .feature-badge {
-            background: var(--white);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--text-gray);
-            border: 1px solid var(--border-light);
+            font-size: 12px;
+            font-weight: 800;
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            color: rgba(10, 12, 20, 0.78);
         }
+
+        /* =========================================================
+   ANIMATION SYSTEM — Scroll reveal + stagger + float
+========================================================= */
+
+        [data-animate="takkada-way"] .takkada-way-visual,
+        [data-animate="takkada-way"] .takkada-way-title,
+        [data-animate="takkada-way"] .takkada-way-subtitle,
+        [data-animate="takkada-way"] .feature-item,
+        [data-animate="takkada-way"] .way-floating-card {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        [data-animate="takkada-way"].is-inview .takkada-way-visual {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 800ms ease, transform 800ms cubic-bezier(.2, .8, .2, 1);
+        }
+
+        [data-animate="takkada-way"].is-inview .takkada-way-title {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 700ms ease 80ms, transform 700ms cubic-bezier(.2, .8, .2, 1) 80ms;
+        }
+
+        [data-animate="takkada-way"].is-inview .takkada-way-subtitle {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 700ms ease 160ms, transform 700ms cubic-bezier(.2, .8, .2, 1) 160ms;
+        }
+
+        [data-animate="takkada-way"].is-inview .underline::after {
+            transform: scaleX(1);
+            transition-delay: 220ms;
+        }
+
+        [data-animate="takkada-way"].is-inview .feature-item {
+            opacity: 1;
+            transform: translateY(0);
+            transition:
+                opacity 650ms ease calc(240ms + var(--stagger, 0ms)),
+                transform 650ms cubic-bezier(.2, .8, .2, 1) calc(240ms + var(--stagger, 0ms));
+        }
+
+        /* cards appear a bit later */
+        [data-animate="takkada-way"].is-inview .way-floating-card {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 900ms ease 260ms, transform 900ms cubic-bezier(.2, .8, .2, 1) 260ms;
+        }
+
+        /* Subtle continuous motion (after reveal) */
+        @keyframes floatA {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes floatB {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        [data-animate="takkada-way"].is-inview .way-floating-card-1 {
+            animation: floatA 4.6s ease-in-out infinite;
+        }
+
+        [data-animate="takkada-way"].is-inview .way-floating-card-2 {
+            animation: floatB 5.2s ease-in-out infinite;
+        }
+
+        /* Hover lift on floating cards */
+        .way-floating-card:hover {
+            transform: translateY(-6px);
+            transition: transform 220ms ease;
+        }
+
+        /* Reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
 
         /* Everything Section */
         .everything {
@@ -2233,3 +2480,392 @@
                 /* scale down */
             }
         }
+/* =========================================================
+   TESTIMONIALS — BEST VERSION (premium glass + tilt + swipe)
+========================================================= */
+
+.testimonials{
+  position: relative;
+  padding: 92px 0;
+  overflow: hidden;
+  background: #fbf7ef;
+}
+
+.testimonials-header{
+  text-align:center;
+  max-width: 900px;
+  margin: 0 auto 44px;
+  position: relative;
+  z-index: 2;
+}
+
+.testimonials-kicker{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(0,0,0,0.06);
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgba(15,18,35,0.62);
+  margin-bottom: 12px;
+}
+
+.testimonials-header h2{
+  margin: 0 0 10px;
+  font-size: clamp(30px, 3.2vw, 52px);
+  line-height: 1.1;
+  font-weight: 950;
+  letter-spacing: -0.03em;
+  color: rgba(10,12,20,0.96);
+}
+
+.testimonials-header p{
+  margin: 0;
+  font-size: 16.5px;
+  line-height: 1.65;
+  color: rgba(15,18,35,0.70);
+}
+
+/* Background ambience */
+.testimonials-bg{
+  position:absolute;
+  inset: 0;
+  pointer-events:none;
+  z-index: 0;
+}
+
+.blob{
+  position:absolute;
+  width: 560px;
+  height: 560px;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.7;
+}
+
+.blob-1{
+  left: -180px;
+  top: -160px;
+  background: radial-gradient(circle at 30% 30%, rgba(91,73,255,0.35), rgba(91,73,255,0) 60%);
+  animation: blobA 10s ease-in-out infinite;
+}
+.blob-2{
+  right: -220px;
+  top: 60px;
+  background: radial-gradient(circle at 60% 35%, rgba(16,185,129,0.30), rgba(16,185,129,0) 60%);
+  animation: blobB 12s ease-in-out infinite;
+}
+.blob-3{
+  left: 22%;
+  bottom: -240px;
+  background: radial-gradient(circle at 40% 55%, rgba(249,115,22,0.24), rgba(249,115,22,0) 60%);
+  animation: blobC 13s ease-in-out infinite;
+}
+
+@keyframes blobA{ 0%,100%{ transform: translate(0,0)} 50%{ transform: translate(26px, 18px)} }
+@keyframes blobB{ 0%,100%{ transform: translate(0,0)} 50%{ transform: translate(-28px, 18px)} }
+@keyframes blobC{ 0%,100%{ transform: translate(0,0)} 50%{ transform: translate(18px,-18px)} }
+
+.grid-noise{
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(to right, rgba(0,0,0,0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0,0,0,0.035) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.10;
+  mask-image: radial-gradient(circle at 50% 40%, #000 30%, transparent 70%);
+}
+
+/* Track wrapper */
+.testimonials-track{
+  position: relative;
+  z-index: 2;
+}
+
+/* Desktop: grid */
+.testimonials-grid{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+/* Mobile: swipe carousel */
+@media (max-width: 980px){
+  .testimonials{ padding: 68px 0; }
+  .testimonials-grid{
+    grid-template-columns: repeat(3, 88%);
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 14px;
+    padding: 6px 8px 18px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .testimonials-grid::-webkit-scrollbar{ height: 8px; }
+  .testimonials-grid::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.12); border-radius: 999px; }
+}
+
+.testimonial-card{
+  position: relative;
+  border-radius: 24px;
+  padding: 22px;
+  background: rgba(255,255,255,0.66);
+  border: 1px solid rgba(0,0,0,0.06);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    0 20px 70px rgba(0,0,0,0.09),
+    0 1px 0 rgba(255,255,255,0.55) inset;
+  transform: translateZ(0);
+  will-change: transform, opacity;
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease, border-color 220ms ease;
+  overflow:hidden;
+  scroll-snap-align: start;
+  outline: none;
+}
+
+/* Gradient border layer */
+.card-border{
+  position:absolute;
+  inset: -1px;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(90deg,
+    rgba(91,73,255,0.45),
+    rgba(16,185,129,0.36),
+    rgba(249,115,22,0.32),
+    rgba(91,73,255,0.45)
+  );
+  background-size: 320% 100%;
+  animation: borderShift 7.5s ease-in-out infinite;
+  opacity: 0;
+  pointer-events:none;
+
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+@keyframes borderShift{
+  0%{ background-position: 0% 50%; }
+  50%{ background-position: 100% 50%; }
+  100%{ background-position: 0% 50%; }
+}
+
+/* Glow that follows pointer (JS sets --mx/--my) */
+.card-glow{
+  position:absolute;
+  inset:-40%;
+  background: radial-gradient(340px 340px at var(--mx, 20%) var(--my, 20%),
+    rgba(91,73,255,0.22),
+    rgba(16,185,129,0.10),
+    rgba(249,115,22,0.08),
+    rgba(255,255,255,0) 60%);
+  opacity: 0;
+  transition: opacity 220ms ease;
+  pointer-events:none;
+}
+
+/* Hover/focus premium state */
+.testimonial-card:hover,
+.testimonial-card:focus-visible{
+  transform: translateY(-8px);
+  box-shadow:
+    0 30px 110px rgba(0,0,0,0.14),
+    0 1px 0 rgba(255,255,255,0.6) inset;
+  background: rgba(255,255,255,0.76);
+  border-color: rgba(0,0,0,0.10);
+}
+.testimonial-card:hover .card-border,
+.testimonial-card:focus-visible .card-border{ opacity: 0.95; }
+.testimonial-card:hover .card-glow,
+.testimonial-card:focus-visible .card-glow{ opacity: 1; }
+
+/* Top line */
+.testimonial-top{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.testimonial-stars{
+  display:flex;
+  gap: 6px;
+  color: #f4b400;
+  filter: drop-shadow(0 6px 14px rgba(0,0,0,0.10));
+}
+
+.testimonial-tag{
+  font-size: 12px;
+  font-weight: 950;
+  padding: 8px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  background: rgba(91,73,255,0.12);
+  border: 1px solid rgba(91,73,255,0.18);
+  color: rgba(15,18,35,0.86);
+}
+
+.testimonial-tag.green{ background: rgba(16,185,129,0.13); border-color: rgba(16,185,129,0.20); }
+.testimonial-tag.orange{ background: rgba(249,115,22,0.14); border-color: rgba(249,115,22,0.20); }
+
+/* Quote */
+.testimonial-text{
+  margin: 0 0 16px;
+  font-size: 15.6px;
+  line-height: 1.72;
+  color: rgba(15,18,35,0.78);
+}
+
+.quote{
+  font-size: 28px;
+  font-weight: 950;
+  color: rgba(91,73,255,0.40);
+  position: relative;
+  top: 6px;
+  margin-right: 4px;
+  line-height: 0;
+}
+.quote.end{
+  margin-left: 4px;
+  margin-right: 0;
+}
+
+/* Metrics row */
+.testimonial-metrics{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  background: rgba(0,0,0,0.03);
+  border: 1px solid rgba(0,0,0,0.05);
+  margin-bottom: 16px;
+}
+
+.metric-value{
+  font-size: 16px;
+  font-weight: 950;
+  color: rgba(10,12,20,0.92);
+}
+.metric-label{
+  font-size: 12.5px;
+  color: rgba(15,18,35,0.62);
+  margin-top: 2px;
+}
+
+/* Author row */
+.testimonial-author{
+  display:grid;
+  grid-template-columns: 44px 1fr auto;
+  align-items:center;
+  gap: 12px;
+}
+
+.avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(91,73,255,0.30), rgba(91,73,255,0.10)),
+    radial-gradient(circle at 70% 70%, rgba(16,185,129,0.22), rgba(16,185,129,0.06));
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.avatar i{ font-size: 18px; color: rgba(15,18,35,0.70); }
+
+.who h4{
+  margin: 0 0 3px;
+  font-size: 15px;
+  font-weight: 950;
+  color: rgba(10,12,20,0.92);
+}
+.who span{
+  font-size: 13.5px;
+  color: rgba(15,18,35,0.62);
+}
+
+/* Verified pill */
+.verified{
+  display:inline-flex;
+  align-items:center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 950;
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.18);
+  color: rgba(15,18,35,0.82);
+}
+.verified i{ font-size: 16px; }
+
+/* Swipe hint + dots (shown only on mobile) */
+.scroll-hint, .dots{ display:none; }
+
+@media (max-width: 980px){
+  .scroll-hint{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 900;
+    color: rgba(15,18,35,0.55);
+    margin-top: 12px;
+    opacity: 0.9;
+  }
+  .scroll-hint i{ font-size: 16px; }
+
+  .dots{
+    display:flex;
+    justify-content:center;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .dots .dot{
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.16);
+    transition: width 220ms ease, background 220ms ease;
+  }
+  .dots .dot.is-active{
+    width: 22px;
+    background: rgba(91,73,255,0.45);
+  }
+}
+
+/* =========================================================
+   Scroll reveal (staggered)
+========================================================= */
+[data-animate="testimonials"] .testimonials-header,
+[data-animate="testimonials"] .testimonial-card{
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-animate="testimonials"].is-inview .testimonials-header{
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 800ms ease, transform 800ms cubic-bezier(.2,.8,.2,1);
+}
+
+[data-animate="testimonials"].is-inview .testimonial-card{
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 700ms ease calc(160ms + var(--stagger, 0ms)),
+    transform 700ms cubic-bezier(.2,.8,.2,1) calc(160ms + var(--stagger, 0ms));
+}

@@ -226,30 +226,44 @@
         </section>
 
         <!-- Takkada Way Section -->
-        <section class="takkada-way" id="features">
+        <!-- ✅ Replace your whole section with this (same content, best structure for animation) -->
+        <section class="takkada-way" id="features" data-animate="takkada-way">
             <div class="takkada-way-container container">
+                <!-- Visual -->
                 <div class="takkada-way-visual">
+                    <div class="takkada-way-glow" aria-hidden="true"></div>
+
                     <div class="takkada-way-phone">
                         <img src="assets/images/screenshots/screen_2.png" alt="Takkada Features" />
                     </div>
+
                     <div class="way-floating-card way-floating-card-1">
-                        <h4>Zero Manual Entry</h4>
+                        <div class="way-card-pill">
+                            <span class="dot dot-purple"></span>
+                            <span>Zero Manual Entry</span>
+                        </div>
                         <p>Everything syncs automatically</p>
                     </div>
+
                     <div class="way-floating-card way-floating-card-2">
-                        <h4>Auto-Reconciled</h4>
+                        <div class="way-card-pill">
+                            <span class="dot dot-green"></span>
+                            <span>Auto-Reconciled</span>
+                        </div>
                         <p>Payments matched instantly</p>
                     </div>
                 </div>
+
+                <!-- Content -->
                 <div class="takkada-way-content">
-                    <h2>
+                    <h2 class="takkada-way-title">
                         We've Got You Covered –
                         <span class="underline">The Takkada Way</span>
                     </h2>
-                    <p>
-                        No need to juggle multiple tools - Takkada is built
-                        to handle your finances end-to-end, so you can focus
-                        on what you do best: growing your business.
+
+                    <p class="takkada-way-subtitle">
+                        No need to juggle multiple tools — Takkada is built to handle your finances end-to-end,
+                        so you can focus on what you do best: growing your business.
                     </p>
 
                     <div class="feature-list">
@@ -259,53 +273,41 @@
                             </div>
                             <div class="feature-item-content">
                                 <h4>Multiple Payment Methods</h4>
-                                <p>
-                                    Accept payments via UPI, Net Banking,
-                                    Credit Cards, and more. Give customers
-                                    the flexibility to pay as they prefer.
-                                </p>
+                                <p>Accept payments via UPI, Net Banking, Credit Cards, and more. Give customers the
+                                    flexibility to pay as they prefer.</p>
                             </div>
                         </div>
+
                         <div class="feature-item">
                             <div class="feature-item-icon green">
                                 <i class="ph-fill ph-arrows-clockwise"></i>
                             </div>
                             <div class="feature-item-content">
                                 <h4>Auto-Reconcile Invoices</h4>
-                                <p>
-                                    Payments are automatically matched to
-                                    invoices as they are received - no
-                                    manual reconciliation needed.
-                                </p>
+                                <p>Payments are automatically matched to invoices as they are received — no manual
+                                    reconciliation needed.</p>
                             </div>
                         </div>
+
                         <div class="feature-item">
                             <div class="feature-item-icon orange">
                                 <i class="ph-fill ph-chart-pie-slice"></i>
                             </div>
                             <div class="feature-item-content">
-                                <h4>Track Credit and Dues in One Place!</h4>
-                                <p>
-                                    Get a complete view of who owes what.
-                                    Stay on top of outstanding payments with
-                                    real-time tracking.
-                                </p>
+                                <h4>Track Credit and Dues in One Place</h4>
+                                <p>Get a complete view of who owes what. Stay on top of outstanding payments with
+                                    real-time tracking.</p>
                             </div>
                         </div>
+
                         <div class="feature-item">
                             <div class="feature-item-icon blue">
                                 <i class="ph-fill ph-file-text"></i>
                             </div>
                             <div class="feature-item-content">
-                                <h4>
-                                    Generate e-Invoices & eWay Bills from
-                                    Your Phone
-                                </h4>
-                                <p>
-                                    Create GST-compliant e-invoices and eWay
-                                    bills instantly, right from your mobile
-                                    device.
-                                </p>
+                                <h4>Generate e-Invoices & eWay Bills from Your Phone</h4>
+                                <p>Create GST-compliant e-invoices and eWay bills instantly, right from your mobile
+                                    device.</p>
                                 <div class="feature-badges">
                                     <span class="feature-badge">e-Invoice</span>
                                     <span class="feature-badge">eWay Bill</span>
@@ -595,91 +597,192 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
-        <section class="testimonials" id="testimonials">
+        <!-- ✅ BEST-IN-CLASS testimonials (grid on desktop, swipe carousel on mobile) -->
+        <section class="testimonials" id="testimonials" data-animate="testimonials">
             <div class="container">
                 <div class="testimonials-header">
+                    <span class="testimonials-kicker">Trusted by Indian Businesses</span>
                     <h2>See Why People Love Us</h2>
                     <p>
-                        Thousands of businesses trust Takkada for their
-                        payment collection. Here's what they're saying about
-                        their journey with Takkada.
+                        Thousands of businesses trust Takkada for payment collection.
+                        Here’s what they’re saying about their journey with Takkada.
                     </p>
                 </div>
 
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "The auto reconciliation is magic - payments
-                            land directly into my Tally. My collection rate
-                            went from 60% to 92%. The WhatsApp integration
-                            is genius!"
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <i class="ph-fill ph-user"></i>
+                <!-- Ambient background -->
+                <div class="testimonials-bg" aria-hidden="true">
+                    <span class="blob blob-1"></span>
+                    <span class="blob blob-2"></span>
+                    <span class="blob blob-3"></span>
+                    <span class="grid-noise"></span>
+                </div>
+
+                <!-- Desktop grid + Mobile carousel -->
+                <div class="testimonials-track" role="region" aria-label="Testimonials">
+                    <div class="testimonials-grid" id="testimonialGrid">
+                        <!-- Card 1 -->
+                        <article class="testimonial-card" data-tilt tabindex="0">
+                            <div class="card-border" aria-hidden="true"></div>
+                            <div class="card-glow" aria-hidden="true"></div>
+
+                            <div class="testimonial-top">
+                                <div class="testimonial-stars" aria-label="5 star rating">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                        class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                        class="ph-fill ph-star"></i>
+                                </div>
+                                <span class="testimonial-tag purple">Auto-Reconciliation</span>
                             </div>
-                            <div class="testimonial-info">
-                                <h4>Rajesh Sharma</h4>
-                                <span>Manufacturing Business</span>
+
+                            <p class="testimonial-text">
+                                <span class="quote">“</span>
+                                The auto reconciliation is magic — payments land directly into my Tally.
+                                My collection rate went from 60% to 92%. The WhatsApp integration is genius!
+                                <span class="quote end">”</span>
+                            </p>
+
+                            <div class="testimonial-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">+32%</div>
+                                    <div class="metric-label">Collections</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">0</div>
+                                    <div class="metric-label">Manual Match</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">1</div>
+                                    <div class="metric-label">Source of Truth</div>
+                                </div>
                             </div>
-                        </div>
+
+                            <div class="testimonial-author">
+                                <div class="avatar">
+                                    <i class="ph-fill ph-user"></i>
+                                </div>
+                                <div class="who">
+                                    <h4>Rajesh Sharma</h4>
+                                    <span>Manufacturing Business</span>
+                                </div>
+                                <span class="verified" title="Verified customer" aria-label="Verified customer">
+                                    <i class="ph-fill ph-seal-check"></i> Verified
+                                </span>
+                            </div>
+                        </article>
+
+                        <!-- Card 2 -->
+                        <article class="testimonial-card" data-tilt tabindex="0">
+                            <div class="card-border" aria-hidden="true"></div>
+                            <div class="card-glow" aria-hidden="true"></div>
+
+                            <div class="testimonial-top">
+                                <div class="testimonial-stars" aria-label="5 star rating">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                        class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                        class="ph-fill ph-star"></i>
+                                </div>
+                                <span class="testimonial-tag green">Every Rupee Tracked</span>
+                            </div>
+
+                            <p class="testimonial-text">
+                                <span class="quote">“</span>
+                                We collect ₹1 crore monthly from 200+ distributors. Takkada tracks every rupee.
+                                Before Takkada, I couldn’t take a single leave. Now it’s stress-free!
+                                <span class="quote end">”</span>
+                            </p>
+
+                            <div class="testimonial-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">₹1Cr</div>
+                                    <div class="metric-label">Monthly</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">200+</div>
+                                    <div class="metric-label">Parties</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">Live</div>
+                                    <div class="metric-label">Visibility</div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-author">
+                                <div class="avatar">
+                                    <i class="ph-fill ph-user"></i>
+                                </div>
+                                <div class="who">
+                                    <h4>Priya Agarwal</h4>
+                                    <span>FMCG Distributor</span>
+                                </div>
+                                <span class="verified" title="Verified customer" aria-label="Verified customer">
+                                    <i class="ph-fill ph-seal-check"></i> Verified
+                                </span>
+                            </div>
+                        </article>
+
+                        <!-- Card 3 -->
+                        <article class="testimonial-card" data-tilt tabindex="0">
+                            <div class="card-border" aria-hidden="true"></div>
+                            <div class="card-glow" aria-hidden="true"></div>
+
+                            <div class="testimonial-top">
+                                <div class="testimonial-stars" aria-label="5 star rating">
+                                    <i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                        class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i
+                                        class="ph-fill ph-star"></i>
+                                </div>
+                                <span class="testimonial-tag orange">WhatsApp Reminders</span>
+                            </div>
+
+                            <p class="testimonial-text">
+                                <span class="quote">“</span>
+                                Outstanding tool! Setting up automatic collection reminders on WhatsApp —
+                                I was chasing before. Now it’s on auto-pilot. Customers don’t mind, collections improved
+                                by 60%!
+                                <span class="quote end">”</span>
+                            </p>
+
+                            <div class="testimonial-metrics">
+                                <div class="metric">
+                                    <div class="metric-value">60%</div>
+                                    <div class="metric-label">Improvement</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">Auto</div>
+                                    <div class="metric-label">Reminders</div>
+                                </div>
+                                <div class="metric">
+                                    <div class="metric-value">Less</div>
+                                    <div class="metric-label">Chasing</div>
+                                </div>
+                            </div>
+
+                            <div class="testimonial-author">
+                                <div class="avatar">
+                                    <i class="ph-fill ph-user"></i>
+                                </div>
+                                <div class="who">
+                                    <h4>Amit Patel</h4>
+                                    <span>Wholesale Trader</span>
+                                </div>
+                                <span class="verified" title="Verified customer" aria-label="Verified customer">
+                                    <i class="ph-fill ph-seal-check"></i> Verified
+                                </span>
+                            </div>
+                        </article>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "We collect ₹1 crore monthly from 200+
-                            distributors. Takkada tracks every rupee. Before
-                            Takkada, I couldn't take a single leave. Now
-                            it's stress-free!"
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <i class="ph-fill ph-user"></i>
-                            </div>
-                            <div class="testimonial-info">
-                                <h4>Priya Agarwal</h4>
-                                <span>FMCG Distributor</span>
-                            </div>
-                        </div>
+
+                    <!-- Mobile scroll hint -->
+                    <div class="scroll-hint" aria-hidden="true">
+                        <i class="ph-fill ph-hand-swipe-left"></i>
+                        <span>Swipe</span>
                     </div>
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                            <i class="ph-fill ph-star"></i>
-                        </div>
-                        <p class="testimonial-text">
-                            "Outstanding tool! Setting up automatic
-                            collection reminders on WhatsApp - I was
-                            understanding before. Now it's on auto-pilot.
-                            Customers don't mind, collections improved by
-                            60%!"
-                        </p>
-                        <div class="testimonial-author">
-                            <div class="testimonial-avatar">
-                                <i class="ph-fill ph-user"></i>
-                            </div>
-                            <div class="testimonial-info">
-                                <h4>Amit Patel</h4>
-                                <span>Wholesale Trader</span>
-                            </div>
-                        </div>
+
+                    <!-- Progress dots (mobile) -->
+                    <div class="dots" aria-hidden="true">
+                        <span class="dot is-active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                     </div>
                 </div>
             </div>
@@ -998,6 +1101,62 @@
         }
     </script>
     <script src="assets/js/main.js"></script>
+
+    <!-- ✅ Add this once, near the end of <body> (or in your main JS file) -->
+    <script>
+        (function () {
+            const section = document.querySelector('[data-animate="takkada-way"]');
+            if (!section) return;
+
+            // 1) Stagger feature items
+            const items = section.querySelectorAll('.feature-item');
+            items.forEach((el, idx) => el.style.setProperty('--stagger', `${idx * 110}ms`));
+
+            // 2) Scroll reveal
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        section.classList.add('is-inview');
+                        io.unobserve(section);
+                    }
+                });
+            }, { threshold: 0.18 });
+            io.observe(section);
+
+            // 3) Premium parallax (desktop only)
+            const visual = section.querySelector('.takkada-way-visual');
+            if (!visual) return;
+
+            const phone = section.querySelector('.takkada-way-phone');
+            const c1 = section.querySelector('.way-floating-card-1');
+            const c2 = section.querySelector('.way-floating-card-2');
+
+            let raf = null;
+            visual.addEventListener('mousemove', (e) => {
+                if (!section.classList.contains('is-inview')) return;
+
+                const rect = visual.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5..0.5
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+                if (raf) cancelAnimationFrame(raf);
+                raf = requestAnimationFrame(() => {
+                    const rx = (-y * 5).toFixed(2);
+                    const ry = (x * 5).toFixed(2);
+
+                    if (phone) phone.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateY(-2px)`;
+                    if (c1) c1.style.transform = `translate(${(x * 10).toFixed(2)}px, ${(y * 10).toFixed(2)}px)`;
+                    if (c2) c2.style.transform = `translate(${(x * -8).toFixed(2)}px, ${(y * -8).toFixed(2)}px)`;
+                });
+            });
+
+            visual.addEventListener('mouseleave', () => {
+                if (phone) phone.style.transform = '';
+                if (c1) c1.style.transform = '';
+                if (c2) c2.style.transform = '';
+            });
+        })();
+    </script>
 </body>
 
 </html>
