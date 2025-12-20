@@ -183,3 +183,75 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+/* ==================== TESTIMONIALS INTERACTIVITY ==================== */
+(function () {
+    const section = document.querySelector('[data-animate="testimonials"]');
+    if (!section) return;
+
+    const grid = section.querySelector('#testimonialGrid');
+    const cards = section.querySelectorAll('.testimonial-card');
+    const dotsWrap = section.querySelector('.dots');
+    const dots = dotsWrap ? Array.from(dotsWrap.querySelectorAll('.dot')) : [];
+
+    // 1) Stagger reveal
+    cards.forEach((c, i) => c.style.setProperty('--stagger', `${i * 130}ms`));
+
+    // 2) Scroll reveal
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          section.classList.add('is-inview');
+          io.unobserve(section);
+        }
+      });
+    }, { threshold: 0.18 });
+    io.observe(section);
+
+    // 3) Premium tilt + glow tracking (only when pointer is fine)
+    const finePointer = window.matchMedia('(pointer:fine)').matches;
+
+    if (finePointer) {
+      cards.forEach((card) => {
+        const maxTilt = 7;
+
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+
+          // Glow position
+          card.style.setProperty('--mx', `${(px * 100).toFixed(2)}%`);
+          card.style.setProperty('--my', `${(py * 100).toFixed(2)}%`);
+
+          // Tilt
+          const rotY = ((px - 0.5) * (maxTilt * 2)).toFixed(2);
+          const rotX = ((0.5 - py) * (maxTilt * 2)).toFixed(2);
+
+          // Keep your hover lift + add tilt
+          card.style.transform = `translateY(-8px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = '';
+          card.style.removeProperty('--mx');
+          card.style.removeProperty('--my');
+        });
+      });
+    }
+
+    // 4) Mobile dots progress based on scroll
+    if (grid && dots.length) {
+      const updateDots = () => {
+        const cardWidth = grid.scrollWidth / cards.length;
+        const idx = Math.round(grid.scrollLeft / cardWidth);
+        dots.forEach((d, i) => d.classList.toggle('is-active', i === idx));
+      };
+
+      grid.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateDots);
+      }, { passive: true });
+
+      updateDots();
+    }
+  })();
