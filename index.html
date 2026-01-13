@@ -118,5 +118,21 @@
     <!-- Start of bodyEnd -->
     
     <!-- End of bodyEnd -->
+    <!-- Replace Framer footer images with local logo -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('footer img').forEach(function (img) {
+            if (img.src && img.src.includes('framerusercontent.com/images')) {
+            img.src = 'images/logo.png';
+            img.removeAttribute('srcset');
+            img.alt = img.alt || 'Startup India Logo';
+            img.style.height = '48px';
+            img.style.width = 'auto';
+            img.style.display = 'inline-block';
+            img.style.verticalAlign = 'middle';
+            }
+        });
+    });
+    </script>
 </body>
 </html>
