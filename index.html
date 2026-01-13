@@ -1025,6 +1025,13 @@
                 <p style="margin-top: 8px; font-size: 0.8rem">
                     admin@paysaathi.com
                 </p>
+
+                <!-- Startup India logo -->
+                <img
+                    src="/assets/images/logo.png"
+                    alt="Startup India Logo"
+                    class="startup-india-logo"
+                />
             </div>
 
             <div>
@@ -1182,6 +1189,23 @@
             });
         })();
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        document
+            .querySelectorAll('footer img[src*="framerusercontent.com"]')
+            .forEach(function (img) {
+            img.src = '/assets/images/logo.png';
+            img.removeAttribute('srcset');
+            img.alt = img.alt || 'Startup India Logo';
+            img.style.height = '48px';
+            img.style.width = 'auto';
+            img.style.display = 'inline-block';
+            img.style.verticalAlign = 'middle';
+            });
+        });
+    </script>
+
 </body>
 
 </html>
