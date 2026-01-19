@@ -10,6 +10,15 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:name/
+  posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
+
 # Exclude from processing
 exclude:
   - .git

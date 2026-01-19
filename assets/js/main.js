@@ -131,9 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!steps.length || !imageElement) return;
 
     const images = {
-        1: 'assets/images/screenshots/how.png',
-        2: 'assets/images/screenshots/how-2.avif',
-        3: 'assets/images/screenshots/how-3.avif'
+        1: '../images/screenshots/how.png',
+        2: '../images/screenshots/how-2.avif',
+        3: '../images/screenshots/how-3.avif'
     };
 
     const backgrounds = {
@@ -275,7 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
             excerpt: "Learn how automatic invoice matching reduces manual work, prevents missed payments, and gives you a single source of truth.",
             date: "Dec 2025",
             tag: "reconciliation",
-            image: "assets/images/screenshots/Blog-3.png",
+            image: "../images/screenshots/Blog-3.png",
             url: "blog/auto-reconciliation-without-manual-work.html",
             featured: true,
             badges: ["Reconciliation", "Tally"]
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
             excerpt: "Stop chasing. Set reminder sequences that increase on-time collections without annoying customers.",
             date: "Dec 2025",
             tag: "collections",
-            image: "assets/images/screenshots/blog-6.jpg",
+            image: "../images/screenshots/blog-6.jpg",
             url: "blog/automate-payment-follow-ups-whatsapp-reminders.html",
             featured: false,
             badges: ["Collections"]
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
             excerpt: "No more manual entry. Sync your Tally data and start automating your collections in minutes.",
             date: "Dec 2025",
             tag: "tally",
-            image: "assets/images/screenshots/tk-l-2.png",
+            image: "../images/screenshots/tk-l-2.png",
             url: "blog/getting-started-with-takkada-automation-without-data-entry.html",
             featured: false,
             badges: ["Tally"]
@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
             excerpt: "Manual work costs more than you think. Discover how automation can save you time and money.",
             date: "Dec 2025",
             tag: "tally",
-            image: "assets/images/screenshots/blog-2.png",
+            image: "../images/screenshots/blog-2.png",
             url: "blog/hidden-cost-of-manual-tally-work.html",
             featured: false,
             badges: ["Tally"]
@@ -315,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             excerpt: "Access your Tally data on the go. Manage invoices, track dues, and collect payments from anywhere.",
             date: "Dec 2025",
             tag: "tally",
-            image: "assets/images/screenshots/blog-5.png",
+            image: "../images/screenshots/blog-5.png",
             url: "blog/tally-on-mobile-manage-invoices-dues-collections.html",
             featured: false,
             badges: ["Tally"]
@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
             excerpt: "Identify the bottlenecks in your reconciliation process and learn how to fix them with automation.",
             date: "Dec 2025",
             tag: "reconciliation",
-            image: "assets/images/screenshots/blog-4.png",
+            image: "../images/screenshots/blog-4.png",
             url: "blog/why-reconciliation-takes-forever-in-tally.html",
             featured: false,
             badges: ["Reconciliation"]

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <script>
+        if (window.location.hostname === 'takkada.paysaathi.com') {
+            window.location.replace("https://paysaathi.com" + window.location.pathname + window.location.search);
+        }
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ page.title | default: site.title }}</title>
+    <meta name="description" content="{{ page.description | default: site.description }}" />
+    {% if page.keywords %}
+    <meta name="keywords" content="{{ page.keywords }}" />
+    {% endif %}
+    <link rel="preconnect" href="https://rsms.me" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    {% if page.layout == 'blog' %}
+    <link rel="stylesheet" href="/assets/css/blog_css.css" />
+    {% endif %}
+</head>
+
+<body>
+    {% include header.html %}
+
+    <main>
+        {{ content }}
+    </main>
+
+    {% include footer.html %}
+
+    <script>
+        // FAQ Toggle
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains("active");
+
+            // Close all FAQ items
+            document.querySelectorAll(".faq-item").forEach((item) => {
+                item.classList.remove("active");
+            });
+
+            // Open clicked item if it wasn't already open
+            if (!isActive) {
+                faqItem.classList.add("active");
+            }
+        }
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+            anchor.addEventListener("click", function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute("href"));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const navToggle = document.querySelector('.nav-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        if (navToggle && navMenu) {
+            navToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // Visual effect for hero
+        const visual = document.querySelector('.visual');
+        if (visual) {
+            const phone = visual.querySelector('.phone');
+            const c1 = visual.querySelector('.c1');
+            const c2 = visual.querySelector('.c2');
+
+            visual.addEventListener('mousemove', (e) => {
+                const rect = visual.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+
+                if (phone) phone.style.transform = `translate(${(x * 20).toFixed(2)}px, ${(y * 20).toFixed(2)}px)`;
+                if (c1) c1.style.transform = `translate(${(x * 10).toFixed(2)}px, ${(y * 10).toFixed(2)}px)`;
+                if (c2) c2.style.transform = `translate(${(x * -8).toFixed(2)}px, ${(y * -8).toFixed(2)}px)`;
+            });
+
+            visual.addEventListener('mouseleave', () => {
+                if (phone) phone.style.transform = '';
+                if (c1) c1.style.transform = '';
+                if (c2) c2.style.transform = '';
+            });
+        }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document
+                .querySelectorAll('footer img[src*="framerusercontent.com"]')
+                .forEach(function (img) {
+                img.src = '/images/logo.png';
+                img.removeAttribute('srcset');
+                img.alt = img.alt || 'Startup India Logo';
+                img.style.height = '48px';
+                img.style.width = 'auto';
+                img.style.display = 'inline-block';
+                img.style.verticalAlign = 'middle';
+                });
+        });
+    </script>
+
+</body>
+
+</html>
