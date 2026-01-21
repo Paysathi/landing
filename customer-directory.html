@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Directory - Takkada</title>
+    <meta name="description"
+        content="View our customer directory with names and GST numbers.">
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://rsms.me">
+    <!-- Inter Font -->
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .customer-directory-section {
+            padding: 140px 0 100px;
+            background: linear-gradient(180deg,
+                    var(--bg-light-purple) 0%,
+                    var(--white) 100%);
+        }
+
+        .directory-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px;
+        }
+
+        .directory-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .directory-header p {
+            font-size: 1.125rem;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        .customer-table-wrapper {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-light);
+            overflow-x: auto;
+        }
+
+        .customer-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .customer-table thead {
+            background: var(--bg-light-purple);
+            border-radius: 12px;
+        }
+
+        .customer-table th {
+            padding: 16px 20px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .customer-table th:first-child {
+            border-radius: 12px 0 0 0;
+        }
+
+        .customer-table th:last-child {
+            border-radius: 0 12px 0 0;
+        }
+
+        .customer-table tbody tr {
+            border-bottom: 1px solid var(--border-light);
+            transition: background 0.2s;
+        }
+
+        .customer-table tbody tr:hover {
+            background: var(--bg-light-purple);
+        }
+
+        .customer-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .customer-table td {
+            padding: 20px;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+        }
+
+        .customer-name {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .customer-gst {
+            font-family: 'Courier New', monospace;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-gray);
+        }
+
+        .empty-state i {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .empty-state h3 {
+            font-size: 1.25rem;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        /* Hide nav-close by default, show only when menu is open on mobile */
+        .nav-close {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: relative;
+            }
+            
+            .nav-menu.show .nav-close {
+                display: block !important;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 1.5rem;
+                cursor: pointer;
+                color: var(--text-dark);
+                z-index: 1001;
+            }
+
+            .customer-directory-section {
+                padding: 120px 0 80px;
+            }
+
+            .directory-header h1 {
+                font-size: 2rem;
+            }
+
+            .customer-table-wrapper {
+                padding: 20px;
+            }
+
+            .customer-table th,
+            .customer-table td {
+                padding: 12px 16px;
+                font-size: 0.875rem;
+            }
+
+            .customer-table th {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header / Navbar -->
+    <header class="header" id="header">
+        <nav class="navbar container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/appstore-removebg-preview.png" alt="Takkada Logo" class="logo-img">
+                Takkada
+            </a>
+
+            <div class="nav-menu" id="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="index.html#how-it-works" class="nav-link">How it works</a></li>
+                    <li class="nav-item"><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                    <li class="nav-item"><a href="contact-us.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-close" id="nav-close">
+                    <i class="ph ph-x"></i>
+                </div>
+            </div>
+
+            <div class="nav-actions">
+                <a href="https://calendar.notion.so/meet/ronakmalu/takkada" class="btn btn-primary btn-sm">Book a
+                    Demo</a>
+                <div class="nav-toggle" id="nav-toggle">
+                    <i class="ph ph-list"></i>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="customer-directory-section">
+            <div class="container">
+                <div class="directory-header">
+                    <span class="section-overline">Our Customers</span>
+                    <h1>Customer Directory</h1>
+                    <p>Browse through our list of customers with their names and GST numbers.</p>
+                </div>
+
+                <div class="customer-table-wrapper">
+                    <table class="customer-table">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Customer Name</th>
+                                <th>GST Number</th>
+                            </tr>
+                        </thead>
+                        <tbody id="customer-list">
+                            <!-- Customer data will be loaded dynamically from JSON -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container container">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/appstore-removebg-preview.png" alt="Takkada Logo" class="logo-img" />
+                    Takkada
+                </a>
+                <p>
+                    Your finances, under control. Simplify business payments
+                    with automated collection and reconciliation.
+                </p>
+                <p style="margin-top: 8px; font-size: 0.8rem">
+                    admin@paysaathi.com
+                </p>
+
+                <!-- Startup India logo -->
+                <img
+                    src="/assets/images/logo.png"
+                    alt="Startup India Logo"
+                    class="startup-india-logo"
+                />
+            </div>
+
+            <div>
+                <h3 class="footer-title">Main Pages</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#how-it-works">How it Works</a></li>
+                    <li><a href="index.html#testimonials">Testimonials</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Resources</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html#blog">Blog</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="contact-us.html">Contact Us</a></li>
+                    <li><a href="#">Pricing</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="footer-title">Company</h3>
+                <ul class="footer-links">
+                    <li>
+                        <a href="terms-and-conditions.html">Terms & Conditions</a>
+                    </li>
+                    <li>
+                        <a href="privacy-policy.html">Privacy Policy</a>
+                    </li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                </ul>
+                <div class="social-links" style="margin-top: 16px">
+                    <a href="https://www.linkedin.com/company/takkada/?viewAsMember=true"><i
+                            class="ph-bold ph-linkedin-logo"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61577621565711"><i
+                            class="ph-bold ph-facebook-logo"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Pay Saathi Innovations LLP. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Main JS -->
+    <script src="assets/js/main.js"></script>
+    <!-- Customer Directory JS -->
+    <script src="assets/js/customer-directory.js"></script>
+    <script>
+        // Mobile menu toggle
+        const navToggle = document.querySelector(".nav-toggle");
+        const navMenu = document.querySelector(".nav-menu");
+        const navClose = document.querySelector(".nav-close");
+
+        if (navToggle) {
+            navToggle.addEventListener("click", function () {
+                navMenu.classList.toggle("show");
+            });
+        }
+
+        if (navClose) {
+            navClose.addEventListener("click", function () {
+                navMenu.classList.remove("show");
+            });
+        }
+
+        // Header scroll effect
+        window.addEventListener("scroll", function () {
+            const header = document.querySelector(".header");
+            if (window.scrollY > 50) {
+                header.style.boxShadow = "0 2px 20px rgba(0, 0, 0, 0.1)";
+            } else {
+                header.style.boxShadow = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
