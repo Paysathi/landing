@@ -17,6 +17,224 @@
     <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+/* Phone Verification Modal */
+.phone-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
+
+.phone-modal-overlay.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone-modal {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 440px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.4s ease;
+    position: relative;
+}
+
+.phone-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #666;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.phone-modal-close:hover {
+    background: #f0f0f0;
+    color: #000;
+}
+
+.phone-modal-header {
+    margin-bottom: 24px;
+}
+
+.phone-modal-header h3 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    color: #1a1a1a;
+}
+
+.phone-modal-header p {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+}
+
+.phone-modal-body {
+    margin-bottom: 24px;
+}
+
+.phone-input-group {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.phone-input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.phone-input-wrapper {
+    display: flex;
+    gap: 8px;
+}
+
+.country-code {
+    flex-shrink: 0;
+    width: 80px;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #f8f8f8;
+    color: #333;
+    text-align: center;
+}
+
+.phone-input-group input[type="tel"] {
+    flex: 1;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.phone-input-group input[type="tel"]:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.phone-input-group.error input[type="tel"] {
+    border-color: #ef4444;
+}
+
+.phone-error {
+    display: none;
+    font-size: 13px;
+    color: #ef4444;
+    margin-top: 6px;
+    font-weight: 500;
+}
+
+.phone-input-group.error .phone-error {
+    display: block;
+}
+
+.phone-modal-footer {
+    display: flex;
+    gap: 12px;
+}
+
+.phone-modal-footer button {
+    flex: 1;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.2s;
+}
+
+.btn-cancel {
+    background: #f0f0f0;
+    color: #333;
+}
+
+.btn-cancel:hover {
+    background: #e0e0e0;
+}
+
+.btn-submit {
+    background: #6366f1;
+    color: white;
+}
+
+.btn-submit:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-submit:disabled {
+    background: #c7c7c7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile responsive */
+@media (max-width: 640px) {
+    .phone-modal {
+        padding: 24px;
+        margin: 16px;
+    }
+    
+    .phone-modal-header h3 {
+        font-size: 20px;
+    }
+    
+    .phone-modal-footer {
+        flex-direction: column-reverse;
+    }
+    
+    .phone-modal-footer button {
+        width: 100%;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -1197,7 +1415,6 @@
             .forEach(function (img) {
             img.src = '/assets/images/logo.png';
             img.removeAttribute('srcset');
-            img.alt = img.alt || 'Startup India Logo';
             img.style.height = '48px';
             img.style.width = 'auto';
             img.style.display = 'inline-block';
@@ -1206,6 +1423,167 @@
         });
     </script>
 
-</body>
+    <!-- Phone Verification Modal -->
+    <div class="phone-modal-overlay" id="phoneModal">
+        <div class="phone-modal">
+            <button class="phone-modal-close" id="closeModal" aria-label="Close">
+                <i class="ph-bold ph-x"></i>
+            </button>
+            
+            <div class="phone-modal-header">
+                <h3>📞 Verify Your Phone Number</h3>
+                <p>Please enter your phone number to book a demo call with our team.</p>
+            </div>
+            
+            <div class="phone-modal-body">
+                <div class="phone-input-group" id="phoneInputGroup">
+                    <label for="phoneNumber">Phone Number</label>
+                    <div class="phone-input-wrapper">
+                        <div class="country-code">+91</div>
+                        <input 
+                            type="tel" 
+                            id="phoneNumber"
+                            placeholder="9876543210"
+                            maxlength="10"
+                            pattern="[0-9]{10}"
+                            autocomplete="tel"
+                        />
+                    </div>
+                    <span class="phone-error" id="phoneError">Please enter a valid 10-digit phone number</span>
+                </div>
+            </div>
+            
+            <div class="phone-modal-footer">
+                <button class="btn-cancel" id="cancelButton">Cancel</button>
+                <button class="btn-submit" id="submitButton">Continue to Book Demo</button>
+            </div>
+    </div>
 
+    <script>
+    (function() {
+        // Configuration
+        const MEETING_URL = 'https://calendar.notion.so/meet/ronakmalu/takkada';
+        
+        // Get elements
+        const modal = document.getElementById('phoneModal');
+        const phoneInput = document.getElementById('phoneNumber');
+        const phoneInputGroup = document.getElementById('phoneInputGroup');
+        const phoneError = document.getElementById('phoneError');
+        const submitButton = document.getElementById('submitButton');
+        const cancelButton = document.getElementById('cancelButton');
+        const closeModalButton = document.getElementById('closeModal');
+        // Intercept all "Book a Demo" clicks
+        document.addEventListener('click', function(e) {
+            const target = e.target.closest('a[href*="calendar.notion.so"]');
+            if (target) {
+                e.preventDefault();
+                openModal();
+            }
+        });
+        
+        // Modal functions
+        function openModal() {
+            modal.classList.add('active');
+            phoneInput.value = '';
+            phoneInputGroup.classList.remove('error');
+            phoneInput.focus();
+        }
+        
+        function closeModal() {
+            modal.classList.remove('active');
+            phoneInput.value = '';
+            phoneInputGroup.classList.remove('error');
+        }
+        
+        // Validate phone number
+        function validatePhone(phone) {
+            // Indian mobile number: exactly 10 digits, starts with 6-9
+            const phoneRegex = /^[6-9][0-9]{9}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        // Auto-format input (only allow numbers)
+        phoneInput.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+            if (phoneInputGroup.classList.contains('error')) {
+                phoneInputGroup.classList.remove('error');
+            }
+        });
+        
+        // Handle Enter key
+        phoneInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                submitButton.click();
+            }
+        });
+        
+        // Submit button
+        submitButton.addEventListener('click', function() {
+            const phone = phoneInput.value.trim();
+            
+            if (!validatePhone(phone)) {
+                phoneInputGroup.classList.add('error');
+                phoneInput.focus();
+                return;
+            }
+            
+            // Store phone number in localStorage
+            localStorage.setItem('takkada_demo_phone', phone);
+            localStorage.setItem('takkada_demo_timestamp', new Date().toISOString());
+            
+            // Optional: Send to your backend/analytics
+            sendPhoneToBackend(phone);
+            
+            // Redirect to meeting link
+            window.open(MEETING_URL, '_blank');
+            closeModal();
+        });
+        
+        // Cancel/Close buttons
+        cancelButton.addEventListener('click', closeModal);
+        closeModalButton.addEventListener('click', closeModal);
+        
+        // Close on overlay click
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+        
+        // Optional: Send phone number to backend
+        function sendPhoneToBackend(phone) {
+            // Option 1: Send to Supabase Edge Function
+            // fetch('YOUR_SUPABASE_EDGE_FUNCTION_URL', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ 
+            //         phone: '+91' + phone,
+            //         timestamp: new Date().toISOString(),
+            //         source: 'landing_page'
+            //     })
+            // });
+            
+            // Option 2: Send to Google Sheets via Google Apps Script
+            // fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
+            //     method: 'POST',
+            //     mode: 'no-cors',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ phone: '+91' + phone })
+            // });
+            
+            // Option 3: Just log to console for now
+            console.log('Demo booking - Phone:', '+91' + phone);
+        }
+    })();
+    </script>
+
+</body>
 </html>
