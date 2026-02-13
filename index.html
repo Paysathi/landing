@@ -156,6 +156,17 @@
     display: block;
 }
 
+.phone-submit-status {
+    min-height: 18px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: #ef4444;
+}
+
+.phone-submit-status.success {
+    color: #16a34a;
+}
+
 .phone-modal-footer {
     display: flex;
     gap: 12px;
@@ -1457,21 +1468,38 @@
                 <button class="btn-cancel" id="cancelButton">Cancel</button>
                 <button class="btn-submit" id="submitButton">Continue to Book Demo</button>
             </div>
+            <p class="phone-submit-status" id="submitStatus" aria-live="polite"></p>
+        </div>
     </div>
 
     <script>
     (function() {
         // Configuration
         const MEETING_URL = 'https://calendar.notion.so/meet/ronakmalu/takkada';
+        const STAGE_PROJECT_REF = 'ptywhfsogoqjpornjwkc';
+        const BOOKING_FUNCTION_URL = window.__BOOKING_FUNCTION_URL__ || `https://${STAGE_PROJECT_REF}.supabase.co/functions/v1/paysaathi-booking`;
+        const SUPABASE_ANON_KEY = window.__SUPABASE_ANON_KEY__ || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InB0eXdoZnNvZ29xanBvcm5qd2tjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE1NzYyMDAsImV4cCI6MjA3NzE1MjIwMH0.Hg8f9FCq1TwyBJG5WL35X81Q_eIYWftqoFJHuzdiZxs';
         
         // Get elements
         const modal = document.getElementById('phoneModal');
         const phoneInput = document.getElementById('phoneNumber');
         const phoneInputGroup = document.getElementById('phoneInputGroup');
-        const phoneError = document.getElementById('phoneError');
         const submitButton = document.getElementById('submitButton');
         const cancelButton = document.getElementById('cancelButton');
         const closeModalButton = document.getElementById('closeModal');
+        const submitStatus = document.getElementById('submitStatus');
+
+        function setSubmitStatus(message, isSuccess) {
+            submitStatus.textContent = message || '';
+            submitStatus.classList.toggle('success', Boolean(isSuccess));
+        }
+
+        function setSubmitting(isSubmitting) {
+            submitButton.disabled = isSubmitting;
+            cancelButton.disabled = isSubmitting;
+            closeModalButton.disabled = isSubmitting;
+            submitButton.textContent = isSubmitting ? 'Saving...' : 'Continue to Book Demo';
+        }
         // Intercept all "Book a Demo" clicks
         document.addEventListener('click', function(e) {
             const target = e.target.closest('a[href*="calendar.notion.so"]');
@@ -1486,6 +1514,7 @@
             modal.classList.add('active');
             phoneInput.value = '';
             phoneInputGroup.classList.remove('error');
+            setSubmitStatus('', false);
             phoneInput.focus();
         }
         
@@ -1493,6 +1522,7 @@
             modal.classList.remove('active');
             phoneInput.value = '';
             phoneInputGroup.classList.remove('error');
+            setSubmitStatus('', false);
         }
         
         // Validate phone number
@@ -1519,7 +1549,7 @@
         });
         
         // Submit button
-        submitButton.addEventListener('click', function() {
+        submitButton.addEventListener('click', async function() {
             const phone = phoneInput.value.trim();
             
             if (!validatePhone(phone)) {
@@ -1527,17 +1557,29 @@
                 phoneInput.focus();
                 return;
             }
+
+            setSubmitStatus('', false);
+            setSubmitting(true);
             
             // Store phone number in localStorage
             localStorage.setItem('takkada_demo_phone', phone);
             localStorage.setItem('takkada_demo_timestamp', new Date().toISOString());
             
-            // Optional: Send to your backend/analytics
-            sendPhoneToBackend(phone);
+            try {
+                // Send to backend for DB storage + email alert
+                await sendPhoneToBackend(phone);
+                setSubmitStatus('Saved. Redirecting...', true);
+            } catch (error) {
+                console.error('Booking capture failed:', error);
+                setSubmitStatus('Could not save your number. Please try again.', false);
+                setSubmitting(false);
+                return;
+            }
             
             // Redirect to meeting link
             window.open(MEETING_URL, '_blank');
             closeModal();
+            setSubmitting(false);
         });
         
         // Cancel/Close buttons
@@ -1558,29 +1600,35 @@
             }
         });
         
-        // Optional: Send phone number to backend
-        function sendPhoneToBackend(phone) {
-            // Option 1: Send to Supabase Edge Function
-            // fetch('YOUR_SUPABASE_EDGE_FUNCTION_URL', {
-            //     method: 'POST',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ 
-            //         phone: '+91' + phone,
-            //         timestamp: new Date().toISOString(),
-            //         source: 'landing_page'
-            //     })
-            // });
-            
-            // Option 2: Send to Google Sheets via Google Apps Script
-            // fetch('YOUR_GOOGLE_APPS_SCRIPT_URL', {
-            //     method: 'POST',
-            //     mode: 'no-cors',
-            //     headers: { 'Content-Type': 'application/json' },
-            //     body: JSON.stringify({ phone: '+91' + phone })
-            // });
-            
-            // Option 3: Just log to console for now
-            console.log('Demo booking - Phone:', '+91' + phone);
+        async function sendPhoneToBackend(phone) {
+            if (!BOOKING_FUNCTION_URL.includes('supabase.co')) {
+                throw new Error('Supabase function URL is invalid');
+            }
+            if (!SUPABASE_ANON_KEY || SUPABASE_ANON_KEY.startsWith('YOUR_')) {
+                throw new Error('Supabase anon key is missing');
+            }
+
+            const payload = {
+                phone: '+91' + phone,
+                source: 'landing_page',
+                page_url: window.location.href,
+                timestamp: new Date().toISOString()
+            };
+
+            const response = await fetch(BOOKING_FUNCTION_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    apikey: SUPABASE_ANON_KEY,
+                    Authorization: 'Bearer ' + SUPABASE_ANON_KEY
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (!response.ok) {
+                const body = await response.text();
+                throw new Error(body || 'Failed to store booking');
+            }
         }
     })();
     </script>
