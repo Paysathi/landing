@@ -1,60 +1,82 @@
 import { useState, useRef, useEffect } from 'react';
 import { X, Phone, ArrowRight, Loader2 } from 'lucide-react';
+import { appLinks } from '../data/siteContent';
+import { demoBookingConfig } from '../config/demoBooking';
+import {
+  sanitizePhoneInput,
+  submitDemoBooking,
+  validateIndianMobileNumber,
+} from '../lib/demoBooking';
 
-const PROD_PROJECT_REF = 'cuwdhditjhocntmxdqiz';
-const BOOKING_FUNCTION_URL =
-  `https://${PROD_PROJECT_REF}.supabase.co/functions/v1/paysaathi-booking`;
-const SUPABASE_ANON_KEY =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN1d2RoZGl0amhvY250bXhkcWl6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTYzOTc4NzQsImV4cCI6MjA3MTk3Mzg3NH0.LWsuvqLWGqW4LbX0qzyEmd2AeuzgZUuKndfJQCcPt-Y';
-const MEETING_URL = 'https://calendar.notion.so/meet/ronakmalu/takkada';
+const INPUT_FOCUS_DELAY_MS = 150;
+const AUTO_CLOSE_DELAY_MS = 800;
+
+function clearTimer(timerRef) {
+  if (!timerRef.current) {
+    return;
+  }
+
+  window.clearTimeout(timerRef.current);
+  timerRef.current = null;
+}
 
 function PhoneModal({ isOpen, onClose }) {
   const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(''); // 'success' | 'error'
+  const [status, setStatus] = useState('');
   const inputRef = useRef(null);
+  const focusTimerRef = useRef(null);
+  const closeTimerRef = useRef(null);
 
   useEffect(() => {
-    if (isOpen && inputRef.current) {
-      // Small delay so the modal animation completes
-      setTimeout(() => inputRef.current?.focus(), 150);
+    if (isOpen) {
+      clearTimer(focusTimerRef);
+      focusTimerRef.current = window.setTimeout(() => inputRef.current?.focus(), INPUT_FOCUS_DELAY_MS);
     }
+
     if (!isOpen) {
+      clearTimer(closeTimerRef);
       setPhone('');
       setError('');
       setLoading(false);
       setStatus('');
     }
+
+    return () => clearTimer(focusTimerRef);
   }, [isOpen]);
 
-  // Close on Escape
   useEffect(() => {
     if (!isOpen) return;
+
     const handleKey = (e) => {
       if (e.key === 'Escape') onClose();
     };
+
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
   }, [isOpen, onClose]);
 
+  useEffect(() => () => {
+    clearTimer(focusTimerRef);
+    clearTimer(closeTimerRef);
+  }, []);
+
   const handlePhoneChange = (e) => {
-    // Strip non-numeric chars
-    const val = e.target.value.replace(/\D/g, '').slice(0, 10);
-    setPhone(val);
+    setPhone(sanitizePhoneInput(e.target.value));
+
     if (error) setError('');
     if (status) setStatus('');
   };
 
   const validate = () => {
-    if (!phone) {
-      setError('Please enter your phone number');
+    const validationError = validateIndianMobileNumber(phone);
+
+    if (validationError) {
+      setError(validationError);
       return false;
     }
-    if (!/^[6-9][0-9]{9}$/.test(phone)) {
-      setError('Enter a valid 10-digit Indian mobile number');
-      return false;
-    }
+
     return true;
   };
 
@@ -65,41 +87,22 @@ function PhoneModal({ isOpen, onClose }) {
     setError('');
 
     try {
-      // Store locally
-      localStorage.setItem('takkada_demo_phone', phone);
-      localStorage.setItem('takkada_demo_timestamp', new Date().toISOString());
-
-      // Send to backend
-      const payload = {
-        phone: '+91' + phone,
-        source: 'landing_page',
-        page_url: window.location.href,
-        timestamp: new Date().toISOString(),
-      };
-
-      await fetch(BOOKING_FUNCTION_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          apikey: SUPABASE_ANON_KEY,
-          Authorization: 'Bearer ' + SUPABASE_ANON_KEY,
-        },
-        body: JSON.stringify(payload),
+      await submitDemoBooking({
+        phone,
+        pageUrl: window.location.href,
+        config: demoBookingConfig,
       });
-
-      // Redirect regardless of response
-      setStatus('success');
-      window.open(MEETING_URL, '_blank');
-
-      // Close modal after brief pause
-      setTimeout(() => onClose(), 800);
     } catch {
-      // Still redirect even if API fails
-      window.open(MEETING_URL, '_blank');
-      setTimeout(() => onClose(), 800);
+      // The calendar remains the primary conversion path even if the background request fails.
     } finally {
       setLoading(false);
     }
+
+    setStatus('success');
+    window.open(appLinks.bookDemo, '_blank', 'noopener,noreferrer');
+
+    clearTimer(closeTimerRef);
+    closeTimerRef.current = window.setTimeout(onClose, AUTO_CLOSE_DELAY_MS);
   };
 
   const handleKeyDown = (e) => {
@@ -110,7 +113,13 @@ function PhoneModal({ isOpen, onClose }) {
 
   return (
     <div className="phone-modal-overlay" onClick={onClose}>
-      <div className="phone-modal" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="phone-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="phone-modal-title"
+        onClick={(e) => e.stopPropagation()}
+      >
         <button type="button" className="phone-modal-close" onClick={onClose}>
           <X size={20} />
         </button>
@@ -119,7 +128,7 @@ function PhoneModal({ isOpen, onClose }) {
           <div className="phone-modal-icon">
             <Phone size={24} />
           </div>
-          <h3>Book a Demo</h3>
+          <h3 id="phone-modal-title">Book a Demo</h3>
           <p>Enter your phone number and we&apos;ll set up a personalized walkthrough.</p>
         </div>
 
