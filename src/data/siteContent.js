@@ -1,0 +1,236 @@
+export const navLinks = [
+  { label: 'Product', href: '#product' },
+  { label: 'Features', href: '#features' },
+  { label: 'Pricing', href: '#pricing' },
+  { label: 'How It Works', href: '#how-it-works' },
+];
+
+export const heroStats = [
+  { value: '100+', label: 'Businesses' },
+  { value: '\u20B917Cr+', label: 'Collected Monthly' },
+  { value: '1000s', label: 'Reminders Sent' },
+];
+
+export const painPoints = [
+  {
+    stat: '2 Hours Daily',
+    description: 'Spent calling customers, chasing payments, following up again and again.',
+  },
+  {
+    stat: '>15% Cash',
+    description: 'Stuck in receivables. Invoices overdue, but supplier payments still due.',
+  },
+  {
+    stat: 'Tied to Counter',
+    description: 'Your business data lives in Tally on your desktop. If you\'re not there, nothing moves.',
+  },
+  {
+    stat: 'Manual Everything',
+    description: 'Creating invoices manually. Matching payments manually. Making vouchers manually.',
+  },
+];
+
+export const coreFeatures = [
+  {
+    id: 'outstanding-tracking',
+    label: 'Outstanding Tracking',
+    title: 'See Every Rupee Owed To You',
+    description: 'Get a complete view of all receivables across every customer. See who owes what, what\'s overdue, and what\'s coming due \u2014 all synced from Tally in real-time.',
+    screenshot: '/assets/screenshots/home-screen.png',
+    secondaryScreenshot: '/assets/screenshots/party-list.png',
+  },
+  {
+    id: 'smart-reminders',
+    label: 'Smart Reminders',
+    title: 'Automated Payment Reminders',
+    description: 'Set up multi-stage payment reminders that go out automatically via WhatsApp. Configure pre-due nudges and post-due follow-ups. Control the timing, frequency, and escalation \u2014 zero manual chasing.',
+    screenshot: '/assets/screenshots/payment-reminders.png',
+    secondaryScreenshot: '/assets/screenshots/reminder-history.png',
+  },
+  {
+    id: 'digital-collection',
+    label: 'Digital Collection',
+    title: 'Collect Payments Digitally',
+    description: 'Send payment links directly from invoices. Customers view pending invoices, select what to pay, and complete payment via UPI, cards, or net banking. Auto-reconciliation updates your Tally instantly.',
+    screenshot: '/assets/screenshots/settlement.png',
+    secondaryScreenshot: '/assets/screenshots/invoice-detail.png',
+  },
+  {
+    id: 'auto-reconciliation',
+    label: 'Auto Reconciliation',
+    title: 'Payments Reconcile Themselves',
+    description: 'When a customer pays through Takkada, the payment is automatically matched to the correct invoice and updated in your Tally. No manual voucher creation. No screenshot matching.',
+    screenshot: '/assets/screenshots/bankbook.png',
+    secondaryScreenshot: '/assets/screenshots/sales-invoices.png',
+  },
+];
+
+export const tallyFeatures = [
+  {
+    icon: 'refresh',
+    title: 'Two-Way Sync',
+    description: 'Every invoice created in Tally appears in Takkada. Every payment recorded in Takkada updates in Tally.',
+  },
+  {
+    icon: 'zap',
+    title: 'No Manual Exports',
+    description: 'No CSV files. No copy-paste. Data flows automatically between Takkada and Tally in real-time.',
+  },
+  {
+    icon: 'check',
+    title: 'Auto Reconciliation',
+    description: 'Payments are matched to invoices and vouchers are created in Tally automatically.',
+  },
+  {
+    icon: 'shield',
+    title: 'Always Accurate',
+    description: 'Your Tally books stay perfectly updated. No mismatches. No missing entries.',
+  },
+];
+
+export const featureGrid = [
+  { title: 'Multiple Voucher Types', description: 'Sales, Purchase, Payment & more', icon: 'fileText' },
+  { title: 'Two-Way Tally Sync', description: 'Real-time data sync both ways', icon: 'refresh' },
+  { title: 'E-Invoices & eWay Bills', description: 'GST-compliant generation on mobile', icon: 'fileCheck' },
+  { title: 'Auto Reconciliation', description: 'Payments update instantly in Tally', icon: 'check' },
+  { title: 'Direct Bank Settlement', description: 'Attach & manage bank accounts easily', icon: 'building' },
+  { title: 'Smart Reminders', description: 'Custom pre & post due follow-ups', icon: 'bell' },
+  { title: 'Payment Links', description: 'Collect directly from invoices with one tap', icon: 'link' },
+  { title: 'Share PDFs', description: 'Share vouchers & ledgers to all parties', icon: 'share' },
+];
+
+export const advancedFeatures = [
+  {
+    id: 'e-invoicing',
+    title: 'E-Way Bill & E-Invoicing',
+    description: 'Generate GST-compliant E-Way Bills and E-Invoices directly from your mobile phone. Syncs two ways with Tally.',
+    screenshot: '/assets/screenshots/einvoice-eway.png',
+  },
+  {
+    id: 'rbac',
+    title: 'Complete Access Control',
+    description: 'Define what each team member can view, create, update, or delete across sales, purchases, and receipts. Restrict ledger visibility and limit stock groups by role.',
+    screenshot: '/assets/screenshots/rbac.png',
+    secondaryScreenshot: '/assets/screenshots/ledger-rbac.png',
+  },
+];
+
+export const howItWorks = [
+  {
+    step: '01',
+    title: 'Setup',
+    description: 'Download the app, complete your KYC. Account activates in 24 hours.',
+  },
+  {
+    step: '02',
+    title: 'Tally Integration',
+    description: 'Download the Windows Client, follow the instructions, sync and verify your data.',
+  },
+  {
+    step: '03',
+    title: 'Start Collecting',
+    description: 'Payment Gateway activates in 4-7 days. Start collecting payments and turn on automatic reminders.',
+  },
+];
+
+export const testimonials = [
+  {
+    quote: 'Before Takkada, I couldn\'t take a single leave. I had to be at the counter to check payments, make vouchers, update Tally. Now it\'s completely stress-free. Everything happens automatically.',
+    name: 'Priya Agarwal',
+    role: 'FMCG Distributor, Pune',
+  },
+];
+
+export const pricing = {
+  plan: 'Basic',
+  price: '\u20B97,500',
+  period: '/year + GST',
+  features: [
+    '1 Business (1 GST)',
+    '4,000 WhatsApp automated messages',
+    '3,250 E-Way/E-Invoicing limit',
+    '2 Users included',
+    'Two-way Tally sync',
+    'Automated payment reminders',
+    'Digital payment collection',
+    'Auto reconciliation',
+  ],
+  addons: [
+    { label: 'Additional users', price: '\u20B93,000/user' },
+    { label: 'Extra WhatsApp messages', price: '\u20B91,500 / 9,000 messages' },
+    { label: 'Desktop module', price: '\u20B94,000' },
+  ],
+};
+
+export const faqItems = [
+  {
+    question: 'How does Takkada sync with Tally?',
+    answer: 'Takkada uses a lightweight Windows connector that runs alongside your Tally installation. It syncs data in real-time \u2014 any invoice created in Tally automatically appears in Takkada, and any payment collected through Takkada is automatically recorded back in Tally.',
+  },
+  {
+    question: 'Do I need to change how I use Tally?',
+    answer: 'Not at all. You continue using Tally exactly as you do today. Takkada works alongside Tally and syncs data automatically. There is no change to your existing workflow.',
+  },
+  {
+    question: 'What payment methods can my customers use?',
+    answer: 'Customers can pay via UPI (free), Debit Cards (free), Credit Cards (1.82%), and Net Banking (B2B rates). We also support surcharge mode if you want to pass payment costs to your customers.',
+  },
+  {
+    question: 'How long does setup take?',
+    answer: 'The app setup and KYC takes about 24 hours for account activation. Tally integration is same-day. Payment gateway activation takes 4-7 business days. You can start using the tracking and reminder features immediately.',
+  },
+  {
+    question: 'Can I control what my employees see?',
+    answer: 'Yes. Takkada has full role-based access control. You can define what each team member can view, create, update, or delete across sales, purchases, and receipts. You can also restrict which ledgers and stock groups are visible to each user.',
+  },
+  {
+    question: 'Is there a free trial?',
+    answer: 'We offer a personalized demo where we show you exactly how Takkada works with your business data. Book a demo to get started.',
+  },
+];
+
+export const footerColumns = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Tally Connector', href: '#tally' },
+      { label: 'Payment Collection', href: '#digital-collection' },
+      { label: 'Smart Reminders', href: '#smart-reminders' },
+      { label: 'E-Invoicing', href: '#e-invoicing' },
+      { label: 'RBAC', href: '#rbac' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Us', page: 'about-us' },
+      { label: 'Contact Us', page: 'contact-us' },
+      { label: 'Privacy Policy', page: 'privacy-policy' },
+      { label: 'Terms & Conditions', page: 'terms-and-conditions' },
+      { label: 'Refund Policy', page: 'refund-policy' },
+    ],
+  },
+  {
+    title: 'Connect',
+    links: [
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/company/takkada/' },
+      { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61577621565711' },
+      { label: 'Email Us', href: 'mailto:admin@paysaathi.com' },
+    ],
+  },
+];
+
+export const appLinks = {
+  download: 'https://onelink.to/zs6yp4',
+  playStore: 'https://play.google.com/store/apps/details?id=com.paysaathi.takkadaapp',
+  appStore: 'https://apps.apple.com/in/app/takkada/id6755435132',
+  tallyConnector: 'https://paysaathi-desktop-autoupdate.s3.ap-south-1.amazonaws.com/releases/takkada-setup.exe',
+  bookDemo: 'https://calendar.notion.so/meet/ronakmalu/takkada',
+};
+
+export const contactInfo = {
+  company: 'Pay Saathi Innovations LLP',
+  phone: '+91 94359 77777',
+  email: 'admin@paysaathi.com',
+  website: 'www.takkada.com',
+};
