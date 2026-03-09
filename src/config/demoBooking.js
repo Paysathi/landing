@@ -12,7 +12,7 @@ const firstConfiguredValue = (...values) => values.find(Boolean) || '';
 export function resolveDemoBookingConfig({
   env = import.meta.env,
   runtime = globalThis,
-  includeProductionFallback = import.meta.env.PROD,
+  includeProductionFallback = true,
 } = {}) {
   const runtimeFunctionUrl = readConfiguredValue(runtime?.__BOOKING_FUNCTION_URL__);
   const runtimeAnonKey = readConfiguredValue(runtime?.__SUPABASE_ANON_KEY__);
