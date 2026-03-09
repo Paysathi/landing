@@ -62,4 +62,23 @@ describe('PhoneModal', () => {
     });
     expect(onClose).toHaveBeenCalledTimes(1);
   });
+
+  it('shows an error and does not redirect when backend capture fails', async () => {
+    vi.useFakeTimers();
+    submitDemoBookingSpy.mockRejectedValue(new Error('booking failed'));
+
+    render(<PhoneModal isOpen onClose={vi.fn()} />);
+
+    fireEvent.change(screen.getByLabelText(/phone number/i), {
+      target: { value: '9876543210' },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /continue to book/i }));
+
+    await act(async () => {
+      await Promise.resolve();
+    });
+
+    expect(window.open).not.toHaveBeenCalled();
+    expect(screen.getByText('Could not save your number. Please try again.')).toBeInTheDocument();
+  });
 });

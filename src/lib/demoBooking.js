@@ -50,7 +50,7 @@ export async function submitDemoBooking({
   persistDemoBooking(storage, { phone, timestamp });
 
   if (!hasDemoBookingBackend(config) || !fetchImpl) {
-    return { skipped: true, timestamp };
+    throw new Error('Booking backend configuration is missing');
   }
 
   const response = await fetchImpl(config.functionUrl, {
@@ -64,7 +64,8 @@ export async function submitDemoBooking({
   });
 
   if (!response.ok) {
-    throw new Error(`Booking request failed with status ${response.status}`);
+    const responseBody = typeof response.text === 'function' ? await response.text() : '';
+    throw new Error(responseBody || `Booking request failed with status ${response.status}`);
   }
 
   return { skipped: false, timestamp };
