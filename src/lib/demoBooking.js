@@ -3,8 +3,7 @@ import { demoBookingConfig, hasDemoBookingBackend } from '../config/demoBooking'
 export const DEMO_PHONE_STORAGE_KEY = 'takkada_demo_phone';
 export const DEMO_TIMESTAMP_STORAGE_KEY = 'takkada_demo_timestamp';
 
-const DISCORD_WEBHOOK_URL =
-  'https://discord.com/api/webhooks/1480636462671073512/REDACTED';
+const DISCORD_WEBHOOK_URL = import.meta.env.VITE_DISCORD_WEBHOOK_URL;
 
 function notifyDiscord({ phone, pageUrl, timestamp }, fetchImpl) {
   if (!fetchImpl) return;
