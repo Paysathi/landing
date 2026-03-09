@@ -85,6 +85,7 @@ function PhoneModal({ isOpen, onClose }) {
 
     setLoading(true);
     setError('');
+    setStatus('');
 
     try {
       await submitDemoBooking({
@@ -93,11 +94,12 @@ function PhoneModal({ isOpen, onClose }) {
         config: demoBookingConfig,
       });
     } catch {
-      // The calendar remains the primary conversion path even if the background request fails.
-    } finally {
+      setError('Could not save your number. Please try again.');
       setLoading(false);
+      return;
     }
 
+    setLoading(false);
     setStatus('success');
     window.open(appLinks.bookDemo, '_blank', 'noopener,noreferrer');
 

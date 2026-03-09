@@ -3,10 +3,11 @@ import {
   buildDemoBookingPayload,
   DEMO_PHONE_STORAGE_KEY,
   DEMO_TIMESTAMP_STORAGE_KEY,
-  sanitizePhoneInput,
   submitDemoBooking,
   validateIndianMobileNumber,
+  sanitizePhoneInput,
 } from './demoBooking';
+import { hasDemoBookingBackend, resolveDemoBookingConfig } from '../config/demoBooking';
 
 describe('demoBooking helpers', () => {
   it('sanitizes phone input to a 10 digit numeric string', () => {
@@ -36,7 +37,7 @@ describe('demoBooking helpers', () => {
 
   it('stores the lead locally and submits it to the configured backend', async () => {
     const storage = { setItem: vi.fn() };
-    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, status: 200 });
+    const fetchImpl = vi.fn().mockResolvedValue({ ok: true, status: 200, text: vi.fn() });
 
     await submitDemoBooking({
       phone: '9876543210',
@@ -64,26 +65,51 @@ describe('demoBooking helpers', () => {
     );
   });
 
-  it('skips the network request when env config is missing', async () => {
+  it('prefers runtime overrides and can fall back to the production booking config', () => {
+    const runtimeOverrideConfig = resolveDemoBookingConfig({
+      env: {},
+      runtime: {
+        __BOOKING_FUNCTION_URL__: 'https://runtime.supabase.co/functions/v1/paysaathi-booking',
+        __SUPABASE_ANON_KEY__: 'runtime-key',
+      },
+      includeProductionFallback: false,
+    });
+
+    expect(runtimeOverrideConfig).toEqual({
+      functionUrl: 'https://runtime.supabase.co/functions/v1/paysaathi-booking',
+      anonKey: 'runtime-key',
+    });
+    expect(hasDemoBookingBackend(runtimeOverrideConfig)).toBe(true);
+
+    const productionFallbackConfig = resolveDemoBookingConfig({
+      env: {},
+      runtime: {},
+      includeProductionFallback: true,
+    });
+
+    expect(productionFallbackConfig.functionUrl).toContain('cuwdhditjhocntmxdqiz.supabase.co');
+    expect(productionFallbackConfig.anonKey.length).toBeGreaterThan(20);
+    expect(hasDemoBookingBackend(productionFallbackConfig)).toBe(true);
+  });
+
+  it('throws when the booking backend configuration is missing', async () => {
     const storage = { setItem: vi.fn() };
     const fetchImpl = vi.fn();
 
-    const result = await submitDemoBooking({
-      phone: '9876543210',
-      pageUrl: 'https://takkada.com',
-      timestamp: '2026-03-09T06:00:00.000Z',
-      storage,
-      fetchImpl,
-      config: {
-        functionUrl: '',
-        anonKey: '',
-      },
-    });
+    await expect(
+      submitDemoBooking({
+        phone: '9876543210',
+        pageUrl: 'https://takkada.com',
+        timestamp: '2026-03-09T06:00:00.000Z',
+        storage,
+        fetchImpl,
+        config: {
+          functionUrl: '',
+          anonKey: '',
+        },
+      })
+    ).rejects.toThrow('Booking backend configuration is missing');
 
-    expect(result).toEqual({
-      skipped: true,
-      timestamp: '2026-03-09T06:00:00.000Z',
-    });
     expect(fetchImpl).not.toHaveBeenCalled();
     expect(storage.setItem).toHaveBeenCalledTimes(2);
   });
