@@ -1,0 +1,71 @@
+import { demoBookingConfig, hasDemoBookingBackend } from '../config/demoBooking';
+
+export const DEMO_PHONE_STORAGE_KEY = 'takkada_demo_phone';
+export const DEMO_TIMESTAMP_STORAGE_KEY = 'takkada_demo_timestamp';
+
+const INDIAN_MOBILE_NUMBER_PATTERN = /^[6-9][0-9]{9}$/;
+
+export function sanitizePhoneInput(value = '') {
+  return value.replace(/\D/g, '').slice(0, 10);
+}
+
+export function validateIndianMobileNumber(phone) {
+  if (!phone) {
+    return 'Please enter your phone number';
+  }
+
+  if (!INDIAN_MOBILE_NUMBER_PATTERN.test(phone)) {
+    return 'Enter a valid 10-digit Indian mobile number';
+  }
+
+  return '';
+}
+
+export function buildDemoBookingPayload({ phone, pageUrl, timestamp }) {
+  return {
+    phone: `+91${phone}`,
+    source: 'landing_page',
+    page_url: pageUrl,
+    timestamp,
+  };
+}
+
+export function persistDemoBooking(storage, { phone, timestamp }) {
+  if (!storage?.setItem) {
+    return;
+  }
+
+  storage.setItem(DEMO_PHONE_STORAGE_KEY, phone);
+  storage.setItem(DEMO_TIMESTAMP_STORAGE_KEY, timestamp);
+}
+
+export async function submitDemoBooking({
+  phone,
+  pageUrl,
+  timestamp = new Date().toISOString(),
+  storage = globalThis.localStorage,
+  fetchImpl = globalThis.fetch?.bind(globalThis),
+  config = demoBookingConfig,
+}) {
+  persistDemoBooking(storage, { phone, timestamp });
+
+  if (!hasDemoBookingBackend(config) || !fetchImpl) {
+    return { skipped: true, timestamp };
+  }
+
+  const response = await fetchImpl(config.functionUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: config.anonKey,
+      Authorization: `Bearer ${config.anonKey}`,
+    },
+    body: JSON.stringify(buildDemoBookingPayload({ phone, pageUrl, timestamp })),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Booking request failed with status ${response.status}`);
+  }
+
+  return { skipped: false, timestamp };
+}
