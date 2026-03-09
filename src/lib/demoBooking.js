@@ -3,6 +3,20 @@ import { demoBookingConfig, hasDemoBookingBackend } from '../config/demoBooking'
 export const DEMO_PHONE_STORAGE_KEY = 'takkada_demo_phone';
 export const DEMO_TIMESTAMP_STORAGE_KEY = 'takkada_demo_timestamp';
 
+const DISCORD_WEBHOOK_URL =
+  'https://discord.com/api/webhooks/1480636462671073512/REDACTED';
+
+function notifyDiscord({ phone, pageUrl, timestamp }, fetchImpl) {
+  if (!fetchImpl) return;
+  fetchImpl(DISCORD_WEBHOOK_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      content: `**New demo booking**\nPhone: \`+91${phone}\`\nPage: ${pageUrl}\nTime: ${timestamp}`,
+    }),
+  }).catch(() => {});
+}
+
 const INDIAN_MOBILE_NUMBER_PATTERN = /^[6-9][0-9]{9}$/;
 
 export function sanitizePhoneInput(value = '') {
@@ -67,6 +81,8 @@ export async function submitDemoBooking({
     const responseBody = typeof response.text === 'function' ? await response.text() : '';
     throw new Error(responseBody || `Booking request failed with status ${response.status}`);
   }
+
+  notifyDiscord({ phone, pageUrl, timestamp }, fetchImpl);
 
   return { skipped: false, timestamp };
 }
