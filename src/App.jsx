@@ -42,22 +42,39 @@ const gridIconMap = {
   share: Share2,
 };
 
+const VALID_PAGES = ['about-us', 'contact-us', 'privacy-policy', 'terms-and-conditions', 'refund-policy'];
+
+function getPageFromPath() {
+  const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
+  return VALID_PAGES.includes(path) ? path : null;
+}
+
 function App() {
   const [faqIndex, setFaqIndex] = useState(-1);
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [currentPage, setCurrentPage] = useState(null);
+  const [currentPage, setCurrentPage] = useState(getPageFromPath);
   const [phoneModalOpen, setPhoneModalOpen] = useState(false);
 
   const openPage = (page) => {
     setCurrentPage(page);
+    window.history.pushState(null, '', `/${page}`);
     window.scrollTo(0, 0);
   };
 
   const goHome = () => {
     setCurrentPage(null);
+    window.history.pushState(null, '', '/');
     window.scrollTo(0, 0);
   };
+
+  useEffect(() => {
+    const onPopState = () => {
+      setCurrentPage(getPageFromPath());
+    };
+    window.addEventListener('popstate', onPopState);
+    return () => window.removeEventListener('popstate', onPopState);
+  }, []);
 
   useScrollReveal();
   useParallaxVariable();
@@ -543,7 +560,7 @@ function App() {
                   {col.links.map((link) =>
                     link.page ? (
                       <a
-                        href="#"
+                        href={`/${link.page}`}
                         key={link.label}
                         onClick={(e) => { e.preventDefault(); openPage(link.page); }}
                       >
