@@ -56,12 +56,6 @@ function App() {
   const [currentPage, setCurrentPage] = useState(getPageFromPath);
   const [phoneModalOpen, setPhoneModalOpen] = useState(false);
 
-  const openPage = (page) => {
-    setCurrentPage(page);
-    window.history.pushState(null, '', `/${page}`);
-    window.scrollTo(0, 0);
-  };
-
   const goHome = () => {
     setCurrentPage(null);
     window.history.pushState(null, '', '/');
@@ -559,11 +553,7 @@ function App() {
                   <p className="footer-col-title">{col.title}</p>
                   {col.links.map((link) =>
                     link.page ? (
-                      <a
-                        href={`/${link.page}`}
-                        key={link.label}
-                        onClick={(e) => { e.preventDefault(); openPage(link.page); }}
-                      >
+                      <a href={`/${link.page}`} key={link.label}>
                         {link.label}
                       </a>
                     ) : (
