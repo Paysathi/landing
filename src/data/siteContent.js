@@ -142,23 +142,37 @@ export const testimonials = [
 ];
 
 export const pricing = {
-  plan: 'Basic',
-  price: '\u20B97,500',
-  period: '/year + GST',
-  features: [
-    '1 Business (1 GST)',
-    '4,000 WhatsApp automated messages',
-    '3,250 E-Way/E-Invoicing limit',
-    '2 Users included',
-    'Two-way Tally sync',
-    'Automated payment reminders',
-    'Digital payment collection',
-    'Auto reconciliation',
+  plans: [
+    {
+      plan: 'View Only',
+      price: '\u20B92,500',
+      period: '/year + GST',
+      features: ['View data & basic access', 'Payment reminders'],
+    },
+    {
+      plan: 'Voucher Model',
+      price: '\u20B94,500',
+      period: '/year + GST',
+      features: ['Create & edit vouchers', 'All View Only features'],
+    },
+    {
+      plan: 'Collections Model',
+      price: '\u20B96,000',
+      period: '/year + GST',
+      features: ['Payment collection via UPI/cards', 'E-Way Bill & E-Invoicing', 'All Voucher features'],
+    },
+    {
+      plan: 'Full Access / RBAC',
+      price: '\u20B97,500',
+      period: '/year + GST',
+      features: ['Role-based access control', 'Full feature set', 'All Collections features'],
+      highlighted: true,
+    },
   ],
   addons: [
-    { label: 'Additional users', price: '\u20B93,000/user' },
-    { label: 'Extra WhatsApp messages', price: '\u20B91,500 / 9,000 messages' },
-    { label: 'Desktop module', price: '\u20B94,000' },
+    { label: 'WhatsApp messages', price: '\u20B92,000 / 9,000 messages' },
+    { label: 'Extra user', price: '\u20B93,000 per user' },
+    { label: 'Extra business', price: '\u20B91,000 per business', note: 'Collections & Full Access only' },
   ],
 };
 

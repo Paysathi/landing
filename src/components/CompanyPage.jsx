@@ -66,6 +66,11 @@ function AboutPage() {
         <li><strong>India-First:</strong> Built for Indian businesses with GST compliance, UPI payments, WhatsApp integration, and rupee-denominated workflows.</li>
       </ul>
 
+      <h2>Custom Solutions</h2>
+      <p>
+        Every business is different. If your workflow has unique requirements, we offer customisation to fit Takkada to your specific needs — whether that&apos;s custom reminder flows, tailored reconciliation rules, or bespoke integrations. Reach out to discuss what you need.
+      </p>
+
       <div className="company-contact-block">
         <h3>Get In Touch</h3>
         <div className="company-contact-grid">
@@ -168,7 +173,7 @@ function PrivacyPolicyPage() {
 
       <h2>3. Information Sharing</h2>
       <p>
-        We share data only with trusted partners essential to service delivery: cloud infrastructure providers, payment gateways, WhatsApp Business API services, and NBFC partners. Legal disclosures occur when required by regulatory bodies and law enforcement under Indian law.
+        We do not share your data with any third parties for marketing or commercial purposes. Data is never sold. We do not share your business or financial information beyond what is strictly required to operate the platform (e.g. payment gateways to process transactions). Legal disclosures occur only when required by regulatory bodies and law enforcement under Indian law.
       </p>
 
       <h2>4. Security Measures</h2>
@@ -181,9 +186,10 @@ function PrivacyPolicyPage() {
       </ul>
 
       <h2>5. Data Retention</h2>
+      <p>We do not retain your data beyond what is required to deliver the service. Upon account closure, your data is deleted within a reasonable period subject only to legal and regulatory obligations.</p>
       <ul>
-        <li><strong>Financial records:</strong> 7 years as per Indian regulatory standards</li>
-        <li><strong>Personal data:</strong> 3 years after account closure</li>
+        <li><strong>Financial records:</strong> Deleted upon account closure (except where retention is legally mandated)</li>
+        <li><strong>Personal data:</strong> Deleted upon account closure</li>
         <li><strong>Technical logs:</strong> 12 months</li>
       </ul>
 
@@ -272,20 +278,28 @@ function RefundPolicyPage() {
       <h2>Subscription Plans</h2>
       <div className="policy-plans">
         <div className="policy-plan-card">
-          <strong>Takkada Basic (Tier 1)</strong>
+          <strong>View Only</strong>
+          <span>{'\u20B9'}2,500 + GST / year</span>
+        </div>
+        <div className="policy-plan-card">
+          <strong>Voucher Model</strong>
           <span>{'\u20B9'}4,500 + GST / year</span>
         </div>
         <div className="policy-plan-card">
-          <strong>Takkada Professional (Tier 2)</strong>
+          <strong>Collections Model</strong>
+          <span>{'\u20B9'}6,000 + GST / year</span>
+        </div>
+        <div className="policy-plan-card">
+          <strong>Full Access / RBAC</strong>
           <span>{'\u20B9'}7,500 + GST / year</span>
         </div>
       </div>
 
-      <h2>30-Day Money-Back Guarantee</h2>
+      <h2>7-Day Money-Back Guarantee</h2>
       <h3>Full Refund Eligibility</h3>
       <ul>
         <li>First-time Takkada customers only</li>
-        <li>Request submitted within 30 calendar days of activation</li>
+        <li>Request submitted within 7 calendar days of activation</li>
         <li>Unresolved technical issues after 15 business days of support</li>
         <li>Integration failures despite meeting system requirements</li>
       </ul>

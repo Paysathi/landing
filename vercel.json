@@ -6,7 +6,7 @@
     },
     {
       "source": "/about-us",
-      "destination": "/"
+      "destination": "/about-us/index.html"
     },
     {
       "source": "/contact-us",
@@ -14,11 +14,11 @@
     },
     {
       "source": "/terms-and-conditions",
-      "destination": "/"
+      "destination": "/terms-and-conditions/index.html"
     },
     {
       "source": "/refund-policy",
-      "destination": "/"
+      "destination": "/refund-policy/index.html"
     }
   ]
 }

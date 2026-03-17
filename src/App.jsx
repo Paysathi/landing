@@ -456,36 +456,44 @@ function App() {
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">Simple Pricing</span>
-            <h2 className="section-title">One Plan. Everything Included.</h2>
+            <h2 className="section-title">Choose the Plan That Fits Your Business</h2>
+            <p className="section-subtitle">All prices are annual. GST extra on all plans.</p>
           </div>
-          <div className="pricing-card reveal" style={{ '--delay': '80ms' }}>
-            <div className="pricing-header">
-              <span className="pricing-plan">{pricing.plan}</span>
-              <div className="pricing-amount">
-                <span className="pricing-price">{pricing.price}</span>
-                <span className="pricing-period">{pricing.period}</span>
-              </div>
-            </div>
-            <ul className="pricing-features">
-              {pricing.features.map((f) => (
-                <li key={f}>
-                  <Check size={18} />
-                  <span>{f}</span>
-                </li>
-              ))}
-            </ul>
-            <CTAButton variant="primary" type="button" fullWidth onClick={() => setPhoneModalOpen(true)}>
-              Book a Demo <ArrowRight size={18} />
-            </CTAButton>
-            <div className="pricing-addons">
-              <p className="pricing-addons-title">Add-ons</p>
-              {pricing.addons.map((a) => (
-                <div key={a.label} className="pricing-addon">
-                  <span>{a.label}</span>
-                  <span className="pricing-addon-price">{a.price}</span>
+          <div className="pricing-grid reveal" style={{ '--delay': '80ms' }}>
+            {pricing.plans.map((plan) => (
+              <div key={plan.plan} className={`pricing-card${plan.highlighted ? ' pricing-card--highlighted' : ''}`}>
+                <div className="pricing-header">
+                  <div className="pricing-plan-row">
+                    <span className="pricing-plan">{plan.plan}</span>
+                    {plan.highlighted && <span className="pricing-recommended">&#10003; Recommended</span>}
+                  </div>
+                  <div className="pricing-amount">
+                    <span className="pricing-price">{plan.price}</span>
+                    <span className="pricing-period">{plan.period}</span>
+                  </div>
                 </div>
-              ))}
-            </div>
+                <ul className="pricing-features">
+                  {plan.features.map((f) => (
+                    <li key={f}>
+                      <Check size={18} />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <CTAButton variant={plan.highlighted ? 'primary' : 'outline'} type="button" fullWidth onClick={() => setPhoneModalOpen(true)}>
+                  Book a Demo <ArrowRight size={18} />
+                </CTAButton>
+              </div>
+            ))}
+          </div>
+          <div className="pricing-addons-block reveal" style={{ '--delay': '160ms' }}>
+            <p className="pricing-addons-title">Add-ons</p>
+            {pricing.addons.map((a) => (
+              <div key={a.label} className="pricing-addon">
+                <span>{a.label}{a.note && <span className="pricing-addon-note"> — {a.note}</span>}</span>
+                <span className="pricing-addon-price">{a.price} + GST</span>
+              </div>
+            ))}
           </div>
         </div>
       </section>
