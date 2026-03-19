@@ -217,7 +217,7 @@ function TermsPage() {
       <h1>Terms &amp; Conditions</h1>
       <p className="company-meta">Last Updated: August 4, 2025 &bull; {contactInfo.company}</p>
       <p className="company-lead">
-        These Terms and Conditions govern your use of Takkada, a product of Pay Saathi Innovation LLP. By using our platform, you agree to these terms.
+        These Terms and Conditions govern your use of Takkada, a product of Pay Saathi Innovations LLP. By using our platform, you agree to these terms.
       </p>
 
       <h2>1. Services Offered</h2>
@@ -272,7 +272,7 @@ function RefundPolicyPage() {
       <h1>Refund &amp; Cancellation Policy</h1>
       <p className="company-meta">Effective: 2025 &bull; {contactInfo.company}</p>
       <p className="company-lead">
-        This refund policy outlines the rules and regulations for refunds for Takkada subscription services provided by Pay Saathi Innovation LLP.
+        This refund policy outlines the rules and regulations for refunds for Takkada subscription services provided by Pay Saathi Innovations LLP.
       </p>
 
       <h2>Subscription Plans</h2>
