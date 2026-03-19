@@ -465,8 +465,8 @@ function App() {
                 <div className="pricing-header">
                   <div className="pricing-plan-row">
                     <span className="pricing-plan">{plan.plan}</span>
-                    {plan.highlighted && <span className="pricing-recommended">&#10003; Recommended</span>}
                   </div>
+                  {plan.highlighted && <span className="pricing-recommended">&#10003; Recommended</span>}
                   <div className="pricing-amount">
                     <span className="pricing-price">{plan.price}</span>
                     <span className="pricing-period">{plan.period}</span>
