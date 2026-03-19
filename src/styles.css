@@ -204,6 +204,7 @@ ul { list-style: none; }
   font-weight: 500;
   color: var(--color-text-secondary);
   transition: color 0.2s;
+  padding: 10px 0;
 }
 
 .nav-links a:hover {
