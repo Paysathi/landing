@@ -94,11 +94,31 @@ function App() {
           </a>
           <nav className="nav-links desktop-only">
             {navLinks.map((l) => (
-              <a key={l.label} href={l.href}>{l.label}</a>
+              <a key={l.label} href={l.href} onClick={(e) => {
+                if (currentPage) {
+                  e.preventDefault();
+                  setCurrentPage(null);
+                  window.history.pushState(null, '', '/');
+                  window.scrollTo(0, 0);
+                  setTimeout(() => {
+                    document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                  }, 50);
+                }
+              }}>{l.label}</a>
             ))}
           </nav>
           <div className="nav-actions desktop-only">
-            <a href="#tally" className="nav-connector-link">
+            <a href="#tally" className="nav-connector-link" onClick={(e) => {
+              if (currentPage) {
+                e.preventDefault();
+                setCurrentPage(null);
+                window.history.pushState(null, '', '/');
+                window.scrollTo(0, 0);
+                setTimeout(() => {
+                  document.querySelector('#tally')?.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+              }
+            }}>
               <Download size={16} /> Tally Connector
             </a>
             <CTAButton variant="primary" type="button" onClick={() => setPhoneModalOpen(true)}>Book a Demo</CTAButton>
@@ -118,9 +138,31 @@ function App() {
       <div className={`mobile-overlay ${menuOpen ? 'open' : ''}`}>
         <nav className="mobile-nav-links">
           {navLinks.map((l) => (
-            <a key={l.label} href={l.href} onClick={() => setMenuOpen(false)}>{l.label}</a>
+            <a key={l.label} href={l.href} onClick={(e) => {
+              setMenuOpen(false);
+              if (currentPage) {
+                e.preventDefault();
+                setCurrentPage(null);
+                window.history.pushState(null, '', '/');
+                window.scrollTo(0, 0);
+                setTimeout(() => {
+                  document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+              }
+            }}>{l.label}</a>
           ))}
-          <a href="#tally" className="mobile-connector-link" onClick={() => setMenuOpen(false)}>
+          <a href="#tally" className="mobile-connector-link" onClick={(e) => {
+            setMenuOpen(false);
+            if (currentPage) {
+              e.preventDefault();
+              setCurrentPage(null);
+              window.history.pushState(null, '', '/');
+              window.scrollTo(0, 0);
+              setTimeout(() => {
+                document.querySelector('#tally')?.scrollIntoView({ behavior: 'smooth' });
+              }, 50);
+            }
+          }}>
             <Download size={18} /> Tally Connector
           </a>
           <CTAButton variant="primary" type="button" fullWidth onClick={() => { setMenuOpen(false); setPhoneModalOpen(true); }}>
@@ -561,7 +603,16 @@ function App() {
                   <p className="footer-col-title">{col.title}</p>
                   {col.links.map((link) =>
                     link.page ? (
-                      <a href={`/${link.page}`} key={link.label}>
+                      <a
+                        href={`/${link.page}`}
+                        key={link.label}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setCurrentPage(link.page);
+                          window.history.pushState(null, '', `/${link.page}`);
+                          window.scrollTo(0, 0);
+                        }}
+                      >
                         {link.label}
                       </a>
                     ) : (
