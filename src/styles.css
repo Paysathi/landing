@@ -204,6 +204,7 @@ ul { list-style: none; }
   font-weight: 500;
   color: var(--color-text-secondary);
   transition: color 0.2s;
+  padding: 10px 0;
 }
 
 .nav-links a:hover {
@@ -1156,10 +1157,15 @@ ul { list-style: none; }
 }
 
 .pricing-recommended {
-  font-size: 11px;
+  display: block;
+  text-align: center;
+  font-size: 12px;
   font-weight: 600;
   color: var(--color-primary);
-  letter-spacing: 0.03em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 8px;
+  margin-bottom: -4px;
 }
 
 .pricing-addons-block {
@@ -1211,6 +1217,7 @@ ul { list-style: none; }
   font-size: 16px;
   color: var(--color-text-muted);
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .pricing-features {
