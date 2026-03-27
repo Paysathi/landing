@@ -23,3 +23,6 @@ test-results/
 # Artifacts
 .artifacts/
 .gstack/
+
+# Claude Code local config
+.claude/
