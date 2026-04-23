@@ -3,10 +3,19 @@ import { contactInfo, faqItems, pricing } from './siteContent';
 export const SITE_URL = 'https://takkada.com';
 export const DEFAULT_OG_IMAGE = '/assets/screenshots/takkada-logo.png';
 
+const SOCIAL_URLS = [
+  'https://www.linkedin.com/company/takkada/',
+  'https://www.facebook.com/profile.php?id=61577621565711',
+];
+
 export function absoluteUrl(path = '/') {
   if (path.startsWith('http')) return path;
   const leading = path.startsWith('/') ? path : `/${path}`;
-  const trailing = leading === '/' || leading.endsWith('/') ? leading : `${leading}/`;
+  if (leading === '/') return `${SITE_URL}/`;
+  const lastSegment = leading.split('/').filter(Boolean).pop() || '';
+  const isAsset = lastSegment.includes('.');
+  if (isAsset) return `${SITE_URL}${leading}`;
+  const trailing = leading.endsWith('/') ? leading : `${leading}/`;
   return `${SITE_URL}${trailing}`;
 }
 
@@ -21,6 +30,8 @@ export function organizationSchema() {
     logo: absoluteUrl('/assets/screenshots/takkada-logo.png'),
     email: contactInfo.email,
     telephone: contactInfo.phone,
+    foundingDate: '2025-12',
+    sameAs: SOCIAL_URLS,
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Bobagh, Ulubari',
@@ -52,6 +63,12 @@ export function softwareApplicationSchema() {
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'Android, iOS',
     publisher: { '@id': `${SITE_URL}/#organization` },
+    image: absoluteUrl('/assets/screenshots/takkada-logo.png'),
+    screenshot: [
+      absoluteUrl('/assets/screenshots/home-screen.png'),
+      absoluteUrl('/assets/screenshots/payment-reminders.png'),
+      absoluteUrl('/assets/screenshots/settlement.png'),
+    ],
     offers: pricing.plans.map((plan) => ({
       '@type': 'Offer',
       name: plan.plan,
