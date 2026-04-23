@@ -5,6 +5,10 @@ import ContactUs from './ContactUs';
 import PrivacyPolicy from './PrivacyPolicy';
 import TermsAndConditions from './TermsAndConditions';
 import RefundPolicy from './RefundPolicy';
+import MobileTally from './MobileTally';
+import WhatsAppInvoice from './WhatsAppInvoice';
+import AutoReconciliation from './AutoReconciliation';
+import ForDistributors from './ForDistributors';
 import { routeMetadata } from '../data/siteMetadata';
 
 const ELEMENT_FOR_PATH = {
@@ -14,6 +18,10 @@ const ELEMENT_FOR_PATH = {
   '/privacy-policy': <PrivacyPolicy />,
   '/terms-and-conditions': <TermsAndConditions />,
   '/refund-policy': <RefundPolicy />,
+  '/mobile-tally': <MobileTally />,
+  '/whatsapp-invoice-tally': <WhatsAppInvoice />,
+  '/auto-reconciliation-tally': <AutoReconciliation />,
+  '/for-distributors': <ForDistributors />,
 };
 
 const children = routeMetadata.map(({ path }) => {

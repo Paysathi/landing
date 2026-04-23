@@ -2212,3 +2212,223 @@ html.js .animated-heading .letter {
     padding: 20px 20px 24px;
   }
 }
+
+/* ── Home rewrite (Session 3) ── */
+.hero-overline {
+  margin-bottom: 16px;
+}
+
+.home-capabilities-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 720px) {
+  .home-capabilities-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.home-audience-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+@media (max-width: 720px) {
+  .home-audience-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.home-audience-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.home-audience-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  background: var(--color-sage-bg);
+}
+
+.home-audience-arrow {
+  flex-shrink: 0;
+  color: var(--color-primary);
+  opacity: 0.65;
+}
+
+.home-pricing-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+@media (max-width: 860px) {
+  .home-pricing-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .home-pricing-strip {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.home-pricing-strip-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 18px;
+  border-radius: var(--radius-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+.home-pricing-strip-card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-sage);
+}
+
+.home-pricing-strip-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+}
+
+.home-pricing-strip-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+  line-height: 1.1;
+  font-family: var(--font-serif);
+}
+
+.home-pricing-strip-period {
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.home-pricing-strip-note {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--color-text-secondary);
+}
+
+.home-pricing-strip-cta {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.home-pricing-strip-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.home-pricing-strip-link:hover {
+  text-decoration: underline;
+}
+
+/* ── ICP Template (Session 4) ── */
+.icp-hero .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.icp-hero-content {
+  max-width: 720px;
+  text-align: center;
+}
+
+.icp-hero-ctas {
+  justify-content: center;
+}
+
+.icp-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--color-text-muted);
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.icp-breadcrumb a {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.icp-breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.icp-breadcrumb-sep {
+  color: var(--color-border);
+}
+
+.icp-pain-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  border: 1px solid var(--color-border-light);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.icp-pain-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.icp-pain-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 12px;
+  line-height: 1.35;
+}
+
+.icp-pain-body {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+.icp-scenario-section {
+  padding: 80px 0;
+  background: #DAE5D6;
+}
+
+.icp-scenario-inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.icp-scenario-heading {
+  margin-bottom: 24px;
+}
+
+.icp-scenario-body {
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+

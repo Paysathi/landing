@@ -162,7 +162,7 @@ export const pricing = {
       features: ['Payment collection via UPI/cards', 'E-Way Bill & E-Invoicing', 'All Voucher features'],
     },
     {
-      plan: 'Full Access / RBAC',
+      plan: 'Full Access / Auto Dispatch',
       price: '\u20B97,500',
       period: '/year + GST',
       features: ['Role-based access control', 'Full feature set', 'All Collections features'],

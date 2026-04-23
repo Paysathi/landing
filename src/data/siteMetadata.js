@@ -40,4 +40,28 @@ export const routeMetadata = [
     changefreq: 'yearly',
     priority: 0.3,
   },
+  {
+    path: '/mobile-tally',
+    sourceFile: 'src/routes/MobileTally.jsx',
+    changefreq: 'monthly',
+    priority: 0.8,
+  },
+  {
+    path: '/whatsapp-invoice-tally',
+    sourceFile: 'src/routes/WhatsAppInvoice.jsx',
+    changefreq: 'monthly',
+    priority: 0.8,
+  },
+  {
+    path: '/auto-reconciliation-tally',
+    sourceFile: 'src/routes/AutoReconciliation.jsx',
+    changefreq: 'monthly',
+    priority: 0.8,
+  },
+  {
+    path: '/for-distributors',
+    sourceFile: 'src/routes/ForDistributors.jsx',
+    changefreq: 'monthly',
+    priority: 0.9,
+  },
 ];
