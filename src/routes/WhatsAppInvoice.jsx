@@ -1,76 +1,76 @@
-import { FileText, Link as LinkIcon, Moon, Zap } from 'lucide-react';
+import { FileText, MessageCircle, RefreshCw, Smartphone } from 'lucide-react';
 import ICPTemplate from '../components/ICPTemplate';
 
 const data = {
-  overline: 'WHATSAPP INVOICING',
-  headline: 'Every Tally invoice on WhatsApp, automatically.',
+  overline: 'FIELD SALES INVOICING',
+  headline: 'Your salesman raises the invoice at the retailer\'s counter. It\'s in Tally before he drives away.',
   subheadline:
-    'You create the invoice in Tally. Takkada sends it to the customer on WhatsApp with a PDF and a payment link. You do not copy, attach, or forward anything.',
+    "No calling the office. No paper order books. No accountant spending the first two hours of every morning on data entry. The invoice is raised at the counter, synced to Tally, and on the retailer's WhatsApp before the truck leaves.",
   ctaPrimary: {
     text: 'Book a 15-min demo',
     href: 'https://calendar.notion.so/meet/ronakmalu/takkada',
   },
   ctaSecondary: { text: 'See pricing', href: '/#pricing-strip' },
-  capabilitiesHeading: 'From Tally to customer in under 10 seconds',
+  capabilitiesHeading: 'From the field to Tally, without touching a laptop',
   capabilities: [
     {
-      icon: Zap,
-      title: 'Invoice dispatched the moment you save',
-      body: 'The customer receives the PDF and a tappable payment link before you close the screen.',
+      icon: Smartphone,
+      title: "Raise any invoice from the phone, at the retailer's counter",
+      body: 'Full tax invoices, delivery challans, and sales orders from mobile. All voucher types, all from the field.',
     },
     {
-      icon: LinkIcon,
-      title: 'Every message includes a payment link',
-      body: 'Customer taps, pays via UPI or card. No bank account details, no screenshot sharing, no manual confirmation.',
+      icon: RefreshCw,
+      title: 'Syncs to Tally the moment it is saved',
+      body: 'The accountant sees the entry in Tally without doing anything. No re-entry, no import, no end-of-day batch upload.',
     },
     {
       icon: FileText,
-      title: 'Your invoice format, exactly',
-      body: 'Whatever Tally is configured with — that is what the customer sees. No re-rendering, no reformatting.',
+      title: 'E-invoice and e-way bill without calling the office',
+      body: 'Generate IRN and e-way bill from the phone. The truck does not wait for someone in the office to log into Tally.',
     },
     {
-      icon: Moon,
-      title: 'Works after office hours',
-      body: 'Invoices raised from mobile dispatch via WhatsApp immediately, even when the office laptop is off.',
+      icon: MessageCircle,
+      title: "Invoice reaches the retailer on WhatsApp immediately",
+      body: 'PDF and payment link on the retailer\'s WhatsApp before the salesman closes his phone. No forwarding later.',
     },
   ],
   scenario:
-    "It is 8:47 PM on a Saturday. Your salesman in Tezpur closes a ₹62,000 order. He raises the invoice from his phone. Three seconds later, the retailer's WhatsApp pings — PDF attached, payment link included, your shop name in the header. The retailer pays within the hour. The entry is in Tally when you open it Monday morning.",
+    "Your salesman is in Jorhat at a general store. He closes a ₹22,000 order at 6:45 PM. Your office shut at 6:30. He opens Takkada, raises the tax invoice from his phone, generates the e-way bill. The retailer's WhatsApp pings — invoice attached, payment link included. The entry sits in Tally. Your accountant sees it the next morning, reviews it, moves on. No re-entry. No backlog from yesterday's field work.",
   testimonial: {
     quote:
-      'Invoices used to reach customers the next morning. Now they arrive before the retailer is back at his shop. Collections moved faster by about a week across my whole book.',
-    author: 'Wholesale distributor, Barpeta',
+      "My salesman used to write the order on paper and the accountant would enter it the next day. Now it goes straight to Tally from the field. We close the day clean.",
+    author: 'Wholesale distributor, Tezpur',
   },
   faqs: [
     {
-      q: 'Does this use my personal WhatsApp or a separate number?',
-      a: 'Takkada uses the WhatsApp Business API with a dedicated number for your business. Messages go from your business name, not from a personal number.',
+      q: 'Does the accountant need to do anything after the salesman raises an invoice from the field?',
+      a: 'Nothing. The voucher syncs to Tally directly. The accountant reviews it like any entry already in the system — no import, no re-entry.',
     },
     {
-      q: 'Is there a per-message charge?',
-      a: 'WhatsApp Business API charges apply as pass-through. Our 8,000-message pack costs ₹2,000 per year — enough for around 650 invoices a month. Top up as needed.',
+      q: 'What voucher types can the salesman raise from the phone?',
+      a: 'Tax invoices, delivery challans, and sales orders. E-invoice IRN and e-way bill generation are also available from the phone on the Collections and Full Access plans.',
     },
     {
-      q: "What if the customer's WhatsApp number is wrong in Tally?",
-      a: 'Delivery fails and the status shows in your Takkada dashboard. Fix the number in Tally and resend in one tap.',
+      q: 'Does this need the office Tally laptop to be open?',
+      a: 'No. The salesman raises the invoice even when the office is closed. It syncs to Tally the next time the office system comes online.',
     },
     {
-      q: 'Can I send ledger statements and reminders the same way?',
-      a: 'Yes. Reminders, ledger statements, and invoice attachments all use the same WhatsApp channel.',
+      q: "Can the salesman see the retailer's outstanding before raising the invoice?",
+      a: 'Yes. Current outstanding, overdue amounts, and last payment date are all visible on the salesman\'s phone before he places the order.',
     },
     {
-      q: 'What plan do I need for auto-dispatch?',
-      a: 'Auto Invoice Dispatch is included in the Full Access / Auto Dispatch plan. It is also available as an add-on on the Collections plan for ₹1,500 per year.',
+      q: 'What plan do I need for field sales invoicing?',
+      a: 'Mobile invoicing is available on the Voucher plan (₹4,500/year) and above. E-invoice and e-way bill are included in the Collections and Full Access plans.',
     },
   ],
   breadcrumb: [
     { name: 'Home', url: 'https://takkada.com/' },
-    { name: 'WhatsApp Invoicing', url: 'https://takkada.com/whatsapp-invoice-tally/' },
+    { name: 'Field Sales Invoicing', url: 'https://takkada.com/whatsapp-invoice-tally/' },
   ],
   seo: {
-    title: 'WhatsApp Invoicing from Tally | Auto-Send Every Invoice',
+    title: 'Field Sales Invoicing | Tally Sync from the Market',
     description:
-      'Send every Tally invoice to customers on WhatsApp automatically — PDF and payment link included. Works with TallyPrime and Tally ERP 9.',
+      'Salesmen raise invoices at retailer shops from their phone. Syncs to Tally in real time. Retailer gets the PDF on WhatsApp. No re-entry in office.',
     canonical: 'https://takkada.com/whatsapp-invoice-tally/',
   },
 };
