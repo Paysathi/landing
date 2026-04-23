@@ -290,7 +290,7 @@ function RefundPolicyPage() {
           <span>{'\u20B9'}6,000 + GST / year</span>
         </div>
         <div className="policy-plan-card">
-          <strong>Full Access / RBAC</strong>
+          <strong>Full Access / Auto Dispatch</strong>
           <span>{'\u20B9'}7,500 + GST / year</span>
         </div>
       </div>

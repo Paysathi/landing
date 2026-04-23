@@ -162,15 +162,15 @@ export const pricing = {
       features: ['Payment collection via UPI/cards', 'E-Way Bill & E-Invoicing', 'All Voucher features'],
     },
     {
-      plan: 'Full Access / RBAC',
+      plan: 'Full Access / Auto Dispatch',
       price: '\u20B97,500',
       period: '/year + GST',
-      features: ['Role-based access control', 'Full feature set', 'All Collections features'],
+      features: ['Auto WhatsApp Dispatch', 'Full feature set', 'All Collections features'],
       highlighted: true,
     },
   ],
   addons: [
-    { label: 'WhatsApp messages', price: '\u20B92,000 / 9,000 messages' },
+    { label: 'WhatsApp messages', price: '\u20B92,000 / 8,000 messages' },
     { label: 'Extra user', price: '\u20B93,000 per user' },
     { label: 'Extra business', price: '\u20B91,000 per business', note: 'Collections & Full Access only' },
   ],
