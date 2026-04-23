@@ -2,8 +2,24 @@
    TAKKADA — Modern SaaS Fintech Landing Page
    ═══════════════════════════════════════════════════ */
 
+/* ── Fonts ── */
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/fonts/Inter-VariableFont_opsz_wght.ttf') format('truetype-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── Number utilities ── */
+.tabular-nums {
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
 /* ── Design Tokens — Sage Green palette ── */
 :root {
+  font-optical-sizing: auto;
   --color-primary: #2d4a2d;
   --color-primary-dark: #1a2e1a;
   --color-primary-light: #4a7c59;
@@ -113,8 +129,10 @@ ul { list-style: none; }
   .container { padding: 0 60px; }
 }
 
-/* ── Scroll Reveal Animation ── */
-.reveal {
+/* ── Scroll Reveal Animation ──
+   Gated behind html.js so crawlers and no-JS users see the real content.
+   The `js` class is added by src/main.jsx before hydration. */
+html.js .reveal {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
@@ -122,7 +140,7 @@ ul { list-style: none; }
   transition-delay: var(--delay, 0ms);
 }
 
-.reveal.is-visible {
+html.js .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
@@ -138,6 +156,9 @@ ul { list-style: none; }
 
 .animated-heading .letter {
   display: inline-block;
+}
+
+html.js .animated-heading .letter {
   opacity: 0;
   transform: translateY(14px);
   animation: letterUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
@@ -147,6 +168,17 @@ ul { list-style: none; }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .reveal,
+  html.js .reveal.is-visible,
+  html.js .animated-heading .letter {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
   }
 }
 

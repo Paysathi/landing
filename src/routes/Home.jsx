@@ -1,13 +1,10 @@
-import { useEffect, useState } from 'react';
-import { Check, RefreshCw, Zap, Shield, ArrowRight, FileText, FileCheck, Building, Bell, Link, Share2, Menu, X, Download, Monitor } from 'lucide-react';
-import CTAButton from './components/CTAButton';
-import TestimonialCard from './components/TestimonialCard';
-import FAQItem from './components/FAQItem';
-import AnimatedHeading from './components/AnimatedHeading';
-import CompanyPage from './components/CompanyPage';
-import PhoneModal from './components/PhoneModal';
+import { useState } from 'react';
+import { Check, RefreshCw, Zap, Shield, ArrowRight, FileText, FileCheck, Building, Bell, Link as LinkIcon, Share2, Download, Monitor } from 'lucide-react';
+import CTAButton from '../components/CTAButton';
+import TestimonialCard from '../components/TestimonialCard';
+import FAQItem from '../components/FAQItem';
+import AnimatedHeading from '../components/AnimatedHeading';
 import {
-  navLinks,
   heroStats,
   painPoints,
   coreFeatures,
@@ -18,11 +15,12 @@ import {
   testimonials,
   pricing,
   faqItems,
-  footerColumns,
-  contactInfo,
   appLinks,
-} from './data/siteContent';
-import { useParallaxVariable, useScrollReveal } from './hooks/useScrollFx';
+} from '../data/siteContent';
+import { useParallaxVariable, useScrollReveal } from '../hooks/useScrollFx';
+import { usePhoneModal } from '../context/PhoneModalContext';
+import Seo from '../components/Seo';
+import { softwareApplicationSchema, faqPageSchema } from '../data/schema';
 
 const tallyIconMap = {
   refresh: RefreshCw,
@@ -38,152 +36,31 @@ const gridIconMap = {
   check: Check,
   building: Building,
   bell: Bell,
-  link: Link,
+  link: LinkIcon,
   share: Share2,
 };
 
-const VALID_PAGES = ['about-us', 'contact-us', 'privacy-policy', 'terms-and-conditions', 'refund-policy'];
-
-function getPageFromPath() {
-  const path = window.location.pathname.replace(/^\//, '').replace(/\/$/, '');
-  return VALID_PAGES.includes(path) ? path : null;
-}
-
-function App() {
+function Home() {
   const [faqIndex, setFaqIndex] = useState(-1);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  const [currentPage, setCurrentPage] = useState(getPageFromPath);
-  const [phoneModalOpen, setPhoneModalOpen] = useState(false);
-
-  const goHome = () => {
-    setCurrentPage(null);
-    window.history.pushState(null, '', '/');
-    window.scrollTo(0, 0);
-  };
-
-  useEffect(() => {
-    const onPopState = () => {
-      setCurrentPage(getPageFromPath());
-    };
-    window.addEventListener('popstate', onPopState);
-    return () => window.removeEventListener('popstate', onPopState);
-  }, []);
+  const { setOpen } = usePhoneModal();
 
   useScrollReveal();
   useParallaxVariable();
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.classList.toggle('lock-scroll', menuOpen);
-    return () => document.body.classList.remove('lock-scroll');
-  }, [menuOpen]);
-
   return (
-    <div className="site-root">
-      {/* ── Navigation ── */}
-      <header className={`site-nav ${scrolled ? 'scrolled' : ''}`}>
-        <div className="nav-inner">
-          <a href="#hero" className="nav-logo" onClick={(e) => { if (currentPage) { e.preventDefault(); goHome(); } }}>
-            <img src="/assets/screenshots/takkada-logo.png" alt="Takkada" className="nav-logo-img" />
-          </a>
-          <nav className="nav-links desktop-only">
-            {navLinks.map((l) => (
-              <a key={l.label} href={l.href} onClick={(e) => {
-                if (currentPage) {
-                  e.preventDefault();
-                  setCurrentPage(null);
-                  window.history.pushState(null, '', '/');
-                  window.scrollTo(0, 0);
-                  setTimeout(() => {
-                    document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
-                  }, 50);
-                }
-              }}>{l.label}</a>
-            ))}
-          </nav>
-          <div className="nav-actions desktop-only">
-            <a href="#tally" className="nav-connector-link" onClick={(e) => {
-              if (currentPage) {
-                e.preventDefault();
-                setCurrentPage(null);
-                window.history.pushState(null, '', '/');
-                window.scrollTo(0, 0);
-                setTimeout(() => {
-                  document.querySelector('#tally')?.scrollIntoView({ behavior: 'smooth' });
-                }, 50);
-              }
-            }}>
-              <Download size={16} /> Tally Connector
-            </a>
-            <CTAButton variant="primary" type="button" onClick={() => setPhoneModalOpen(true)}>Book a Demo</CTAButton>
-          </div>
-          <button
-            type="button"
-            className="mobile-menu-btn"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </header>
-
-      {/* Mobile Menu Overlay */}
-      <div className={`mobile-overlay ${menuOpen ? 'open' : ''}`}>
-        <nav className="mobile-nav-links">
-          {navLinks.map((l) => (
-            <a key={l.label} href={l.href} onClick={(e) => {
-              setMenuOpen(false);
-              if (currentPage) {
-                e.preventDefault();
-                setCurrentPage(null);
-                window.history.pushState(null, '', '/');
-                window.scrollTo(0, 0);
-                setTimeout(() => {
-                  document.querySelector(l.href)?.scrollIntoView({ behavior: 'smooth' });
-                }, 50);
-              }
-            }}>{l.label}</a>
-          ))}
-          <a href="#tally" className="mobile-connector-link" onClick={(e) => {
-            setMenuOpen(false);
-            if (currentPage) {
-              e.preventDefault();
-              setCurrentPage(null);
-              window.history.pushState(null, '', '/');
-              window.scrollTo(0, 0);
-              setTimeout(() => {
-                document.querySelector('#tally')?.scrollIntoView({ behavior: 'smooth' });
-              }, 50);
-            }
-          }}>
-            <Download size={18} /> Tally Connector
-          </a>
-          <CTAButton variant="primary" type="button" fullWidth onClick={() => { setMenuOpen(false); setPhoneModalOpen(true); }}>
-            Book a Demo
-          </CTAButton>
-        </nav>
-      </div>
-
-      {/* ── Company Pages ── */}
-      {currentPage && (
-        <CompanyPage page={currentPage} onBack={goHome} onBookDemo={() => setPhoneModalOpen(true)} />
-      )}
-
-      {/* ── Landing Page Content ── */}
-      {!currentPage && (<>
+    <>
+      <Seo
+        title="Takkada. Get Paid On Time. Automatically."
+        description="Takkada automates invoicing, WhatsApp reminders, UPI collection, and reconciliation back into Tally for Indian distributors and wholesalers."
+        path="/"
+        schemas={[softwareApplicationSchema(), faqPageSchema()]}
+      />
       {/* ── Hero Section ── */}
       <section className="hero" id="hero">
         <div className="container">
           <div className="hero-content">
             <div className="hero-badge reveal is-visible">
-              <span>Trusted by 100+ businesses</span>
+              <span className="tabular-nums">Trusted by 100+ businesses</span>
             </div>
             <h1 className="hero-title reveal is-visible" style={{ '--delay': '100ms' }}>
               <AnimatedHeading text="Get Paid On Time." />
@@ -194,7 +71,7 @@ function App() {
               Takkada automates collections, payment reminders, and reconciliation for Indian distributors, wholesalers, and manufacturers who use Tally.
             </p>
             <div className="hero-ctas reveal is-visible" style={{ '--delay': '380ms' }}>
-              <CTAButton variant="primary" type="button" onClick={() => setPhoneModalOpen(true)}>
+              <CTAButton variant="primary" type="button" onClick={() => setOpen(true)}>
                 Book a Demo <ArrowRight size={18} />
               </CTAButton>
               <CTAButton variant="secondary" href={appLinks.download}>
@@ -204,7 +81,7 @@ function App() {
             <div className="hero-stats reveal is-visible" style={{ '--delay': '500ms' }}>
               {heroStats.map((s) => (
                 <div key={s.label} className="hero-stat">
-                  <span className="hero-stat-value">{s.value}</span>
+                  <span className="hero-stat-value tabular-nums">{s.value}</span>
                   <span className="hero-stat-label">{s.label}</span>
                 </div>
               ))}
@@ -232,7 +109,7 @@ function App() {
           <div className="pain-grid">
             {painPoints.map((p, i) => (
               <div key={p.stat} className="pain-card reveal" style={{ '--delay': `${i * 80}ms` }}>
-                <span className="pain-stat">{p.stat}</span>
+                <span className="pain-stat tabular-nums">{p.stat}</span>
                 <p className="pain-desc">{p.description}</p>
               </div>
             ))}
@@ -270,12 +147,12 @@ function App() {
         <div className="container">
           <div className="metrics-grid reveal">
             <div className="metric">
-              <span className="metric-value">{'\u20B9'}17+ Crore</span>
+              <span className="metric-value tabular-nums">{'₹'}17+ Crore</span>
               <span className="metric-label">Collected Monthly</span>
             </div>
             <div className="metric-divider" />
             <div className="metric">
-              <span className="metric-value">100+</span>
+              <span className="metric-value tabular-nums">100+</span>
               <span className="metric-label">Businesses Trust Takkada</span>
             </div>
             <div className="metric-divider" />
@@ -301,7 +178,7 @@ function App() {
                 <span className="section-label">{feature.label}</span>
                 <h2 className="section-title">{feature.title}</h2>
                 <p className="feature-description">{feature.description}</p>
-                <CTAButton variant="outline" type="button" onClick={() => setPhoneModalOpen(true)}>
+                <CTAButton variant="outline" type="button" onClick={() => setOpen(true)}>
                   See it in action <ArrowRight size={16} />
                 </CTAButton>
               </div>
@@ -325,7 +202,7 @@ function App() {
             <h2>Ready to stop chasing payments?</h2>
             <p>See how Takkada can automate your collections and reconciliation.</p>
             <div className="mid-cta-actions">
-              <CTAButton variant="dark" type="button" onClick={() => setPhoneModalOpen(true)}>
+              <CTAButton variant="dark" type="button" onClick={() => setOpen(true)}>
                 Book a Demo <ArrowRight size={18} />
               </CTAButton>
               <CTAButton variant="outline-light" href={appLinks.download}>
@@ -336,14 +213,14 @@ function App() {
         </div>
       </section>
 
-      {/* ── Tally Integration Section (Critical) ── */}
+      {/* ── Tally Integration Section ── */}
       <section className="tally-section" id="tally">
         <div className="container">
           <div className="section-header reveal">
             <span className="section-label">The Tally Connector</span>
             <h2 className="section-title">Your Tally. Now On Your Phone.</h2>
             <p className="section-subtitle">
-              Takkada connects directly to your Tally installation. Every invoice, every payment, every entry &mdash; synced in real-time. No manual work. No data gaps.
+              Takkada connects directly to your Tally installation. Every invoice, every payment, every entry, synced in real-time. No manual work. No data gaps.
             </p>
           </div>
 
@@ -370,7 +247,6 @@ function App() {
             </div>
           </div>
 
-          {/* Tally Connector Download */}
           <div className="tally-download reveal" style={{ '--delay': '150ms' }}>
             <div className="tally-download-card">
               <div className="tally-download-icon">
@@ -431,7 +307,7 @@ function App() {
         </div>
       </section>
 
-      {/* ── Advanced Features (with dual screenshots for RBAC) ── */}
+      {/* ── Advanced Features ── */}
       {advancedFeatures.map((feature, index) => (
         <section
           key={feature.title}
@@ -470,7 +346,7 @@ function App() {
           <div className="how-grid">
             {howItWorks.map((step, i) => (
               <div key={step.title} className="how-card reveal" style={{ '--delay': `${i * 100}ms` }}>
-                <span className="how-step-num">{step.step}</span>
+                <span className="how-step-num tabular-nums">{step.step}</span>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
               </div>
@@ -510,8 +386,8 @@ function App() {
                   </div>
                   {plan.highlighted && <span className="pricing-recommended">&#10003; Recommended</span>}
                   <div className="pricing-amount">
-                    <span className="pricing-price">{plan.price}</span>
-                    <span className="pricing-period">{plan.period}</span>
+                    <span className="pricing-price tabular-nums">{plan.price}</span>
+                    <span className="pricing-period tabular-nums">{plan.period}</span>
                   </div>
                 </div>
                 <ul className="pricing-features">
@@ -522,7 +398,7 @@ function App() {
                     </li>
                   ))}
                 </ul>
-                <CTAButton variant={plan.highlighted ? 'primary' : 'outline'} type="button" fullWidth onClick={() => setPhoneModalOpen(true)}>
+                <CTAButton variant={plan.highlighted ? 'primary' : 'outline'} type="button" fullWidth onClick={() => setOpen(true)}>
                   Book a Demo <ArrowRight size={18} />
                 </CTAButton>
               </div>
@@ -533,7 +409,7 @@ function App() {
             {pricing.addons.map((a) => (
               <div key={a.label} className="pricing-addon">
                 <span>{a.label}{a.note && <span className="pricing-addon-note"> — {a.note}</span>}</span>
-                <span className="pricing-addon-price">{a.price} + GST</span>
+                <span className="pricing-addon-price tabular-nums">{a.price} + GST</span>
               </div>
             ))}
           </div>
@@ -565,9 +441,9 @@ function App() {
         <div className="container">
           <div className="final-cta-content reveal">
             <h2>Stop Chasing Payments.<br />Let Your System Do It.</h2>
-            <p>Join 100+ businesses that have automated their collections with Takkada.</p>
+            <p className="tabular-nums">Join 100+ businesses that have automated their collections with Takkada.</p>
             <div className="final-cta-actions">
-              <CTAButton variant="dark" type="button" onClick={() => setPhoneModalOpen(true)}>
+              <CTAButton variant="dark" type="button" onClick={() => setOpen(true)}>
                 Book a Demo <ArrowRight size={18} />
               </CTAButton>
               <CTAButton variant="outline-light" href={appLinks.download}>
@@ -581,59 +457,8 @@ function App() {
           </div>
         </div>
       </section>
-
-      </>)}
-
-      {/* ── Footer ── */}
-      <footer className="footer">
-        <div className="container">
-          <div className="footer-top">
-            <div className="footer-brand">
-              <a href="#hero" className="footer-logo">
-                <img src="/assets/screenshots/takkada-logo.png" alt="Takkada" className="footer-logo-img" />
-              </a>
-              <p className="footer-tagline">Get Paid On Time. Automatically.</p>
-              <p className="footer-company">{contactInfo.company}</p>
-              <p className="footer-contact">{contactInfo.phone}</p>
-              <p className="footer-contact">{contactInfo.email}</p>
-            </div>
-            <div className="footer-columns">
-              {footerColumns.map((col) => (
-                <div key={col.title} className="footer-col">
-                  <p className="footer-col-title">{col.title}</p>
-                  {col.links.map((link) =>
-                    link.page ? (
-                      <a
-                        href={`/${link.page}`}
-                        key={link.label}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setCurrentPage(link.page);
-                          window.history.pushState(null, '', `/${link.page}`);
-                          window.scrollTo(0, 0);
-                        }}
-                      >
-                        {link.label}
-                      </a>
-                    ) : (
-                      <a href={link.href} key={link.label}>{link.label}</a>
-                    )
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>&copy; 2025 {contactInfo.company}. All rights reserved.</p>
-            <p className="footer-site">{contactInfo.website}</p>
-          </div>
-        </div>
-      </footer>
-
-      {/* ── Phone Modal ── */}
-      <PhoneModal isOpen={phoneModalOpen} onClose={() => setPhoneModalOpen(false)} />
-    </div>
+    </>
   );
 }
 
-export default App;
+export default Home;

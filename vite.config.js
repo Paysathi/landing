@@ -8,6 +8,10 @@ export default defineConfig({
     port: 5173,
     host: true,
   },
+  ssgOptions: {
+    dirStyle: 'nested',
+    formatting: 'minify',
+  },
   test: {
     environment: 'jsdom',
     setupFiles: './src/test/setup.js',
