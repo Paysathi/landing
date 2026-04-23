@@ -2347,18 +2347,20 @@ html.js .animated-heading .letter {
 
 /* ── ICP Template (Session 4) ── */
 .icp-hero .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: block;
 }
 
 .icp-hero-content {
-  max-width: 720px;
-  text-align: center;
+  max-width: 640px;
+  text-align: left;
 }
 
-.icp-hero-ctas {
-  justify-content: center;
+.icp-hero-title {
+  font-size: clamp(26px, 3.6vw, 44px) !important;
+}
+
+.icp-hero-subtitle {
+  max-width: 520px;
 }
 
 .icp-breadcrumb {
@@ -2368,7 +2370,6 @@ html.js .animated-heading .letter {
   font-size: 13px;
   color: var(--color-text-muted);
   margin-bottom: 20px;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -2383,33 +2384,7 @@ html.js .animated-heading .letter {
 
 .icp-breadcrumb-sep {
   color: var(--color-border);
-}
-
-.icp-pain-card {
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  padding: 32px 28px;
-  border: 1px solid var(--color-border-light);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.icp-pain-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-}
-
-.icp-pain-title {
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--color-text);
-  margin-bottom: 12px;
-  line-height: 1.35;
-}
-
-.icp-pain-body {
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--color-text-secondary);
+  margin: 0 2px;
 }
 
 .icp-scenario-section {
@@ -2419,16 +2394,12 @@ html.js .animated-heading .letter {
 
 .icp-scenario-inner {
   max-width: 680px;
-  margin: 0 auto;
-}
-
-.icp-scenario-heading {
-  margin-bottom: 24px;
 }
 
 .icp-scenario-body {
   font-size: 17px;
   line-height: 1.75;
   color: var(--color-text);
+  margin-top: 16px;
 }
 

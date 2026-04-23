@@ -10,36 +10,23 @@ const data = {
     text: 'Book a 15-min demo',
     href: 'https://calendar.notion.so/meet/ronakmalu/takkada',
   },
-  ctaSecondary: { text: 'See pricing', href: '/pricing' },
-  painPoints: [
-    {
-      title: '₹1,00,000 transfer, no reference',
-      body: "A retailer transfers a lakh and says 'adjust against my bills.' You open Tally. You open the bank statement. You start matching by hand. This takes 40 minutes for one payment.",
-    },
-    {
-      title: 'Half-cleared invoices everywhere',
-      body: "A retailer pays ₹10,000 against an ₹18,000 invoice and says 'baaki baad mein.' Your outstanding report fills up with half-cleared lines. Forty retailers doing this means 40 unresolved entries every week.",
-    },
-    {
-      title: 'Two hours, every evening, forever',
-      body: 'Bank statement on one screen. Tally on the other. You match line by line, enter receipts manually, pray you get the amounts right. Then you do it again tomorrow.',
-    },
-  ],
+  ctaSecondary: { text: 'See pricing', href: '/#pricing-strip' },
+  capabilitiesHeading: 'Two hours of evening work, eliminated',
   capabilities: [
     {
       icon: Target,
       title: 'Smart matching with confidence scoring',
-      body: 'Takkada looks at amount, party, recent invoices, and payment patterns to find the right match. High-confidence matches post automatically. Low-confidence ones queue for your two-tap approval.',
+      body: 'Takkada looks at amount, party, recent invoices, and payment patterns. High-confidence matches post automatically. Low-confidence ones queue for your two-tap approval.',
     },
     {
       icon: Layers,
       title: 'Partial and combined payments handled',
-      body: '₹10,000 against ₹18,000 splits the invoice cleanly. ₹1,00,000 across three invoices proposes the best combination. You approve in two taps.',
+      body: '₹10,000 against ₹18,000 splits the invoice cleanly. ₹1,00,000 across three invoices proposes the best combination.',
     },
     {
       icon: Inbox,
       title: 'Unmatched payments go to suspense, not limbo',
-      body: 'Payments without a clear match park in a configurable suspense account. They do not block your books or disappear — they sit waiting for your resolution.',
+      body: 'Payments without a clear match park in a configurable suspense account. They do not block your books — they wait for your resolution.',
     },
     {
       icon: RefreshCw,
@@ -57,7 +44,7 @@ const data = {
   faqs: [
     {
       q: 'How does Takkada know which invoice a payment belongs to?',
-      a: 'Three signals — the payer\'s UPI handle or bank account, the amount, and recent invoices for that party. Takkada scores the match. Above 95% confidence it auto-posts. Below that you approve it.',
+      a: "Three signals — the payer's UPI handle or bank account, the amount, and recent invoices for that party. Takkada scores the match. Above 95% confidence it auto-posts. Below that you approve it.",
     },
     {
       q: 'What if my bank is not supported?',

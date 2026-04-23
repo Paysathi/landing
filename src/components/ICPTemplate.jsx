@@ -25,7 +25,7 @@ function ICPTemplate({
   subheadline,
   ctaPrimary,
   ctaSecondary,
-  painPoints,
+  capabilitiesHeading,
   capabilities,
   scenario,
   testimonial,
@@ -67,50 +67,32 @@ function ICPTemplate({
               ))}
             </nav>
             <span className="section-label hero-overline">{overline}</span>
-            <h1 className="hero-title">{headline}</h1>
-            <p className="hero-subtitle">{subheadline}</p>
-            <div className="hero-ctas icp-hero-ctas">
+            <h1 className="hero-title icp-hero-title">{headline}</h1>
+            <p className="hero-subtitle icp-hero-subtitle">{subheadline}</p>
+            <div className="hero-ctas">
               <CTAButton variant="primary" href={ctaPrimary.href}>
                 {ctaPrimary.text} <ArrowRight size={18} />
               </CTAButton>
-              {ctaSecondary.href.startsWith('/') ? (
-                <Link to={ctaSecondary.href} className="cta-btn cta-btn--secondary">
-                  {ctaSecondary.text}
-                </Link>
-              ) : (
+              {ctaSecondary.href.startsWith('http') ? (
                 <a href={ctaSecondary.href} className="cta-btn cta-btn--secondary">
                   {ctaSecondary.text}
                 </a>
+              ) : (
+                <Link to={ctaSecondary.href} className="cta-btn cta-btn--secondary">
+                  {ctaSecondary.text}
+                </Link>
               )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Pain Points ── */}
-      <section className="problem-section" id="problem">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-label">The Problem Today</span>
-            <h2 className="section-title">The problem today</h2>
-          </div>
-          <div className="pain-grid">
-            {painPoints.map((p) => (
-              <div key={p.title} className="icp-pain-card">
-                <h3 className="icp-pain-title">{p.title}</h3>
-                <p className="icp-pain-body">{p.body}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ── Capabilities ── */}
-      <section className="tally-section" id="how-it-works">
+      <section className="tally-section" id="capabilities">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">How It Works</span>
-            <h2 className="section-title">How it works</h2>
+            <span className="section-label">{overline}</span>
+            <h2 className="section-title">{capabilitiesHeading}</h2>
           </div>
           <div className="tally-grid">
             {capabilities.map((c) => {
@@ -133,7 +115,7 @@ function ICPTemplate({
       <section className="icp-scenario-section" id="scenario">
         <div className="container">
           <div className="icp-scenario-inner">
-            <h2 className="section-title icp-scenario-heading">A day in the life</h2>
+            <span className="section-label">A day in the life</span>
             <p className="icp-scenario-body">{scenario}</p>
           </div>
         </div>
@@ -148,7 +130,9 @@ function ICPTemplate({
                 <div className="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
                 <p className="testimonial-quote">{testimonial.quote}</p>
                 <div className="testimonial-meta">
-                  <div className="testimonial-avatar" aria-hidden="true">D</div>
+                  <div className="testimonial-avatar" aria-hidden="true">
+                    {testimonial.author.charAt(0)}
+                  </div>
                   <p className="testimonial-name">{testimonial.author}</p>
                 </div>
               </article>
@@ -161,8 +145,7 @@ function ICPTemplate({
       <section className="faq-section" id="faq">
         <div className="container">
           <div className="section-header">
-            <span className="section-label">Questions</span>
-            <h2 className="section-title">Questions</h2>
+            <h2 className="section-title">Before you sign up</h2>
           </div>
           <div className="faq-list">
             {faqItems.map((item, i) => (
@@ -183,12 +166,12 @@ function ICPTemplate({
         <div className="container">
           <div className="final-cta-content">
             <h2>
-              Book a 15-min demo.
+              See it in 15 minutes.
               <br />
-              See if Takkada fits.
+              Decide with a full picture.
             </h2>
             <p>
-              Talk to us for 15 minutes. Leave with a clear picture of whether Takkada fits your business.
+              Book a demo. We walk through your setup, your Tally version, and exactly what Takkada changes for your business.
             </p>
             <div className="final-cta-actions">
               <CTAButton variant="dark" href={ctaPrimary.href}>

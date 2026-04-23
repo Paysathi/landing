@@ -10,25 +10,8 @@ const data = {
     text: 'Book a 15-min demo',
     href: 'https://calendar.notion.so/meet/ronakmalu/takkada',
   },
-  ctaSecondary: { text: 'See pricing', href: '/pricing' },
-  painPoints: [
-    {
-      title: 'Receivables live on the office laptop. You work from a phone.',
-      body: 'Your outstanding report is accurate — but only on the desktop where Tally is installed. You, your salesmen, and your collections team are all on phones in the field.',
-    },
-    {
-      title: 'Every invoice dispatch, reminder, and payment match is manual',
-      body: 'Your accountant exports the invoice, forwards it on WhatsApp, chases payment, screenshots the confirmation, and enters the receipt in Tally. Every transaction, every day.',
-    },
-    {
-      title: 'E-invoice and e-way bill force everyone back to the laptop',
-      body: 'Mid-delivery, the e-way bill needs generating. The salesman calls the office. The office opens Tally. The truck waits. This happens five times a day.',
-    },
-    {
-      title: 'Salesmen in the field cannot raise invoices',
-      body: 'A salesman closes an order at the retailer\'s shop at 6 PM. The office is closed. The invoice does not get raised until tomorrow morning. The retailer\'s delivery is delayed.',
-    },
-  ],
+  ctaSecondary: { text: 'See pricing', href: '/#pricing-strip' },
+  capabilitiesHeading: 'The complete distributor workflow, from your phone',
   capabilities: [
     {
       icon: Smartphone,
@@ -38,7 +21,7 @@ const data = {
     {
       icon: MessageCircle,
       title: 'WhatsApp auto-dispatch of every invoice',
-      body: 'Invoice created in Tally or on mobile — customer receives the PDF and a payment link on WhatsApp immediately. No copy-paste, no forwarding.',
+      body: 'Invoice created in Tally or on mobile — customer receives the PDF and a payment link immediately. No copy-paste, no forwarding.',
     },
     {
       icon: IndianRupee,

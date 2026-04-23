@@ -5,36 +5,23 @@ const data = {
   overline: 'TALLY ON MOBILE',
   headline: 'See your Tally receivables from your phone. Send reminders without opening your laptop.',
   subheadline:
-    "Most days you do not need to edit anything in Tally. You just want to know who owes what, what is overdue, and whether yesterday's payment landed. Takkada gives you that view, on your phone, without touching your Tally setup.",
+    "Most days you do not need to edit anything in Tally. You just want to know who owes what, what is overdue, and whether yesterday's payment landed. Takkada gives you that — on your phone, without touching your Tally setup.",
   ctaPrimary: {
     text: 'Book a 15-min demo',
     href: 'https://calendar.notion.so/meet/ronakmalu/takkada',
   },
-  ctaSecondary: { text: 'See pricing', href: '/pricing' },
-  painPoints: [
-    {
-      title: 'The outstanding list lives on the office laptop',
-      body: 'You reach for your phone to check overdues, then remember the data is on a desktop at the office. You call the accountant. He reads out the numbers. You write them down.',
-    },
-    {
-      title: 'Your accountant sends a WhatsApp screenshot every evening',
-      body: 'You scroll through a photo of an Excel sheet like a receipt. You cannot tap a party name, search, or filter. You forward it to your salesman who screenshots it again.',
-    },
-    {
-      title: 'When you are travelling, you are flying blind',
-      body: 'A retailer says he paid yesterday. You have no way to confirm without calling the office. You say okay and sort it later. Later never comes cleanly.',
-    },
-  ],
+  ctaSecondary: { text: 'See pricing', href: '/#pricing-strip' },
+  capabilitiesHeading: 'Visibility and control from your phone',
   capabilities: [
     {
       icon: BarChart2,
       title: 'Real-time receivables on your phone',
-      body: 'See party-wise overdue, amount, and days since last payment. Refreshes every time your office laptop opens Tally.',
+      body: 'Party-wise overdue, amount, and days since last payment. Refreshes every time your office laptop opens Tally.',
     },
     {
       icon: Bell,
       title: 'Send a reminder in two taps',
-      body: 'Tap a party, send a reminder. The template is ready. Your name, your brand, the invoice number already filled in.',
+      body: 'Tap a party, send a reminder. Your name, your brand, the invoice number — already filled in.',
     },
     {
       icon: FileText,
