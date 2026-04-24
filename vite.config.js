@@ -3,8 +3,27 @@ import react from '@vitejs/plugin-react';
 import { readdirSync, readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import matter from 'gray-matter';
+import { marked } from 'marked';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+function markdownPlugin() {
+  return {
+    name: 'vite-plugin-markdown',
+    transform(code, id) {
+      if (!id.endsWith('.md')) return null;
+      const { data, content } = matter(code);
+      const filename = id.split('/').pop().replace(/\.md$/, '');
+      const slug = data.slug || filename;
+      const html = marked(content);
+      return {
+        code: `export default ${JSON.stringify({ ...data, slug, html })}`,
+        map: null,
+      };
+    },
+  };
+}
 
 function getBlogSlugs() {
   const blogDir = resolve(__dirname, 'content/blog');
@@ -23,7 +42,7 @@ function getBlogSlugs() {
 
 export default defineConfig({
   base: '/',
-  plugins: [react()],
+  plugins: [markdownPlugin(), react()],
   server: {
     port: 5173,
     host: true,
