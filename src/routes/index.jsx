@@ -9,6 +9,8 @@ import MobileTally from './MobileTally';
 import WhatsAppInvoice from './WhatsAppInvoice';
 import AutoReconciliation from './AutoReconciliation';
 import ForDistributors from './ForDistributors';
+import BlogIndex from './BlogIndex';
+import BlogPost from './BlogPost';
 import { routeMetadata } from '../data/siteMetadata';
 
 const ELEMENT_FOR_PATH = {
@@ -37,6 +39,10 @@ export const routes = [
   {
     path: '/',
     element: <Layout />,
-    children,
+    children: [
+      ...children,
+      { path: 'blog', element: <BlogIndex /> },
+      { path: 'blog/:slug', element: <BlogPost /> },
+    ],
   },
 ];

@@ -1,4 +1,4 @@
-import { writeFileSync, statSync, existsSync } from 'node:fs';
+import { writeFileSync, statSync, existsSync, readdirSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { routeMetadata } from '../src/data/siteMetadata.js';
@@ -20,13 +20,45 @@ function loc(path) {
   return `${SITE_URL}${withLead.endsWith('/') ? withLead : `${withLead}/`}`;
 }
 
+function getBlogPostEntries() {
+  const blogDir = resolve(repoRoot, 'content/blog');
+  if (!existsSync(blogDir)) return [];
+  return readdirSync(blogDir)
+    .filter((f) => f.endsWith('.md'))
+    .map((f) => {
+      const filePath = resolve(blogDir, f);
+      const raw = readFileSync(filePath, 'utf-8');
+      const slugMatch = raw.match(/^slug:\s*"?([^"\n]+)"?/m);
+      const slug = slugMatch ? slugMatch[1].trim() : f.replace(/\.md$/, '');
+      return {
+        path: `/blog/${slug}`,
+        sourceFile: `content/blog/${f}`,
+        changefreq: 'monthly',
+        priority: 0.7,
+      };
+    });
+}
+
 const distDir = resolve(repoRoot, 'dist');
 if (!existsSync(distDir)) {
   console.error(`generate-sitemap: dist/ not found at ${distDir}. Run vite-react-ssg build first.`);
   process.exit(1);
 }
 
-const urls = routeMetadata
+const blogIndex = {
+  path: '/blog',
+  sourceFile: 'content/blog',
+  changefreq: 'weekly',
+  priority: 0.8,
+};
+
+const allEntries = [
+  ...routeMetadata,
+  blogIndex,
+  ...getBlogPostEntries(),
+];
+
+const urls = allEntries
   .map(({ path, sourceFile, changefreq, priority }) => (
     `  <url>
     <loc>${loc(path)}</loc>
@@ -45,4 +77,4 @@ ${urls}
 
 const outPath = resolve(distDir, 'sitemap.xml');
 writeFileSync(outPath, xml);
-console.log(`generate-sitemap: wrote ${outPath} (${routeMetadata.length} urls)`);
+console.log(`generate-sitemap: wrote ${outPath} (${allEntries.length} urls)`);
