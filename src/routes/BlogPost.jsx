@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import Seo from '../components/Seo';
-import { getAllPosts, getPostBySlug } from '../lib/blogPosts';
+import { getAllPosts, getPostBySlug, getSlugs } from '../lib/blogPosts';
 import { breadcrumbSchema, absoluteUrl } from '../data/schema';
 
 const DEMO_URL = 'https://calendar.notion.so/meet/ronakmalu/takkada';
