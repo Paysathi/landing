@@ -164,9 +164,9 @@ function Home() {
               <CTAButton variant="primary" href={appLinks.bookDemo}>
                 Book a 15-min demo <ArrowRight size={18} />
               </CTAButton>
-              <Link to="/pricing" className="cta-btn cta-btn--secondary">
+              <a href="#pricing-strip" className="cta-btn cta-btn--secondary">
                 See pricing
-              </Link>
+              </a>
             </div>
             <div className="hero-stats">
               {heroStats.map((s) => (
@@ -467,20 +467,20 @@ function Home() {
           </div>
           <div className="home-pricing-strip">
             {pricing.plans.map((plan) => (
-              <Link key={plan.plan} to="/pricing" className="home-pricing-strip-card">
+              <div key={plan.plan} className="home-pricing-strip-card">
                 <span className="home-pricing-strip-name">{plan.plan}</span>
                 <span className="home-pricing-strip-price tabular-nums">{plan.price}</span>
                 <span className="home-pricing-strip-period tabular-nums">{plan.period}</span>
-              </Link>
+              </div>
             ))}
           </div>
           <p className="home-pricing-strip-note">
             7-day free trial on every plan. No card required.
           </p>
           <div className="home-pricing-strip-cta">
-            <Link to="/pricing" className="home-pricing-strip-link">
-              See full pricing <ArrowRight size={16} />
-            </Link>
+            <a href={appLinks.bookDemo} className="home-pricing-strip-link" target="_blank" rel="noopener noreferrer">
+              Get full pricing in the demo <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>

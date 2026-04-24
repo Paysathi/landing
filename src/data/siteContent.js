@@ -3,6 +3,7 @@ export const navLinks = [
   { label: 'Features', href: '#features' },
   { label: 'Pricing', href: '#pricing' },
   { label: 'How It Works', href: '#how-it-works' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 export const heroStats = [
@@ -219,6 +220,7 @@ export const footerColumns = [
     links: [
       { label: 'About Us', page: 'about-us' },
       { label: 'Contact Us', page: 'contact-us' },
+      { label: 'Blog', page: 'blog' },
       { label: 'Privacy Policy', page: 'privacy-policy' },
       { label: 'Terms & Conditions', page: 'terms-and-conditions' },
       { label: 'Refund Policy', page: 'refund-policy' },

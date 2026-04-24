@@ -33,8 +33,16 @@ function NavHashLink({ href, children, onClick, className }) {
   const navigate = useNavigate();
   const location = useLocation();
   const hash = hashTargetFrom(href);
+
+  if (!hash) {
+    return (
+      <Link to={href} className={className} onClick={onClick}>
+        {children}
+      </Link>
+    );
+  }
+
   const handleClick = (e) => {
-    if (!hash) return;
     e.preventDefault();
     if (onClick) onClick();
     if (location.pathname === '/') {
