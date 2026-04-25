@@ -15,11 +15,13 @@ import {
   Bell,
   Link as LinkIcon,
   Share2,
+  Download,
 } from 'lucide-react';
 import CTAButton from '../components/CTAButton';
 import TestimonialCard from '../components/TestimonialCard';
 import FAQItem from '../components/FAQItem';
 import Seo from '../components/Seo';
+import ComparisonSection from '../components/ComparisonSection';
 import { softwareApplicationSchema, faqPageSchema } from '../data/schema';
 import {
   appLinks,
@@ -164,7 +166,7 @@ function Home() {
               <CTAButton variant="primary" href={appLinks.bookDemo}>
                 Book a 15-min demo <ArrowRight size={18} />
               </CTAButton>
-              <a href="#pricing-strip" className="cta-btn cta-btn--secondary">
+              <a href="#pricing" className="cta-btn cta-btn--secondary">
                 See pricing
               </a>
             </div>
@@ -367,6 +369,9 @@ function Home() {
         </section>
       ))}
 
+      {/* ── Competitor comparison ── */}
+      <ComparisonSection />
+
       {/* ── Tally connector flow + four trust cards ── */}
       <section className="tally-section" id="tally">
         <div className="container">
@@ -415,6 +420,13 @@ function Home() {
               );
             })}
           </div>
+
+          <div className="tally-download">
+            <p className="tally-download-label">Windows PC required. Works with Tally Prime and Tally ERP 9.</p>
+            <a href={appLinks.tallyConnector} className="cta-btn cta-btn--outline tally-download-btn" download>
+              <Download size={16} /> Download Tally Connector
+            </a>
+          </div>
         </div>
       </section>
 
@@ -458,25 +470,57 @@ function Home() {
         </div>
       </section>
 
-      {/* ── Pricing strip ── */}
-      <section className="pricing-section" id="pricing-strip">
+      {/* ── Pricing ── */}
+      <section className="pricing-section" id="pricing">
         <div className="container">
           <div className="section-header">
             <span className="section-label">Pricing</span>
             <h2 className="section-title tabular-nums">₹2,500 to ₹7,500 per year. GST extra.</h2>
+            <p className="section-subtitle">7-day free trial on every plan. No card required.</p>
           </div>
           <div className="home-pricing-strip">
             {pricing.plans.map((plan) => (
-              <div key={plan.plan} className="home-pricing-strip-card">
+              <div
+                key={plan.plan}
+                className={`home-pricing-strip-card${plan.highlighted ? ' home-pricing-strip-card--highlighted' : ''}`}
+              >
+                {plan.badge && (
+                  <span className="home-pricing-badge">{plan.badge}</span>
+                )}
                 <span className="home-pricing-strip-name">{plan.plan}</span>
                 <span className="home-pricing-strip-price tabular-nums">{plan.price}</span>
                 <span className="home-pricing-strip-period tabular-nums">{plan.period}</span>
+                {plan.description && (
+                  <p className="home-pricing-strip-desc">{plan.description}</p>
+                )}
+                <ul className="home-pricing-feature-list">
+                  {plan.features.map((f) => (
+                    <li key={f} className={`home-pricing-feature-item${f.startsWith('Everything') ? ' home-pricing-feature-item--inherit' : ''}`}>
+                      {!f.startsWith('Everything') && (
+                        <Check size={13} className="home-pricing-feature-check" />
+                      )}
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             ))}
           </div>
-          <p className="home-pricing-strip-note">
-            7-day free trial on every plan. No card required.
-          </p>
+
+          {/* Add-ons */}
+          <div className="home-pricing-addons">
+            <p className="home-pricing-addons-title">Add-ons</p>
+            <div className="home-pricing-addons-row">
+              {pricing.addons.map((addon) => (
+                <div key={addon.label} className="home-pricing-addon-item">
+                  <span className="home-pricing-addon-label">{addon.label}</span>
+                  <span className="home-pricing-addon-price tabular-nums">{addon.price}</span>
+                  {addon.note && <span className="home-pricing-addon-note">{addon.note}</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+
           <div className="home-pricing-strip-cta">
             <a href={appLinks.bookDemo} className="home-pricing-strip-link" target="_blank" rel="noopener noreferrer">
               Get full pricing in the demo <ArrowRight size={16} />

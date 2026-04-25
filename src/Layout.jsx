@@ -172,6 +172,7 @@ function ModalMount() {
 function LayoutInner() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useScrollToHash();
 
@@ -189,12 +190,14 @@ function LayoutInner() {
     return () => document.body.classList.remove('lock-scroll');
   }, [menuOpen]);
 
+  const forceLightNav = location.pathname.startsWith('/blog');
+
   return (
     <div className="site-root">
       <Head>
         <script type="application/ld+json">{JSON.stringify(organizationSchema())}</script>
       </Head>
-      <SiteHeader menuOpen={menuOpen} setMenuOpen={setMenuOpen} scrolled={scrolled} />
+      <SiteHeader menuOpen={menuOpen} setMenuOpen={setMenuOpen} scrolled={scrolled || forceLightNav} />
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       <Outlet />
       <SiteFooter />

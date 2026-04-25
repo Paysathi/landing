@@ -91,7 +91,7 @@ function BlogPost() {
   return (
     <>
       <Seo
-        title={`${post.title} — Takkada`}
+        title={post.meta_title || `${post.title} — Takkada`}
         description={post.meta_description}
         path={`/blog/${post.slug}`}
         ogType="article"
@@ -101,15 +101,17 @@ function BlogPost() {
       <main className="blog-post-page">
         <article className="blog-post-article">
           <header className="blog-post-header">
-            <div className="container">
+            <div className="blog-prose">
               <nav className="blog-breadcrumb">
                 <Link to="/">Home</Link>
-                <span aria-hidden="true"> / </span>
+                <span aria-hidden="true">/</span>
                 <Link to="/blog">Blog</Link>
-                <span aria-hidden="true"> / </span>
+                <span aria-hidden="true">/</span>
                 <span>{post.category}</span>
               </nav>
-              <span className="blog-category-tag">{post.category}</span>
+              <span className="blog-category-tag blog-category-tag--on-dark">
+                {post.category}
+              </span>
               <h1 className="blog-post-title">{post.title}</h1>
               <div className="blog-post-byline">
                 <span className="blog-author">{post.author}</span>
@@ -121,13 +123,17 @@ function BlogPost() {
             </div>
           </header>
 
-          <div className="container">
+          <div className="blog-prose">
             <div
               className="blog-post-body"
               dangerouslySetInnerHTML={{ __html: post.html }}
             />
           </div>
         </article>
+
+        <div className="blog-related-wrap">
+          <RelatedPosts currentSlug={slug} />
+        </div>
 
         <section className="blog-cta-band">
           <div className="container">
@@ -142,10 +148,6 @@ function BlogPost() {
             </div>
           </div>
         </section>
-
-        <div className="container">
-          <RelatedPosts currentSlug={slug} />
-        </div>
       </main>
     </>
   );

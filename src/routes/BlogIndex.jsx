@@ -10,8 +10,28 @@ function formatDate(dateStr) {
   return d.toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' });
 }
 
+function PostCard({ post }) {
+  return (
+    <article className="blog-post-card">
+      <div className="blog-post-card-meta">
+        <span className="blog-category-tag">{post.category}</span>
+        <span className="blog-date tabular-nums">{formatDate(post.date)}</span>
+      </div>
+      <h3 className="blog-post-card-title">
+        <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+      </h3>
+      <p className="blog-post-card-excerpt">{post.excerpt}</p>
+      <Link to={`/blog/${post.slug}`} className="blog-read-more">
+        Read post →
+      </Link>
+    </article>
+  );
+}
+
 function BlogIndex() {
   const posts = getAllPosts();
+  const featured = posts[0];
+  const rest = posts.slice(1);
 
   const schemas = [
     breadcrumbSchema([
@@ -42,30 +62,38 @@ function BlogIndex() {
         </section>
 
         <section className="blog-posts-section">
-          <div className="container">
+          <div className="blog-posts-inner">
             {posts.length === 0 ? (
               <p className="blog-empty">No posts yet.</p>
             ) : (
-              <div className="blog-post-list">
-                {posts.map((post) => (
-                  <article key={post.slug} className="blog-post-card">
-                    <div className="blog-post-card-meta">
-                      <span className="blog-category-tag">{post.category}</span>
-                      <span className="blog-date tabular-nums">{formatDate(post.date)}</span>
+              <>
+                {featured && (
+                  <article className="blog-featured-card">
+                    <div className="blog-featured-meta">
+                      <span className="blog-category-tag">{featured.category}</span>
+                      <span className="blog-featured-flag">Latest</span>
                     </div>
-                    <h2 className="blog-post-card-title">
-                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    <h2 className="blog-featured-title">
+                      <Link to={`/blog/${featured.slug}`}>{featured.title}</Link>
                     </h2>
-                    <p className="blog-post-card-excerpt">{post.excerpt}</p>
-                    <div className="blog-post-card-footer">
-                      <span className="blog-author">{post.author}</span>
-                      <Link to={`/blog/${post.slug}`} className="blog-read-more">
+                    <p className="blog-featured-excerpt">{featured.excerpt}</p>
+                    <div className="blog-featured-footer">
+                      <span className="blog-date tabular-nums">{formatDate(featured.date)}</span>
+                      <Link to={`/blog/${featured.slug}`} className="blog-read-more">
                         Read post →
                       </Link>
                     </div>
                   </article>
-                ))}
-              </div>
+                )}
+
+                {rest.length > 0 && (
+                  <div className="blog-post-grid">
+                    {rest.map((post) => (
+                      <PostCard key={post.slug} post={post} />
+                    ))}
+                  </div>
+                )}
+              </>
             )}
           </div>
         </section>

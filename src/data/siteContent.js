@@ -148,32 +148,59 @@ export const pricing = {
       plan: 'View Only',
       price: '\u20B92,500',
       period: '/year + GST',
-      features: ['View data & basic access', 'Payment reminders'],
+      description: 'See your receivables. Send reminders. Nothing else.',
+      features: [
+        'Real-time receivables dashboard from Tally',
+        'Overdue party list and outstanding summary',
+        'Send payment reminders via WhatsApp',
+        '1 user included',
+      ],
     },
     {
       plan: 'Voucher Model',
       price: '\u20B94,500',
       period: '/year + GST',
-      features: ['Create & edit vouchers', 'All View Only features'],
+      description: 'Create vouchers and share invoices from your phone.',
+      features: [
+        'Everything in View Only, plus:',
+        'Create sales, purchase, receipt vouchers from mobile',
+        'Share invoice PDFs to customers via WhatsApp',
+        'Works when the Tally laptop is off',
+      ],
     },
     {
       plan: 'Collections Model',
       price: '\u20B96,000',
       period: '/year + GST',
-      features: ['Payment collection via UPI/cards', 'E-Way Bill & E-Invoicing', 'All Voucher features'],
+      description: 'Collect payments digitally. Auto-reconcile into Tally.',
+      features: [
+        'Everything in Voucher Model, plus:',
+        'UPI payment links on every invoice. Zero MDR.',
+        'Payments auto-reconcile into Tally instantly',
+        'E-Invoice and E-Way Bill from your phone',
+        'Auto Invoice Dispatch available as add-on',
+      ],
     },
     {
-      plan: 'Full Access / Auto Dispatch',
+      plan: 'Full Access',
       price: '\u20B97,500',
       period: '/year + GST',
-      features: ['Role-based access control', 'Full feature set', 'All Collections features'],
+      description: 'Every invoice on WhatsApp the moment it is created in Tally.',
+      badge: 'Most Popular',
+      features: [
+        'Everything in Collections Model, plus:',
+        'Auto Invoice Dispatch \u2014 every Tally invoice fires on WhatsApp automatically',
+        'Role-based access for field salesman teams',
+        'Per-user ledger and stock group controls',
+      ],
       highlighted: true,
     },
   ],
   addons: [
-    { label: 'WhatsApp messages', price: '\u20B92,000 / 9,000 messages' },
-    { label: 'Extra user', price: '\u20B93,000 per user' },
-    { label: 'Extra business', price: '\u20B91,000 per business', note: 'Collections & Full Access only' },
+    { label: 'Auto Invoice Dispatch', price: '\u20B91,500 / year', note: 'Add-on for Collections plan only' },
+    { label: 'WhatsApp 9,000-message pack', price: '\u20B92,000 / year' },
+    { label: 'Extra user', price: '\u20B93,000 / user / year' },
+    { label: 'Extra business', price: '\u20B91,000 / business / year', note: 'Collections & Full Access only' },
   ],
 };
 
@@ -242,6 +269,57 @@ export const appLinks = {
   appStore: 'https://apps.apple.com/in/app/takkada/id6755435132',
   tallyConnector: 'https://paysaathi-desktop-autoupdate.s3.ap-south-1.amazonaws.com/releases/takkada-setup.exe',
   bookDemo: 'https://calendar.notion.so/meet/ronakmalu/takkada',
+};
+
+export const comparisonSection = {
+  overline: 'WHY TAKKADA',
+  heading: "What you get that others don't",
+  rows: [
+    {
+      feature: 'Mobile Tally view',
+      Takkada: true,
+      'Biz Analyst': true,
+      Livekeeping: true,
+    },
+    {
+      feature: 'Mobile voucher creation',
+      Takkada: true,
+      'Biz Analyst': true,
+      Livekeeping: true,
+    },
+    {
+      feature: 'E-invoice + e-way bill',
+      Takkada: true,
+      'Biz Analyst': false,
+      Livekeeping: true,
+    },
+    {
+      feature: 'Payment collection (UPI / cards)',
+      Takkada: true,
+      'Biz Analyst': false,
+      Livekeeping: false,
+    },
+    {
+      feature: 'Auto-reconciliation into Tally',
+      Takkada: true,
+      'Biz Analyst': false,
+      Livekeeping: false,
+    },
+    {
+      feature: 'Auto Invoice Dispatch — customer gets invoice + payment link the moment it’s raised in Tally',
+      Takkada: true,
+      'Biz Analyst': false,
+      Livekeeping: false,
+    },
+    {
+      feature: 'PDF/OCR — scan purchase invoices into Tally',
+      Takkada: true,
+      'Biz Analyst': false,
+      Livekeeping: false,
+    },
+  ],
+  disclaimer:
+    'Feature details for Biz Analyst and Livekeeping are based on publicly available information as of April 2026. Verify on their product pages before using this in sales materials.',
 };
 
 export const contactInfo = {
