@@ -50,9 +50,19 @@ Shape 2: Tally + full-stack mobile platform. Takkada and a handful of newer dist
 
 Shape 3: Move off Tally entirely to a modern cloud ERP. Zoho Books, Busy ERP, or a custom stack. Biggest change, longest transition, highest risk. Worth considering only if your entire stack is being rebuilt for other reasons (new GSTIN setup, merger, compliance overhaul). Rare.
 
-Capability comparison
+## Capability comparison
 
-CapabilityVyaparTally + Biz AnalystTally + TakkadaBooks live in TallyNoYesYesField salesman creates invoiceYes (on Vyapar's ledger)NoYes (posts to Tally)UPI payment link with invoice referenceBasicNoYes, auto-generated per invoiceWhatsApp reminder cadenceBasic broadcastNoFive-stage, age-basedUTR auto-reconciliationNoNoYes, including split and advanceE-invoice (IRN) from mobileYes (Vyapar's IRN)NoYes (posts to Tally)E-way bill from mobilePartialNoYesRole-based access for 3+ salesmenLimitedYes (view)Yes, granularTypical cost (₹/user/year)2,000 to 4,0004,000 to 6,000 (Tally + Biz Analyst)8,500 to 10,000 (Tally + Takkada)
+| Capability | Vyapar | Tally + Biz Analyst | Tally + Takkada |
+| --- | --- | --- | --- |
+| Books live in Tally | No | Yes | Yes |
+| Field salesman creates invoice | Yes (on Vyapar's ledger) | No | Yes (posts to Tally) |
+| UPI payment link with invoice reference | Basic | No | Yes, auto-generated per invoice |
+| WhatsApp reminder cadence | Basic broadcast | No | Five-stage, age-based |
+| UTR auto-reconciliation | No | No | Yes, including split and advance |
+| E-invoice (IRN) from mobile | Yes (Vyapar's IRN) | No | Yes (posts to Tally) |
+| E-way bill from mobile | Partial | No | Yes |
+| Role-based access for 3+ salesmen | Limited | Yes (view) | Yes, granular |
+| Mobile-layer cost on top of Tally (₹/user/year) | 2,000 to 4,000 (standalone) | 2,000 to 4,000 | 2,500 to 7,500 |
 
 The right reading of this table: Vyapar is the cheapest for a micro-business. For a distributor whose books already live in Tally, Vyapar is not cheaper — it is a different product that does not connect.
 
@@ -68,7 +78,7 @@ What is your actual DSO and UPI share? A distributor at 55-day DSO and 60% UPI h
 
 Is your CA willing to work off a non-Tally system? In India, almost all CAs work primarily in Tally. Switching to Vyapar as the books-of-record often means re-educating your CA or changing CAs.
 
-A small wholesaler's honest comparison
+## A small wholesaler's honest comparison
 
 A Ranchi electrical wholesaler, ₹1.8 crore turnover, one employee, no field salesmen, was using Vyapar for two years. We spoke to the owner; his take: "For my size, Vyapar is perfect. If I hire a salesman next year and cross ₹3 crore, I will move to Tally plus something that works with Tally. Not because Vyapar is bad — because my business will be a different shape."
 

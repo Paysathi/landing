@@ -48,7 +48,7 @@ Print, share, or attach to the e-way bill
 
 This flow has been stable since 2021. It assumes you are sitting at the desktop.
 
-How to generate an e-invoice on phone and sync back to Tally
+## How to generate an e-invoice on phone and sync back to Tally
 
 When the sale happens at the customer's shop in Rajkot at 3 PM and you need the IRN before the goods leave your godown, the desktop flow does not work. Here is how the mobile flow looks when a companion app is wired to Tally and the IRP correctly.
 
@@ -72,11 +72,17 @@ Step 5: Share the e-invoice
 
 The invoice, now with IRN and QR, can be sent over WhatsApp to the buyer directly from the same screen. Buyers increasingly check the QR for their input tax credit, especially after the ITC-matching tightening in the last two GSTR updates.
 
-Desktop vs phone e-invoice flow
+## Desktop vs phone e-invoice flow
 
-StepDesktop (Tally Prime)Phone (companion app + Tally)Where the invoice startsAccountant's PC at officeSalesman or owner's phone at customer's shopTime from sale to IRN60 to 120 minutes (wait for office call, PC entry)30 to 90 secondsTally syncNative, instantVia app sync, within minutesE-way bill chainingAvailable from same voucherAvailable from same voucherOffline toleranceNone; needs PC onlineQueues if no signal, posts when reconnected
+| Step | Desktop (Tally Prime) | Phone (companion app + Tally) |
+| --- | --- | --- |
+| Where the invoice starts | Accountant's PC at office | Salesman or owner's phone at customer's shop |
+| Time from sale to IRN | 60 to 120 minutes (wait for office call, PC entry) | 30 to 90 seconds |
+| Tally sync | Native, instant | Via app sync, within minutes |
+| E-way bill chaining | Available from same voucher | Available from same voucher |
+| Offline tolerance | None; needs PC online | Queues if no signal, posts when reconnected |
 
-Pitfalls when generating an e-invoice on phone
+## Pitfalls when generating an e-invoice on phone
 
 Duplicate IRN errors. If your app retries a submission after a timeout, you can end up with two IRN requests for the same invoice. A good app handles this with an idempotency key; a weak one leaves you with a "Duplicate IRN" error and a blocked invoice. Ask the vendor how they handle IRP timeouts.
 
@@ -86,7 +92,7 @@ Cancellation window. An e-invoice can be cancelled within 24 hours of generation
 
 Place of supply on interstate. A Punjab distributor sending goods to a Haryana buyer but delivering to a Delhi branch of the buyer must get the place of supply right. The IRN will issue either way, but GST on the wrong state creates ITC problems later. The app should warn before submission, not after.
 
-A before-and-after scenario
+## A before-and-after scenario
 
 A Rajkot electricals distributor, ₹18 crore turnover, 4 field operators, issued roughly 40 B2B invoices a day. Before moving to mobile e-invoicing, a typical field sale followed this rhythm: salesman calls accountant, reads out details, accountant types in Tally, generates IRN, sends back on WhatsApp. Average 75 minutes per invoice. On a busy day they stretched into the next morning, which meant goods sat in the godown overnight.
 

@@ -38,11 +38,16 @@ The net effect: margins of 3 to 5% are now squeezed by longer DSO and higher wor
 
 ## The four-layer playbook
 
-LayerWhat it coversWho runs it1. Credit policyWho gets credit, how much, how longOwner2. Reminder cadenceStructured WhatsApp reminders per invoiceApp + accountant3. Payment pathUPI link on every invoice and reminderApp4. Hold-dispatch consequencesWhat happens when a party crosses 45 or 60 daysOwner + godown
+| Layer | What it covers | Who runs it |
+| --- | --- | --- |
+| 1. Credit policy | Who gets credit, how much, how long | Owner |
+| 2. Reminder cadence | Structured WhatsApp reminders per invoice | App + accountant |
+| 3. Payment path | UPI link on every invoice and reminder | App |
+| 4. Hold-dispatch consequences | What happens when a party crosses 45 or 60 days | Owner + godown |
 
 All four must be running. Most distributors have two or three. The missing one is usually layer 1 (credit policy) or layer 4 (consequences).
 
-Layer 1: Credit policy — who gets credit, and how much
+## Layer 1: Credit policy. Who gets credit, and how much
 
 A proper credit policy answers three questions per party, once, and writes them down:
 
@@ -54,7 +59,7 @@ Collection priority. Gold / Silver / Bronze, or tier by value. High-value partie
 
 A Guwahati stationery distributor, ₹6 crore turnover, 85 parties, introduced this one table in 2024. No app, no automation — just the table. In six months, DSO came down from 64 to 52 days purely from being clear about who got credit and how much.
 
-Layer 2: Cadence — structured WhatsApp reminders per invoice
+## Layer 2: Cadence. Structured WhatsApp reminders per invoice
 
 Five stages over 45 days. Covered in detail in our WhatsApp reminder cadence article.
 
@@ -70,7 +75,7 @@ Day 45: owner escalation
 
 Each message references the specific invoice and amount. None of them is a statement blast. All of them carry a UPI payment link. The cadence pauses the moment the invoice is paid.
 
-Layer 3: Payment path — UPI link on every invoice and every reminder
+## Layer 3: Payment path. UPI link on every invoice and every reminder
 
 UPI has changed B2B vasuli permanently. A payment link that opens in PhonePe, Google Pay or Paytm gets paid 3 to 5 times faster than a bank account number printed at the bottom of the PDF. The math is behavioural: for a retailer, tapping a link takes two seconds; re-entering IFSC codes takes five minutes.
 
@@ -86,7 +91,7 @@ Auto-pauses the reminder cadence on that invoice
 
 This is the Tally integration layer. Without it, the app is a messaging app with a payment button.
 
-Layer 4: Hold-dispatch consequences — when a party crosses the line
+## Layer 4: Hold-dispatch consequences. When a party crosses the line
 
 A cadence without consequences is a polite request. Retailers learn which distributors are strict and which can be ignored.
 
@@ -100,7 +105,7 @@ Day 60 dispatch is actually held until clearance
 
 This is the hard part for most family-run distributors. Relationships are long, retailers push back, and the owner usually backs down. But the ones who do hold dispatches consistently run the healthiest receivables books. A Surat textiles distributor we know holds two to three parties per month on this rule and still grew 18% year-on-year — because the retailers who valued the relationship paid to keep the supply flowing.
 
-When a party becomes chronic
+## When a party becomes chronic
 
 If a party is at day 60+ and ignoring the cadence, three options:
 

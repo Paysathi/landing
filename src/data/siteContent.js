@@ -282,19 +282,31 @@ export const comparisonSection = {
       Livekeeping: true,
     },
     {
-      feature: 'Mobile voucher creation',
+      feature: 'Automated reminders',
       Takkada: true,
       'Biz Analyst': true,
       Livekeeping: true,
     },
     {
-      feature: 'E-invoice + e-way bill',
+      feature: 'Invoice / ledger sharing',
+      Takkada: true,
+      'Biz Analyst': true,
+      Livekeeping: true,
+    },
+    {
+      feature: 'Mobile data entry / voucher workflows',
+      Takkada: true,
+      'Biz Analyst': true,
+      Livekeeping: true,
+    },
+    {
+      feature: 'E-invoice + e-way bill from mobile',
       Takkada: true,
       'Biz Analyst': false,
       Livekeeping: true,
     },
     {
-      feature: 'Payment collection (UPI / cards)',
+      feature: 'Invoice-linked payment collection',
       Takkada: true,
       'Biz Analyst': false,
       Livekeeping: false,
@@ -306,7 +318,7 @@ export const comparisonSection = {
       Livekeeping: false,
     },
     {
-      feature: 'Auto Invoice Dispatch — customer gets invoice + payment link the moment it’s raised in Tally',
+      feature: 'Auto invoice dispatch from Tally',
       Takkada: true,
       'Biz Analyst': false,
       Livekeeping: false,
@@ -319,7 +331,7 @@ export const comparisonSection = {
     },
   ],
   disclaimer:
-    'Feature details for Biz Analyst and Livekeeping are based on publicly available information as of April 2026. Verify on their product pages before using this in sales materials.',
+    'Feature details for Biz Analyst and Livekeeping are based on the pricing pages reviewed on April 26, 2026. Verify on their product pages before using this in sales materials.',
 };
 
 export const contactInfo = {

@@ -16,6 +16,7 @@ function articleSchema(post) {
     '@type': 'Article',
     headline: post.title,
     description: post.meta_description,
+    image: absoluteUrl(post.heroImage),
     datePublished: post.date,
     dateModified: post.date,
     author: {
@@ -52,6 +53,9 @@ function RelatedPosts({ currentSlug }) {
       <div className="blog-related-list">
         {related.map((post) => (
           <article key={post.slug} className="blog-related-card">
+            <Link to={`/blog/${post.slug}`} className="blog-related-thumb" aria-hidden="true" tabIndex={-1}>
+              <img src={post.heroImage} alt="" loading="lazy" />
+            </Link>
             <span className="blog-category-tag">{post.category}</span>
             <h3 className="blog-related-title">
               <Link to={`/blog/${post.slug}`}>{post.title}</Link>
@@ -94,6 +98,7 @@ function BlogPost() {
         title={post.meta_title || `${post.title} — Takkada`}
         description={post.meta_description}
         path={`/blog/${post.slug}`}
+        ogImage={post.heroImage}
         ogType="article"
         schemas={schemas}
       />
@@ -122,6 +127,16 @@ function BlogPost() {
               </div>
             </div>
           </header>
+
+          <figure className="blog-post-hero-image">
+            <img
+              src={post.heroImage}
+              alt={post.heroAlt}
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+            />
+          </figure>
 
           <div className="blog-prose">
             <div

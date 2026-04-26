@@ -72,7 +72,11 @@ Net effect: the working capital problem is structurally worse than it was in 202
 
 ## Three things that fix it, three that do not
 
-FixesDoes Not FixCompressing DSO through a structured collection cadenceMore aggressive credit limits (drives retailers away)UPI link on every invoice with auto-reconciliationA larger sales team (scales the problem proportionally)Tightening credit policy on chronic late payersDeeper discounts (compounds margin compression)
+| Fixes | Does not fix |
+| --- | --- |
+| Compressing DSO through a structured collection cadence | More aggressive credit limits (drives retailers away) |
+| UPI link on every invoice with auto-reconciliation | A larger sales team (scales the problem proportionally) |
+| Tightening credit policy on chronic late payers | Deeper discounts (compounds margin compression) |
 
 ## What forward-thinking wholesalers are doing in 2026
 

@@ -70,7 +70,16 @@ Tally cloud does not reduce training needs. The interface is identical. The Alt+
 
 ## Tally cloud versus a mobile companion app
 
-What you are solvingTally cloudMobile companion appTally machine stays on 24/7YesRequires your PC to stay on, unless you also cloud-hostAccountant works from homeYes, via RDPYes, via the appSalesman creates invoice at retailer's shopPainful (RDP on phone)Clean, nativeUPI collections on every invoiceNoYes on full-stack appsWhatsApp reminder cadenceNoYes on full-stack appsE-invoice + e-way bill from fieldNoYes on full-stack appsAuto-reconcile UTR into TallyNoYes on full-stack appsTypical cost (₹/user/year)6,000 to 18,0002,000 to 7,500
+| What you are solving | Tally cloud | Mobile companion app |
+| --- | --- | --- |
+| Tally machine stays on 24/7 | Yes | Requires your PC to stay on, unless you also cloud-host |
+| Accountant works from home | Yes, via RDP | Yes, via the app |
+| Salesman creates invoice at retailer's shop | Painful (RDP on phone) | Clean, native |
+| UPI collections on every invoice | No | Yes on full-stack apps |
+| WhatsApp reminder cadence | No | Yes on full-stack apps |
+| E-invoice and e-way bill from field | No | Yes on full-stack apps |
+| Auto-reconcile UTR into Tally | No | Yes on full-stack apps |
+| Typical cost (₹/user/year) | 6,000 to 18,000 | 2,000 to 7,500 |
 
 A Dibrugarh FMCG distributor we know moved to Tally cloud in 2023, kept running the 9 PM reconciliation session, and still had salesmen calling the accountant every time they closed a deal. A year later they added a mobile companion app on top of their cloud Tally. The cloud solved accountant-from-home; the companion app solved salesman-from-field and receipts-in-real-time.
 

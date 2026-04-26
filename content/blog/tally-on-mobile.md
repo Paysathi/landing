@@ -68,11 +68,19 @@ A Guwahati FMCG distributor we work with has this daily shape:
 
 Each moment has a different shape. The 7:30 AM check is read-only. The 11:00 AM statement is read-only. The 1:00 PM proforma needs voucher creation. The 3:30 PM collection needs a receipt plus UTR matching. The 9:00 PM reconciliation is the one every distributor would like to delete.
 
-A capability comparison
+## A capability comparison
 
-CapabilityRemote desktopTally RemoteRead-only companionRead + write companionView ledger, outstanding, stockUsable on 4G, brutal on 2GYesYesYesCreate sales invoice on phoneTechnically yes, painfulSameNoYesSend WhatsApp payment reminderNoNoSome doYesGenerate UPI payment linkNoNoNoUsually yesUPI auto-reconciliation into TallyNoNoNoYes on someE-invoice generation from phoneVery slowVery slowNoYes on someWorks offlineFailsFailsCached viewsCached views + queued writes
+| Capability | Remote desktop | Tally Remote | Read-only companion | Read + write companion |
+| --- | --- | --- | --- | --- |
+| View ledger, outstanding, stock | Usable on 4G, brutal on 2G | Yes | Yes | Yes |
+| Create sales invoice on phone | Technically yes, painful | Same | No | Yes |
+| Send WhatsApp payment reminder | No | No | Some do | Yes |
+| Generate UPI payment link | No | No | No | Usually yes |
+| UPI auto-reconciliation into Tally | No | No | No | Yes on some |
+| E-invoice generation from phone | Very slow | Very slow | No | Yes on some |
+| Works offline | Fails | Fails | Cached views | Cached views and queued writes |
 
-When read-only is enough, when it is not
+## When read-only is enough, when it is not
 
 A read-only companion app is the right tool if your entire mobile need is to answer "what does this party owe" or to pull up a ledger when a customer asks. A large share of distributors operate happily this way for years.
 
@@ -84,7 +92,7 @@ Your receivables cross a point where the 9 PM reconciliation session becomes the
 
 At that point you are no longer looking at your books on a phone. You are operating the business from a phone, and the companion layer must write back.
 
-What this means for your pick
+## What this means for your pick
 
 Family-run distributor, ₹2 to 5 crore turnover, owner and accountant only: read-only or remote desktop covers most real needs
 

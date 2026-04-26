@@ -70,7 +70,17 @@ KYC and onboarding friction. MSME onboarding is regulated. Some gateways take 3 
 
 ## A practical comparison
 
-CapabilityRazorpayCashfreePayUPaytm for BusinessUPI per-invoice linkYesYesYesYesReconciliation API on entry tierLimitedYesLimitedLimitedSettlement (standard plan)T+2T+1T+2T+1Instant settlement availableYes (premium)Yes (premium)LimitedYes (with Paytm Bank)Payouts APIYesYes (strong)YesYesMDR on UPI above ₹2,000Volume-tieredVolume-tieredVolume-tieredVolume-tieredMDR on cards (typical)2%1.95%2%1.99%Webhook reliabilityHighHighMediumHighKYC onboarding speed1 to 3 days1 to 2 days2 to 5 days1 day
+| Capability | Razorpay | Cashfree | PayU | Paytm for Business |
+| --- | --- | --- | --- | --- |
+| UPI per-invoice link | Yes | Yes | Yes | Yes |
+| Reconciliation API on entry tier | Limited | Yes | Limited | Limited |
+| Settlement (standard plan) | T+2 | T+1 | T+2 | T+1 |
+| Instant settlement available | Yes (premium) | Yes (premium) | Limited | Yes (with Paytm Bank) |
+| Payouts API | Yes | Yes (strong) | Yes | Yes |
+| MDR on UPI above ₹2,000 | Volume-tiered | Volume-tiered | Volume-tiered | Volume-tiered |
+| MDR on cards (typical) | 2% | 1.95% | 2% | 1.99% |
+| Webhook reliability | High | High | Medium | High |
+| KYC onboarding speed | 1 to 3 days | 1 to 2 days | 2 to 5 days | 1 day |
 
 (Pricing and settlement terms change; verify with each gateway before signing.)
 

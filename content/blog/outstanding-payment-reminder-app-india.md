@@ -48,7 +48,12 @@ A generic "please clear your dues" at every stage makes the retailer stop readin
 
 ## The four-part reminder architecture
 
-ComponentWhat it doesWhy it mattersInvoice capturePulls every open invoice from Tally or your billing system, with due date, amount, partyThe cadence runs per invoice, not per partyCadence engineSchedules Stage 1–5 reminders based on invoice age and payment statusAge-based tone gets results; same-message repetition does notPayment linkUPI link on every reminder with the exact amount and invoice referenceOne-tap payment is the only CTA that moves the metricReconciliationMatches incoming UTR to the invoice, auto-pauses the cadence, posts receipt to TallyPaid parties stop getting reminded; receipt voucher posts without human step
+| Component | What it does | Why it matters |
+| --- | --- | --- |
+| Invoice capture | Pulls every open invoice from Tally or your billing system, with due date, amount, party | The cadence runs per invoice, not per party |
+| Cadence engine | Schedules Stage 1–5 reminders based on invoice age and payment status | Age-based tone gets results; same-message repetition does not |
+| Payment link | UPI link on every reminder with the exact amount and invoice reference | One-tap payment is the only CTA that moves the metric |
+| Reconciliation | Matches incoming UTR to the invoice, auto-pauses the cadence, posts receipt to Tally | Paid parties stop getting reminded; receipt voucher posts without human step |
 
 Take out any one and the system breaks. No invoice capture means the app does not know what to remind about. No cadence means the messages go out as a broadcast. No payment link means the retailer has to dig out your account number. No reconciliation means you chase paid parties and look stupid.
 

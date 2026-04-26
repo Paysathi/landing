@@ -1,13 +1,13 @@
 const modules = import.meta.glob('/content/blog/*.md', { eager: true });
 
-let _posts = null;
-
 export function getAllPosts() {
-  if (_posts) return _posts;
-  _posts = Object.values(modules)
-    .map((mod) => mod.default)
+  return Object.values(modules)
+    .map((mod) => ({
+      ...mod.default,
+      heroImage: `/assets/blog/${mod.default.slug}.png`,
+      heroAlt: mod.default.title,
+    }))
     .sort((a, b) => new Date(b.date) - new Date(a.date));
-  return _posts;
 }
 
 export function getPostBySlug(slug) {

@@ -50,7 +50,16 @@ Shape 3: Full-stack distributor platforms. These add UPI payment links on every 
 
 A real Tally Prime mobile app for a mid-sized distributor has to carry the entire daily operational loop. Not just one piece of it.
 
-CapabilityView-onlyView + voucherFull-stackView outstanding, stock, ledgerYesYesYesCreate sales voucher on phoneNoYesYesGenerate IRN (e-invoice) from phoneNoPartialYesGenerate e-way bill from phoneNoPartialYesUPI payment link on every invoiceNoNoYesAuto-reconcile UTR into TallyNoNoYesWhatsApp reminder cadenceNoBasicYes, age-basedRole-based access for salesmenYes (view)YesYes, granular
+| Capability | View-only | View + voucher | Full-stack |
+| --- | --- | --- | --- |
+| View outstanding, stock, ledger | Yes | Yes | Yes |
+| Create sales voucher on phone | No | Yes | Yes |
+| Generate IRN (e-invoice) from phone | No | Partial | Yes |
+| Generate e-way bill from phone | No | Partial | Yes |
+| UPI payment link on every invoice | No | No | Yes |
+| Auto-reconcile UTR into Tally | No | No | Yes |
+| WhatsApp reminder cadence | No | Basic | Yes, age-based |
+| Role-based access for salesmen | Yes (view) | Yes | Yes, granular |
 
 A ₹12 crore FMCG distributor in Barpeta we know started on a view-only app and stayed there for three years. The moment they crossed 40 B2B invoices a day and ₹47 lakh in outstanding across 120 parties, view-only stopped being enough. The phone had to write back to Tally, not just read from it.
 

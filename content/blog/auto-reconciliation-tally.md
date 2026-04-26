@@ -56,11 +56,18 @@ In our customer conversations, distributors using a well-implemented auto-reconc
 
 ## Advances, TDS, discount, short payment edge cases
 
-Edge caseWhat it looks likeWhat good auto-reco doesAdvance₹2,50,000 paid before any invoice existsPosts as advance receipt to party ledger; auto-applies to next invoicesTDS₹99,000 paid on a ₹1,00,000 invoice (1% TDS withheld)Posts ₹99,000 receipt + ₹1,000 to TDS receivable; closes invoiceCash discount₹49,000 paid on ₹50,000 invoice within discount windowPosts ₹49,000 receipt + ₹1,000 discount adjustment; closes invoiceShort payment (genuine)₹49,000 paid, customer admits shortPosts ₹49,000; leaves invoice open with ₹1,000 balance for accountant decisionBounce₹50,000 receipt later reversed by bankReverses the receipt voucher, reopens the invoice, flags for follow-upWrong party UTRPayment from a non-customer (random transfer)Holds in unmatched bucket; never posts incorrectly
+| Edge case | What it looks like | What good auto-reco does |
+| --- | --- | --- |
+| Advance | ₹2,50,000 paid before any invoice exists | Posts as advance receipt to party ledger; auto-applies to next invoices |
+| TDS | ₹99,000 paid on a ₹1,00,000 invoice (1% TDS withheld) | Posts ₹99,000 receipt + ₹1,000 to TDS receivable; closes invoice |
+| Cash discount | ₹49,000 paid on ₹50,000 invoice within discount window | Posts ₹49,000 receipt + ₹1,000 discount adjustment; closes invoice |
+| Short payment (genuine) | ₹49,000 paid, customer admits short | Posts ₹49,000; leaves invoice open with ₹1,000 balance for accountant decision |
+| Bounce | ₹50,000 receipt later reversed by bank | Reverses the receipt voucher, reopens the invoice, flags for follow-up |
+| Wrong party UTR | Payment from a non-customer (random transfer) | Holds in unmatched bucket; never posts incorrectly |
 
 Three of these — TDS, discount, and short payment — are where most auto-reconciliation tools fail silently. They post the partial amount against the invoice but mark it closed, which corrupts your outstanding report.
 
-A capability checklist for auto reconciliation Tally
+## A capability checklist for auto reconciliation Tally
 
 Score any tool against these eight items.
 
@@ -82,7 +89,7 @@ Maintains an exception queue with reasons for each unmatched item
 
 A tool scoring below 6 of 8 will require manual reconciliation for too many cases to actually free your accountant's evening.
 
-Why the boring details decide it
+## Why the boring details decide it
 
 A Coimbatore auto-parts distributor we know spent three months on a tool that scored 5 of 8 on this checklist. It handled the clean cases beautifully. Every TDS payment from a corporate buyer ended up incorrectly marked as short payment, which broke the outstanding report. Every advance from a regular dealer sat in an unmatched bucket. After two months, the accountant was spending more time fixing the tool's mistakes than the original manual reconciliation took.
 

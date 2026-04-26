@@ -13,6 +13,9 @@ function formatDate(dateStr) {
 function PostCard({ post }) {
   return (
     <article className="blog-post-card">
+      <Link to={`/blog/${post.slug}`} className="blog-post-card-thumb" aria-hidden="true" tabIndex={-1}>
+        <img src={post.heroImage} alt="" loading="lazy" />
+      </Link>
       <div className="blog-post-card-meta">
         <span className="blog-category-tag">{post.category}</span>
         <span className="blog-date tabular-nums">{formatDate(post.date)}</span>
@@ -69,19 +72,24 @@ function BlogIndex() {
               <>
                 {featured && (
                   <article className="blog-featured-card">
-                    <div className="blog-featured-meta">
-                      <span className="blog-category-tag">{featured.category}</span>
-                      <span className="blog-featured-flag">Latest</span>
-                    </div>
-                    <h2 className="blog-featured-title">
-                      <Link to={`/blog/${featured.slug}`}>{featured.title}</Link>
-                    </h2>
-                    <p className="blog-featured-excerpt">{featured.excerpt}</p>
-                    <div className="blog-featured-footer">
-                      <span className="blog-date tabular-nums">{formatDate(featured.date)}</span>
-                      <Link to={`/blog/${featured.slug}`} className="blog-read-more">
-                        Read post →
-                      </Link>
+                    <Link to={`/blog/${featured.slug}`} className="blog-featured-thumb" aria-hidden="true" tabIndex={-1}>
+                      <img src={featured.heroImage} alt="" loading="eager" fetchPriority="high" />
+                    </Link>
+                    <div className="blog-featured-body">
+                      <div className="blog-featured-meta">
+                        <span className="blog-category-tag">{featured.category}</span>
+                        <span className="blog-featured-flag">Latest</span>
+                      </div>
+                      <h2 className="blog-featured-title">
+                        <Link to={`/blog/${featured.slug}`}>{featured.title}</Link>
+                      </h2>
+                      <p className="blog-featured-excerpt">{featured.excerpt}</p>
+                      <div className="blog-featured-footer">
+                        <span className="blog-date tabular-nums">{formatDate(featured.date)}</span>
+                        <Link to={`/blog/${featured.slug}`} className="blog-read-more">
+                          Read post →
+                        </Link>
+                      </div>
                     </div>
                   </article>
                 )}

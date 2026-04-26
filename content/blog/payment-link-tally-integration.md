@@ -46,7 +46,7 @@ Stage 4: Matching. The integration service listens for UTRs on your bank account
 
 Stage 5: Posting. A receipt voucher is created in Tally, marked against the original sales voucher, dated to the actual UTR settlement date. The outstanding report updates automatically.
 
-A step-by-step walkthrough
+## A step-by-step walkthrough
 
 A Surat textile distributor issuing a ₹1,12,340 invoice to a Mumbai retailer:
 
@@ -66,9 +66,16 @@ Outstanding for the retailer drops by ₹1,12,340 immediately.
 
 No human step between 4 and 7. This is the point of payment link Tally integration.
 
-Bank transfer vs payment link: the operational difference
+## Bank transfer vs payment link: the operational difference
 
-StepNEFT with bank details on invoicePayment link + Tally integrationCustomer effortOpen banking app, add payee, enter detailsTap link, authoriseTime to pay3 to 5 minutes10 to 20 secondsCompletion rate30 to 50% within due date70 to 90%Reference on UTROften missing or wrongAlways presentTally receipt postingManual at 9 PMAutomatic within minutesReconciliation error rate10 to 15%Under 1% with good matching logic
+| Step | NEFT with bank details on invoice | Payment link + Tally integration |
+| --- | --- | --- |
+| Customer effort | Open banking app, add payee, enter details | Tap link, authorise |
+| Time to pay | 3 to 5 minutes | 10 to 20 seconds |
+| Completion rate | 30 to 50% within due date | 70 to 90% |
+| Reference on UTR | Often missing or wrong | Always present |
+| Tally receipt posting | Manual at 9 PM | Automatic within minutes |
+| Reconciliation error rate | 10 to 15% | Under 1% with good matching logic |
 
 ## Handling split payments and advances
 

@@ -74,11 +74,17 @@ Rajesh bhai, aap se seedha baat. INV-2614 ₹18,340 ab 45 days overdue hai. End 
 
 Five messages over 45 days, not a single broadcast. Each one is specific to an invoice and offers one-tap payment. Retailers respond because the message is about their own bill, not a form letter.
 
-A cadence summary table
+## A cadence summary table
 
-StageDayTonePayment linkWhen to stop1. Invoice dispatch0Warm, informationalYesAlways send2. Gentle reminder+3LightYesIf invoice paid3. Due-date notice+15NeutralYesIf invoice paid4. Firm reminder+30DirectYesIf paid or under dispute5. Owner escalation+45Personal, consequencesYesAfter once, call instead
+| Stage | Day | Tone | Payment link | When to stop |
+| --- | --- | --- | --- | --- |
+| 1. Invoice dispatch | 0 | Warm, informational | Yes | Always send |
+| 2. Gentle reminder | +3 | Light | Yes | If invoice paid |
+| 3. Due-date notice | +15 | Neutral | Yes | If invoice paid |
+| 4. Firm reminder | +30 | Direct | Yes | If paid or under dispute |
+| 5. Owner escalation | +45 | Personal, consequences | Yes | After once, call instead |
 
-Template language guidance
+## Template language guidance
 
 Use the retailer's first name plus "bhai" or "ji" based on your normal way of speaking. Copy-paste formality feels like a bank recovery SMS.
 

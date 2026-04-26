@@ -46,7 +46,11 @@ Tier 2: The owner's app. The owner checks Biz Analyst on the phone every morning
 
 Tier 3: The system runs. Invoice creation, dispatch, payment link, reminder cadence, and reconciliation all run on a connected stack. The accountant reviews exceptions for 15 minutes in the morning. The owner watches a dashboard, intervenes only on accounts above a threshold. The 9 PM session is gone. The team gets redeployed to growth or compliance work.
 
-TierToolingDSO rangeAccountant time on collections/day1: Manual, ledger-drivenTally + paper + phone60 to 75 days3 to 5 hours2: Tool-augmentedTally + view-only mobile app50 to 65 days1.5 to 3 hours3: Mobile-first, automatedTally + full-stack mobile platform40 to 55 days30 to 60 minutes
+| Tier | Tooling | DSO range | Accountant time on collections per day |
+| --- | --- | --- | --- |
+| 1: Manual, ledger-driven | Tally + paper + phone | 60 to 75 days | 3 to 5 hours |
+| 2: Tool-augmented | Tally + view-only mobile app | 50 to 65 days | 1.5 to 3 hours |
+| 3: Mobile-first, automated | Tally + full-stack mobile platform | 40 to 55 days | 30 to 60 minutes |
 
 ## What the top quartile does differently
 
@@ -100,7 +104,7 @@ A: 45 to 55 days for FMCG, electronics, textiles. 35 to 45 days for fast-moving 
 
 **Q: How much does it cost to move from Tier 1 to Tier 3?**
 
-A: Tooling cost is typically ₹6,000 to ₹10,000 per user per year for the mobile platform, plus existing Tally licensing. Operational cost is the discipline change — writing credit policy, training salesmen on the new flow, retraining the accountant for exception handling. Most distributors complete the move in a quarter.
+A: Tooling cost is typically ₹6,000 to ₹7,500 per user per year for the full-stack mobile platform, plus existing Tally licensing. Operational cost is the discipline change — writing credit policy, training salesmen on the new flow, retraining the accountant for exception handling. Most distributors complete the move in a quarter.
 
 **Q: Is bad debt unavoidable in Indian distribution?**
 

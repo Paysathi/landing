@@ -54,7 +54,13 @@ This is the feature that separates 2018-era apps from 2026-era apps. When ₹42,
 
 ## UPI vs NEFT vs cash vs cheque: where each fits
 
-ChannelTypical invoice sizeReconciliation difficulty (without app)UPI-like speedUPI (payment link)₹500 to ₹1 lakhEasy with reference, hard withoutInstantNEFT₹50,000 to ₹10 lakhMedium, needs UTR matching1 to 2 hoursRTGS₹2 lakh and aboveMediumNear-instantCashAnyHard; no trailInstantChequeAnyHardest; clearing time + bounces2 to 4 days
+| Channel | Typical invoice size | Reconciliation difficulty (without app) | Settlement speed |
+| --- | --- | --- | --- |
+| UPI (payment link) | ₹500 to ₹1 lakh | Easy with reference, hard without | Instant |
+| NEFT | ₹50,000 to ₹10 lakh | Medium, needs UTR matching | 1 to 2 hours |
+| RTGS | ₹2 lakh and above | Medium | Near-instant |
+| Cash | Any | Hard; no trail | Instant |
+| Cheque | Any | Hardest; clearing time and bounces | 2 to 4 days |
 
 The shift over the last three years is clear: UPI share of distributor receipts has gone from about 15% in 2021 to 60 to 75% in 2026 for transactions under ₹1 lakh. A payment collection app that cannot generate and track UPI links is missing the centre of the market.
 
@@ -62,11 +68,20 @@ The shift over the last three years is clear: UPI share of distributor receipts 
 
 When comparing options, score each on these eight capabilities. Rate each Yes / Partial / No.
 
-CapabilityWhat "Yes" looks likeWhatsApp invoice dispatchInvoice auto-fires on creation, includes PDF and payment linkOne-tap UPI linkLink opens directly in buyer's UPI app with amount pre-filledStaged reminder cadenceStage 1–5 messages, age-based, auto-paused on paymentUTR-to-invoice matchingIncoming bank UTR auto-matches, including partial and split paymentsReceipt voucher postingPosts to Tally automatically once matchedSplit-payment handlingA ₹1,00,000 receipt covering three invoices auto-splits correctlyTally deployment compatibilityWorks with your existing Tally Prime install, no data migrationRole-based access for salesmenEach salesman sees only their assigned parties, owner sees all
+| Capability | What "Yes" looks like |
+| --- | --- |
+| WhatsApp invoice dispatch | Invoice auto-fires on creation, includes PDF and payment link |
+| One-tap UPI link | Link opens directly in buyer's UPI app with amount pre-filled |
+| Staged reminder cadence | Stage 1–5 messages, age-based, auto-paused on payment |
+| UTR-to-invoice matching | Incoming bank UTR auto-matches, including partial and split payments |
+| Receipt voucher posting | Posts to Tally automatically once matched |
+| Split-payment handling | A ₹1,00,000 receipt covering three invoices auto-splits correctly |
+| Tally deployment compatibility | Works with your existing Tally Prime install, no data migration |
+| Role-based access for salesmen | Each salesman sees only their assigned parties, owner sees all |
 
 Anything scoring below 6 of 8 with confidence is not yet a collection app. It is a messaging app with a payment link bolted on.
 
-Split payment, advances, TDS: the boring details that matter
+## Split payment, advances, TDS: the boring details that matter
 
 Three practical details trip up most mobile collection apps at distributor scale.
 

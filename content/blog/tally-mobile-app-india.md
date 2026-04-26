@@ -30,7 +30,7 @@ Search traffic for the phrase "tally mobile app India" spiked around 2017 when B
 
 When an Indian distributor says tally mobile app India, they usually mean one of the following five shapes, each solving a slightly different problem.
 
-The five shapes available
+## The five shapes available
 
 1. Remote desktop (TeamViewer, AnyDesk, Chrome Remote Desktop)
 
@@ -52,9 +52,15 @@ This is the category Takkada sits in, along with a couple of newer players. Pric
 
 Some distributors hire a Tally partner to build a custom TDL (Tally Definition Language) screen that renders in a mobile browser. One-time cost ₹25,000 to ₹1.5 lakh, plus annual AMC. Very customised, very brittle when Tally Prime updates. Rare in 2026 but still found with older distributors who paid for it years ago.
 
-A capability and price comparison
+## A capability and price comparison
 
-ShapeTypical price (₹/user/year)View outstandingCreate invoicePayment linkE-invoice + e-way billAuto-reco into TallyRemote desktop0 to 30,000 (team license)Yes (slow)Yes (slow)NoNoNoRead-only companion2,000 to 4,000YesNoNoNoNoRead + voucher3,500 to 5,000YesYesNoSomeNoFull-stack mobile6,000 to 7,500YesYesYesYesYesCustom TDL25,000+ one-timeDependsDependsNoNoNo
+| Shape | Typical price (₹/user/year) | View outstanding | Create invoice | Payment link | E-invoice and e-way bill | Auto-reco into Tally |
+| --- | --- | --- | --- | --- | --- | --- |
+| Remote desktop | 0 to 30,000 (team license) | Yes (slow) | Yes (slow) | No | No | No |
+| Read-only companion | 2,000 to 4,000 | Yes | No | No | No | No |
+| Read + voucher | 3,500 to 5,000 | Yes | Yes | No | Some | No |
+| Full-stack mobile | 6,000 to 7,500 | Yes | Yes | Yes | Yes | Yes |
+| Custom TDL | 25,000+ one-time | Depends | Depends | No | No | No |
 
 ## A buyer's checklist for Indian distributors
 
@@ -80,7 +86,7 @@ Ignoring the partner network. Most Indian distributors buy from, and are support
 
 Assuming WhatsApp Business API is handled. Some apps require you to connect your own WhatsApp Business API at ₹0.80 to ₹1.20 per template message. Others bundle messages. At 2,000 reminders a month, this is a meaningful difference.
 
-Picking by ICP
+## Picking by ICP
 
 Owner wanting visibility only: read-only companion, ₹2,000 to ₹4,000 per year. Biz Analyst is the default.
 

@@ -64,7 +64,19 @@ Response to notices. DRC-01B intimations, discrepancy notices, audit queries —
 
 Amendments after filing. Corrections in GSTR-1 or -3B after filing require the GSTN portal, not a companion app.
 
-GST activityMobile-first in 2026Desktop/CA still neededGenerate e-invoice (IRN)Yes—Generate e-way billYes—Validate buyer GSTINYes—HSN + rate check on voucherYes—Cancel e-invoice within 24 hoursYes—Credit note creationYes—File GSTR-1—YesFile GSTR-3B—YesGSTR-2B reconciliationDashboard onlyMismatch resolutionRespond to GST notices—YesAmendments after filing—Yes
+| GST activity | Mobile-first in 2026 | Desktop or CA still needed |
+| --- | --- | --- |
+| Generate e-invoice (IRN) | Yes | No |
+| Generate e-way bill | Yes | No |
+| Validate buyer GSTIN | Yes | No |
+| HSN and rate check on voucher | Yes | No |
+| Cancel e-invoice within 24 hours | Yes | No |
+| Credit note creation | Yes | No |
+| File GSTR-1 | No | Yes |
+| File GSTR-3B | No | Yes |
+| GSTR-2B reconciliation | Dashboard only | Mismatch resolution |
+| Respond to GST notices | No | Yes |
+| Amendments after filing | No | Yes |
 
 ## The hidden cost of delayed compliance
 

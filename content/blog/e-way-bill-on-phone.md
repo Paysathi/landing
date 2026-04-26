@@ -76,9 +76,16 @@ Step 6: Share with transporter and buyer
 
 The EWB PDF can be sent to the transporter via WhatsApp or printed on the godown printer. Drivers are usually shown the QR on the phone at RTO check-posts.
 
-Desktop vs phone e-way bill flow
+## Desktop vs phone e-way bill flow
 
-StepDesktop (Tally Prime)Phone (companion app + Tally)Where startedAccountant's PCOwner or operator at godownTypical time3 to 8 minutes40 to 90 secondsVehicle number format checkManualApp-normalisedDistance lookupManualPin-to-pin autoTally syncNativeVia app syncPart B update when vehicle changes mid-routeBack to desktopFrom phone itself
+| Step | Desktop (Tally Prime) | Phone (companion app + Tally) |
+| --- | --- | --- |
+| Where started | Accountant's PC | Owner or operator at godown |
+| Typical time | 3 to 8 minutes | 40 to 90 seconds |
+| Vehicle number format check | Manual | App-normalised |
+| Distance lookup | Manual | Pin-to-pin auto |
+| Tally sync | Native | Via app sync |
+| Part B update when vehicle changes mid-route | Back to desktop | From phone itself |
 
 ## Common rejections and how mobile apps catch them
 
