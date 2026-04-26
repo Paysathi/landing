@@ -198,7 +198,7 @@ export const pricing = {
   ],
   addons: [
     { label: 'Auto Invoice Dispatch', price: '\u20B91,500 / year', note: 'Add-on for Collections plan only' },
-    { label: 'WhatsApp 9,000-message pack', price: '\u20B92,000 / year' },
+    { label: 'WhatsApp 8,000-message pack', price: '\u20B92,000 / year' },
     { label: 'Extra user', price: '\u20B93,000 / user / year' },
     { label: 'Extra business', price: '\u20B91,000 / business / year', note: 'Collections & Full Access only' },
   ],
