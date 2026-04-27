@@ -1,6 +1,6 @@
 function TestimonialCard({ quote, name, role, delay = 0 }) {
   return (
-    <article className="testimonial-card reveal" style={{ '--delay': `${delay}ms` }}>
+    <article className="testimonial-card" style={{ '--delay': `${delay}ms` }}>
       <div className="testimonial-quote-mark" aria-hidden="true">&ldquo;</div>
       <p className="testimonial-quote">{quote}</p>
       <div className="testimonial-meta">
