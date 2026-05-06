@@ -3375,3 +3375,78 @@ html.js .animated-heading .letter {
     padding: 56px 0;
   }
 }
+/* ── Partners page ── */
+.partner-wins-list {
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 32px;
+  font-size: 16px;
+  color: var(--color-text-secondary);
+}
+
+.partner-wins-list li {
+  position: relative;
+  padding-left: 22px;
+  line-height: 1.5;
+}
+
+.partner-wins-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary-light);
+}
+
+@media (max-width: 720px) {
+  .partner-wins-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.partner-audience-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 32px;
+}
+
+@media (max-width: 720px) {
+  .partner-audience-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.partner-audience-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 18px 20px;
+  background: var(--color-white);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.partner-audience-row p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.partner-audience-bullet {
+  flex-shrink: 0;
+  width: 10px;
+  height: 10px;
+  margin-top: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+}
+

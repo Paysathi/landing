@@ -20,7 +20,13 @@ function clearTimer(timerRef) {
   timerRef.current = null;
 }
 
-function PhoneModal({ isOpen, onClose }) {
+function PhoneModal({
+  isOpen,
+  onClose,
+  title = 'Book a Demo',
+  subtitle = "Enter your phone number and we'll set up a personalized walkthrough.",
+  submitLabel = 'Continue to Book',
+}) {
   const [phone, setPhone] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
@@ -130,8 +136,8 @@ function PhoneModal({ isOpen, onClose }) {
           <div className="phone-modal-icon">
             <Phone size={24} />
           </div>
-          <h3 id="phone-modal-title">Book a Demo</h3>
-          <p>Enter your phone number and we&apos;ll set up a personalized walkthrough.</p>
+          <h3 id="phone-modal-title">{title}</h3>
+          <p>{subtitle}</p>
         </div>
 
         <div className="phone-modal-body">
@@ -167,7 +173,7 @@ function PhoneModal({ isOpen, onClose }) {
             {loading ? (
               <><Loader2 size={18} className="spin" /> Submitting...</>
             ) : (
-              <>Continue to Book <ArrowRight size={18} /></>
+              <>{submitLabel} <ArrowRight size={18} /></>
             )}
           </button>
           <button type="button" className="phone-btn-cancel" onClick={onClose}>

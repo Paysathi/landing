@@ -165,8 +165,16 @@ function SiteFooter() {
 }
 
 function ModalMount() {
-  const { open, setOpen } = usePhoneModal();
-  return <PhoneModal isOpen={open} onClose={() => setOpen(false)} />;
+  const { open, setOpen, options } = usePhoneModal();
+  return (
+    <PhoneModal
+      isOpen={open}
+      onClose={() => setOpen(false)}
+      title={options.title}
+      subtitle={options.subtitle}
+      submitLabel={options.submitLabel}
+    />
+  );
 }
 
 function LayoutInner() {
