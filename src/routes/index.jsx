@@ -9,6 +9,7 @@ import MobileTally from './MobileTally';
 import WhatsAppInvoice from './WhatsAppInvoice';
 import AutoReconciliation from './AutoReconciliation';
 import ForDistributors from './ForDistributors';
+import Partners from './Partners';
 import BlogIndex from './BlogIndex';
 import BlogPost from './BlogPost';
 import { routeMetadata } from '../data/siteMetadata';
@@ -24,6 +25,8 @@ const ELEMENT_FOR_PATH = {
   '/whatsapp-invoice-tally': <WhatsAppInvoice />,
   '/auto-reconciliation-tally': <AutoReconciliation />,
   '/for-distributors': <ForDistributors />,
+  '/partners': <Partners />,
+  '/become-a-partner': <Partners />,
 };
 
 const children = routeMetadata.map(({ path }) => {

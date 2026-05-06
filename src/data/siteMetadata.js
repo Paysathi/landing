@@ -64,4 +64,16 @@ export const routeMetadata = [
     changefreq: 'monthly',
     priority: 0.9,
   },
+  {
+    path: '/partners',
+    sourceFile: 'src/routes/Partners.jsx',
+    changefreq: 'monthly',
+    priority: 0.8,
+  },
+  {
+    path: '/become-a-partner',
+    sourceFile: 'src/routes/Partners.jsx',
+    changefreq: 'monthly',
+    priority: 0.6,
+  },
 ];

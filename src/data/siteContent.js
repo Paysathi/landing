@@ -2,6 +2,7 @@ export const navLinks = [
   { label: 'Product', href: '#product' },
   { label: 'Features', href: '#features' },
   { label: 'Pricing', href: '#pricing' },
+  { label: 'Partners', href: '/partners' },
   { label: 'How It Works', href: '#how-it-works' },
   { label: 'Blog', href: '/blog' },
 ];
@@ -247,6 +248,7 @@ export const footerColumns = [
     links: [
       { label: 'About Us', page: 'about-us' },
       { label: 'Contact Us', page: 'contact-us' },
+      { label: 'Partners', page: 'partners' },
       { label: 'Blog', page: 'blog' },
       { label: 'Privacy Policy', page: 'privacy-policy' },
       { label: 'Terms & Conditions', page: 'terms-and-conditions' },
